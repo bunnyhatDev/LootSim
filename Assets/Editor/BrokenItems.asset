@@ -1,0 +1,124 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8db678b8da41954e92469411beaa958, type: 3}
+  m_Name: BrokenItems
+  m_EditorClassIdentifier: 
+  lootItem:
+  - itemName: Boots
+    exp: 0
+    rarityMaterial: {fileID: 2100000, guid: 73d4ebb2b859ae248befcb764814e250, type: 2}
+    itemPrefab: {fileID: 0}
+    itemAnimation: {fileID: 0}
+  - itemName: Gloves
+    exp: 0
+    rarityMaterial: {fileID: 0}
+    itemPrefab: {fileID: 0}
+    itemAnimation: {fileID: 0}
+  - itemName: Helm
+    exp: 0
+    rarityMaterial: {fileID: 0}
+    itemPrefab: {fileID: 0}
+    itemAnimation: {fileID: 0}
+  - itemName: Chest
+    exp: 0
+    rarityMaterial: {fileID: 0}
+    itemPrefab: {fileID: 0}
+    itemAnimation: {fileID: 0}
+  - itemName: Pants
+    exp: 0
+    rarityMaterial: {fileID: 0}
+    itemPrefab: {fileID: 0}
+    itemAnimation: {fileID: 0}
+  - itemName: Ring
+    exp: 0
+    rarityMaterial: {fileID: 0}
+    itemPrefab: {fileID: 0}
+    itemAnimation: {fileID: 0}
+  - itemName: Amulet
+    exp: 0
+    rarityMaterial: {fileID: 0}
+    itemPrefab: {fileID: 0}
+    itemAnimation: {fileID: 0}
+  - itemName: Sword
+    exp: 0
+    rarityMaterial: {fileID: 0}
+    itemPrefab: {fileID: 0}
+    itemAnimation: {fileID: 0}
+  - itemName: Dagger
+    exp: 0
+    rarityMaterial: {fileID: 0}
+    itemPrefab: {fileID: 0}
+    itemAnimation: {fileID: 0}
+  - itemName: Longsword
+    exp: 0
+    rarityMaterial: {fileID: 0}
+    itemPrefab: {fileID: 0}
+    itemAnimation: {fileID: 0}
+  - itemName: Bow
+    exp: 0
+    rarityMaterial: {fileID: 0}
+    itemPrefab: {fileID: 0}
+    itemAnimation: {fileID: 0}
+  - itemName: Quiver
+    exp: 0
+    rarityMaterial: {fileID: 0}
+    itemPrefab: {fileID: 0}
+    itemAnimation: {fileID: 0}
+  - itemName: Dual Blades
+    exp: 0
+    rarityMaterial: {fileID: 0}
+    itemPrefab: {fileID: 0}
+    itemAnimation: {fileID: 0}
+  - itemName: Shield
+    exp: 0
+    rarityMaterial: {fileID: 0}
+    itemPrefab: {fileID: 0}
+    itemAnimation: {fileID: 0}
+  - itemName: Staff
+    exp: 0
+    rarityMaterial: {fileID: 0}
+    itemPrefab: {fileID: 0}
+    itemAnimation: {fileID: 0}
+  - itemName: Wand
+    exp: 0
+    rarityMaterial: {fileID: 0}
+    itemPrefab: {fileID: 0}
+    itemAnimation: {fileID: 0}
+  - itemName: Whip
+    exp: 0
+    rarityMaterial: {fileID: 0}
+    itemPrefab: {fileID: 0}
+    itemAnimation: {fileID: 0}
+  - itemName: Spell Book
+    exp: 0
+    rarityMaterial: {fileID: 0}
+    itemPrefab: {fileID: 0}
+    itemAnimation: {fileID: 0}
+  - itemName: Spear
+    exp: 0
+    rarityMaterial: {fileID: 0}
+    itemPrefab: {fileID: 0}
+    itemAnimation: {fileID: 0}
+  - itemName: Sickle
+    exp: 0
+    rarityMaterial: {fileID: 0}
+    itemPrefab: {fileID: 0}
+    itemAnimation: {fileID: 0}
+  - itemName: Scythes
+    exp: 0
+    rarityMaterial: {fileID: 0}
+    itemPrefab: {fileID: 0}
+    itemAnimation: {fileID: 0}
+  - itemName: Crossbow
+    exp: 0
+    rarityMaterial: {fileID: 0}
+    itemPrefab: {fileID: 0}
+    itemAnimation: {fileID: 0}
