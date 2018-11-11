@@ -14,6 +14,7 @@ public class ChestController : MonoBehaviour {
 	public float maxTimer;
 	public GameObject[] loot;
 
+	public bool isMenuOpen = false;		//FIXME:(1) Remove this from here and put it in GameManager
 	private bool isDead = false;
 
 	LootManager m_lootManager;
@@ -54,7 +55,7 @@ public class ChestController : MonoBehaviour {
 			currentHP -= idleDamage * Time.deltaTime;
 			currentTimer -= Time.deltaTime;
 			if(currentTimer != 0) {
-				if(Input.GetMouseButtonDown(0)) {
+				if(Input.GetMouseButtonDown(0) && !isMenuOpen) {
 					currentHP -= tapDamage;
 				}
 			}

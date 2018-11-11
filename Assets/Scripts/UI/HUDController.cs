@@ -8,6 +8,7 @@ public class HUDController : MonoBehaviour {
 	[Header("Menu Properties")]
 	public Button menuButton;
 	public GameObject menuPanel;
+	public GameObject menuButtonsLayout;
 	public Button closeButton;
 	public Toggle soundToggle;
 	public Toggle musicToggle;
@@ -38,6 +39,21 @@ public class HUDController : MonoBehaviour {
 		healthText.text = m_chestController.roundedHP + " / " + m_chestController.maxHP;
 		
 		timerBar.value = m_chestController.currentTimer;
+
+		if(menuPanel.activeSelf) {
+			m_chestController.isMenuOpen = true;
+		} else {
+			m_chestController.isMenuOpen = false;
+		}
+	}
+
+	public void CloseMenu() {
+		if(menuPanel.activeSelf) {
+			menuPanel.SetActive(false);
+		} else {
+			menuPanel.SetActive(true);
+			menuButtonsLayout.SetActive(true);
+		}
 	}
 	
 }
