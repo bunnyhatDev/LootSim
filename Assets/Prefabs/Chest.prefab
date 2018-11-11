@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33456060781782798}
   - component: {fileID: 23115964557993868}
   - component: {fileID: 135876835841314068}
+  - component: {fileID: 111846738628621320}
   m_Layer: 0
   m_Name: Loot1
   m_TagString: Untagged
@@ -40,6 +41,7 @@ GameObject:
   - component: {fileID: 33777101374328350}
   - component: {fileID: 23949530670403314}
   - component: {fileID: 135113019974264308}
+  - component: {fileID: 111142962691005850}
   m_Layer: 0
   m_Name: Loot2
   m_TagString: Untagged
@@ -58,6 +60,7 @@ GameObject:
   - component: {fileID: 33874176894241472}
   - component: {fileID: 23410975279203622}
   - component: {fileID: 135307007700863216}
+  - component: {fileID: 111744089702377736}
   m_Layer: 0
   m_Name: Loot3
   m_TagString: Untagged
@@ -79,7 +82,7 @@ GameObject:
   - component: {fileID: 114253072061051028}
   m_Layer: 0
   m_Name: Chest
-  m_TagString: Untagged
+  m_TagString: Chest
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -154,7 +157,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 73d4ebb2b859ae248befcb764814e250, type: 2}
+  - {fileID: 2100000, guid: f6ab5be45bb157b488c34deeba8cea78, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -189,7 +192,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 73d4ebb2b859ae248befcb764814e250, type: 2}
+  - {fileID: 2100000, guid: f6ab5be45bb157b488c34deeba8cea78, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -259,7 +262,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 73d4ebb2b859ae248befcb764814e250, type: 2}
+  - {fileID: 2100000, guid: f6ab5be45bb157b488c34deeba8cea78, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -319,6 +322,48 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!111 &111142962691005850
+Animation:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1165779288733992}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 0}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
+--- !u!111 &111744089702377736
+Animation:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1376878616020744}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 0}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
+--- !u!111 &111846738628621320
+Animation:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1165488430595680}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 0}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!114 &114253072061051028
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -330,15 +375,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bd527452bc8f5844b2409ed335e9c20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHP: 10
+  roundedHP: 0
   maxHP: 100
   tapDamage: 0.75
+  idleDamage: 0
   currentTimer: 0
   maxTimer: 59
   loot:
   - {fileID: 1165488430595680}
   - {fileID: 1165779288733992}
   - {fileID: 1376878616020744}
+  isMenuOpen: 0
 --- !u!135 &135113019974264308
 SphereCollider:
   m_ObjectHideFlags: 1

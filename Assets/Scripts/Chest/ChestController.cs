@@ -17,8 +17,6 @@ public class ChestController : MonoBehaviour {
 	public bool isMenuOpen = false;		//FIXME:(1) Remove this from here and put it in GameManager
 	private bool isDead = false;
 
-	LootManager m_lootManager;
-
     void Awake() {
 		// maxHP = 10;
 		currentHP = maxHP;
@@ -27,16 +25,6 @@ public class ChestController : MonoBehaviour {
 
 		// maxTimer = 59;
 		currentTimer = maxTimer;
-
-		//When chest spawns, let it pick 3 rewards from a given pool.
-		m_lootManager = GameObject.FindGameObjectWithTag("Environment").GetComponent<LootManager>();
-		m_lootManager.randomLootIndex0 = Random.Range(0, 22);
-		m_lootManager.randomLootIndex1 = Random.Range(0, 22);
-		m_lootManager.randomLootIndex2 = Random.Range(0, 22);
-
-		loot[0].name = m_lootManager.brokenItems.lootItem[m_lootManager.randomLootIndex0].itemName;
-		loot[1].name = m_lootManager.brokenItems.lootItem[m_lootManager.randomLootIndex1].itemName;
-		loot[2].name = m_lootManager.brokenItems.lootItem[m_lootManager.randomLootIndex2].itemName;
     }
 	
 	void Update () {

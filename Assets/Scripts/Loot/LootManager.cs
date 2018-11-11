@@ -51,8 +51,23 @@ public class LootManager : MonoBehaviour {
 	public int randomLootIndex1;
 	public int randomLootIndex2;
 	[SerializeField] private int[] randomLoot;
+
+	ChestController m_chestController;
 	
 	void Awake() {
+		m_chestController = GameObject.FindGameObjectWithTag("Chest").GetComponent<ChestController>();
+		m_chestController.loot[0].name = brokenItems.lootItem[0].itemName;
+		m_chestController.loot[1].name = brokenItems.lootItem[1].itemName;
+		m_chestController.loot[2].name = brokenItems.lootItem[2].itemName;
+
+		m_chestController.loot[0].GetComponent<MeshRenderer>().material = brokenItems.lootItem[0].lootMat;
+		m_chestController.loot[1].GetComponent<MeshRenderer>().material = brokenItems.lootItem[1].lootMat;
+		m_chestController.loot[2].GetComponent<MeshRenderer>().material = brokenItems.lootItem[2].lootMat;
+
+		m_chestController.loot[0].GetComponent<Animation>().clip = brokenItems.lootItem[0].lootAnimation.clip;
+		m_chestController.loot[1].GetComponent<Animation>().clip = brokenItems.lootItem[1].lootAnimation.clip;
+		m_chestController.loot[2].GetComponent<Animation>().clip = brokenItems.lootItem[2].lootAnimation.clip;
+
 		for(int i = 0; i < brokenItems.lootItem.Length; i++) {
 			brokenItems.lootItem[i].exp = brokenExp;
 			brokenItems.lootItem[i].lootMat = brokenMat;
@@ -88,9 +103,9 @@ public class LootManager : MonoBehaviour {
 	}
 
 	void PickLoot() {
-		// randomLootIndex0 = Random.Range(0, 22);
-		// randomLootIndex1 = Random.Range(0, 22);
-		// randomLootIndex2 = Random.Range(0, 22);
+		randomLootIndex0 = Random.Range(0, 22);
+		randomLootIndex1 = Random.Range(0, 22);
+		randomLootIndex2 = Random.Range(0, 22);
 		for(int i = 0; i < brokenItems.lootItem.Length; i++) {
 			randomLoot[0] = randomLootIndex0;
 			randomLoot[1] = randomLootIndex1;
