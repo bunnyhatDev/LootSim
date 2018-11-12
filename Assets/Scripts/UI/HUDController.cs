@@ -16,6 +16,7 @@ public class HUDController : MonoBehaviour {
 
 	[Header("Stats Properties")]
 	public TextMeshProUGUI earningsText;
+	public TextMeshProUGUI chestTrackerText;
 	public Slider expBar;
 	public TextMeshProUGUI levelText;
 	public Slider timerBar;
@@ -29,7 +30,7 @@ public class HUDController : MonoBehaviour {
 
 		healthBar.value = (float)m_chestController.roundedHP;
 		healthBar.maxValue = m_chestController.maxHP;
-		healthText.text = m_chestController.roundedHP + " / " + m_chestController.maxHP;
+		healthText.text = ">> " + m_chestController.roundedHP + " / " + m_chestController.maxHP + " <<";
 
 		timerBar.value = m_chestController.currentTimer;
 		timerBar.maxValue = m_chestController.maxTimer;
@@ -37,7 +38,7 @@ public class HUDController : MonoBehaviour {
 
 	void Update() {
 		healthBar.value = (float)m_chestController.roundedHP;
-		healthText.text = m_chestController.roundedHP + " / " + m_chestController.maxHP;
+		healthText.text = ">> " + m_chestController.roundedHP + " / " + m_chestController.maxHP + " <<";
 		
 		timerBar.value = m_chestController.currentTimer;
 

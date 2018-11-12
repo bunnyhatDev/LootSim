@@ -5,7 +5,7 @@ using UnityEngine;
 public class ChestController : MonoBehaviour {
 
 	[Header("Chest Variables")]
-	public static float currentHP;
+	public float currentHP;
 	public double roundedHP;
 	public float maxHP;
 	public float tapDamage;
@@ -18,12 +18,7 @@ public class ChestController : MonoBehaviour {
 	private bool isDead = false;
 
     void Awake() {
-		// maxHP = 10;
 		currentHP = maxHP;
-
-		idleDamage = tapDamage * 1.45f;
-
-		// maxTimer = 59;
 		currentTimer = maxTimer;
     }
 	
