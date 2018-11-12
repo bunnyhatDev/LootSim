@@ -15,6 +15,7 @@ public class HUDController : MonoBehaviour {
 	public Button achievementsButton;
 
 	[Header("Stats Properties")]
+	public TextMeshProUGUI earningsText;
 	public Slider expBar;
 	public TextMeshProUGUI levelText;
 	public Slider timerBar;

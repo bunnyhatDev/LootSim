@@ -14,7 +14,7 @@ public class ChestController : MonoBehaviour {
 	public float maxTimer;
 	public GameObject[] loot;
 
-	public bool isMenuOpen = false;		//FIXME:(1) Remove this from here and put it in GameManager
+	public bool isMenuOpen = false;
 	private bool isDead = false;
 
     void Awake() {
