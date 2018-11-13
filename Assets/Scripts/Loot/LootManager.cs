@@ -56,6 +56,8 @@ public class LootManager : MonoBehaviour {
 	
 	void Awake() {
 		m_chestController = GameObject.FindGameObjectWithTag("Chest").GetComponent<ChestController>();
+		PickLoot();
+		
 		m_chestController.loot[0].name = brokenItems.lootItem[0].itemName;
 		m_chestController.loot[1].name = brokenItems.lootItem[1].itemName;
 		m_chestController.loot[2].name = brokenItems.lootItem[2].itemName;
@@ -64,42 +66,40 @@ public class LootManager : MonoBehaviour {
 		m_chestController.loot[1].GetComponent<MeshRenderer>().material = brokenItems.lootItem[1].lootMat;
 		m_chestController.loot[2].GetComponent<MeshRenderer>().material = brokenItems.lootItem[2].lootMat;
 
-		m_chestController.loot[0].GetComponent<Animation>().clip = brokenItems.lootItem[0].lootAnimation.clip;
-		m_chestController.loot[1].GetComponent<Animation>().clip = brokenItems.lootItem[1].lootAnimation.clip;
-		m_chestController.loot[2].GetComponent<Animation>().clip = brokenItems.lootItem[2].lootAnimation.clip;
+		// m_chestController.loot[0].GetComponent<Animation>().clip = brokenItems.lootItem[0].lootAnimation.clip;
+		// m_chestController.loot[1].GetComponent<Animation>().clip = brokenItems.lootItem[1].lootAnimation.clip;
+		// m_chestController.loot[2].GetComponent<Animation>().clip = brokenItems.lootItem[2].lootAnimation.clip;
 
 		for(int i = 0; i < brokenItems.lootItem.Length; i++) {
 			brokenItems.lootItem[i].exp = brokenExp;
 			brokenItems.lootItem[i].lootMat = brokenMat;
 			brokenItems.lootItem[i].lootAnimation = brokenAnimation;
 		}
-		for(int i = 0; i < commonItems.lootItem.Length; i++) {
-			commonItems.lootItem[i].exp = commonExp;
-			commonItems.lootItem[i].lootMat = commonMat;
-			commonItems.lootItem[i].lootAnimation = commonAnimation;
-		}
-		for(int i = 0; i < uncommonItems.lootItem.Length; i++) {
-			uncommonItems.lootItem[i].exp = uncommonExp;
-			uncommonItems.lootItem[i].lootMat = uncommonMat;
-			uncommonItems.lootItem[i].lootAnimation = uncommonAnimation;
-		}
-		for(int i = 0; i < rareItems.lootItem.Length; i++) {
-			rareItems.lootItem[i].exp = rareExp;
-			rareItems.lootItem[i].lootMat = rareMat;
-			rareItems.lootItem[i].lootAnimation = rareAnimation;
-		}
-		for(int i = 0; i < legendaryItems.lootItem.Length; i++) {
-			legendaryItems.lootItem[i].exp = legendaryExp;
-			legendaryItems.lootItem[i].lootMat = legendaryMat;
-			legendaryItems.lootItem[i].lootAnimation = legendaryAnimation;
-		}
-		for(int i = 0; i < primeItems.lootItem.Length; i++) {
-			primeItems.lootItem[i].exp = primeExp;
-			primeItems.lootItem[i].lootMat = primeMat;
-			primeItems.lootItem[i].lootAnimation = primeAnimation;
-		}
-
-		PickLoot();
+		// for(int i = 0; i < commonItems.lootItem.Length; i++) {
+		// 	commonItems.lootItem[i].exp = commonExp;
+		// 	commonItems.lootItem[i].lootMat = commonMat;
+		// 	commonItems.lootItem[i].lootAnimation = commonAnimation;
+		// }
+		// for(int i = 0; i < uncommonItems.lootItem.Length; i++) {
+		// 	uncommonItems.lootItem[i].exp = uncommonExp;
+		// 	uncommonItems.lootItem[i].lootMat = uncommonMat;
+		// 	uncommonItems.lootItem[i].lootAnimation = uncommonAnimation;
+		// }
+		// for(int i = 0; i < rareItems.lootItem.Length; i++) {
+		// 	rareItems.lootItem[i].exp = rareExp;
+		// 	rareItems.lootItem[i].lootMat = rareMat;
+		// 	rareItems.lootItem[i].lootAnimation = rareAnimation;
+		// }
+		// for(int i = 0; i < legendaryItems.lootItem.Length; i++) {
+		// 	legendaryItems.lootItem[i].exp = legendaryExp;
+		// 	legendaryItems.lootItem[i].lootMat = legendaryMat;
+		// 	legendaryItems.lootItem[i].lootAnimation = legendaryAnimation;
+		// }
+		// for(int i = 0; i < primeItems.lootItem.Length; i++) {
+		// 	primeItems.lootItem[i].exp = primeExp;
+		// 	primeItems.lootItem[i].lootMat = primeMat;
+		// 	primeItems.lootItem[i].lootAnimation = primeAnimation;
+		// }
 	}
 
 	void PickLoot() {
