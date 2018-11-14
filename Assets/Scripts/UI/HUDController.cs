@@ -25,22 +25,15 @@ public class HUDController : MonoBehaviour {
 
 	ChestController m_chestController;
 
-	void Awake() {
-		m_chestController = GameObject.Find("Chest").GetComponent<ChestController>();
+	void Update() {
+		m_chestController = GameObject.FindGameObjectWithTag("Chest").GetComponent<ChestController>();
 
 		healthBar.value = (float)m_chestController.roundedHP;
 		healthBar.maxValue = m_chestController.maxHP;
 		healthText.text = ">> " + m_chestController.roundedHP + " / " + m_chestController.maxHP + " <<";
-
-		timerBar.value = m_chestController.currentTimer;
-		timerBar.maxValue = m_chestController.maxTimer;
-	}
-
-	void Update() {
-		healthBar.value = (float)m_chestController.roundedHP;
-		healthText.text = ">> " + m_chestController.roundedHP + " / " + m_chestController.maxHP + " <<";
 		
 		timerBar.value = m_chestController.currentTimer;
+		timerBar.maxValue = m_chestController.maxTimer;
 
 		if(menuPanel.activeSelf) {
 			m_chestController.isMenuOpen = true;

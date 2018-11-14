@@ -19,13 +19,8 @@ public class GameManager : MonoBehaviour {
 		m_chestController = GameObject.FindGameObjectWithTag("Chest").GetComponent<ChestController>();
 		m_hudController = GameObject.Find("HUD").GetComponent<HUDController>();
 
-		m_hudController.chestTrackerText.text = ">> Chests Opened: " + chestsOpened;
-		formatedEarnings = string.Format("{0:#,###0}",earnings);
-		m_hudController.earningsText.text = ">> $ " + formatedEarnings;
-		m_hudController.levelText.text = ">> Level " + level.ToString();
-		m_hudController.expBar.value = currentXP;
-		m_hudController.expBar.maxValue = maxXP;
-
+		//FIXME: This if function will be placed in an event system which will check through
+		// the save file to see what the player's EXP is.
 		if(currentXP == 0) {
 			chestsOpened = 0;
 			earnings = 0;
