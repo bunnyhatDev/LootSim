@@ -10,7 +10,7 @@ public class HUDController : MonoBehaviour {
 	public GameObject menuPanel;
 	public GameObject menuButtonsLayout;
 	public Button closeButton;
-	public Toggle soundToggle;
+	public Toggle sfxToggle;
 	public Toggle musicToggle;
 	public Button achievementsButton;
 
@@ -46,6 +46,19 @@ public class HUDController : MonoBehaviour {
 			m_chestController.isMenuOpen = true;
 		} else {
 			m_chestController.isMenuOpen = false;
+		}
+	}
+
+	public void ToggleAudio() {
+		if(sfxToggle.isOn) {
+
+		} else {
+
+		}
+		if(musicToggle.isOn) {
+
+		} else {
+
 		}
 	}
 
