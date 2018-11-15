@@ -50,25 +50,26 @@ public class LootManager : MonoBehaviour {
 	public int randomLootIndex0;
 	public int randomLootIndex1;
 	public int randomLootIndex2;
-	[SerializeField] private int[] randomLoot;
+	[SerializeField] public int[] randomLoot;
 
-	ChestController m_chestController;
+	GameManager m_gameManager;
+	// ChestController m_chestController;
 	
 	void Awake() {
-		m_chestController = GameObject.FindGameObjectWithTag("Chest").GetComponent<ChestController>();
-		PickLoot();
+		// m_chestController = GameObject.FindGameObjectWithTag("Chest").GetComponent<ChestController>();
+		m_gameManager = GameObject.FindGameObjectWithTag("Managers").GetComponent<GameManager>();
 		
-		m_chestController.loot[0].name = brokenItems.lootItem[0].itemName;
-		m_chestController.loot[1].name = brokenItems.lootItem[1].itemName;
-		m_chestController.loot[2].name = brokenItems.lootItem[2].itemName;
+		m_gameManager.loot[0].name = brokenItems.lootItem[0].itemName;
+		m_gameManager.loot[1].name = brokenItems.lootItem[1].itemName;
+		m_gameManager.loot[2].name = brokenItems.lootItem[2].itemName;
 
-		m_chestController.loot[0].GetComponent<MeshRenderer>().material = brokenItems.lootItem[0].lootMat;
-		m_chestController.loot[1].GetComponent<MeshRenderer>().material = brokenItems.lootItem[1].lootMat;
-		m_chestController.loot[2].GetComponent<MeshRenderer>().material = brokenItems.lootItem[2].lootMat;
+		m_gameManager.loot[0].GetComponent<MeshRenderer>().material = brokenItems.lootItem[0].lootMat;
+		m_gameManager.loot[1].GetComponent<MeshRenderer>().material = brokenItems.lootItem[1].lootMat;
+		m_gameManager.loot[2].GetComponent<MeshRenderer>().material = brokenItems.lootItem[2].lootMat;
 
-		// m_chestController.loot[0].GetComponent<Animation>().clip = brokenItems.lootItem[0].lootAnimation.clip;
-		// m_chestController.loot[1].GetComponent<Animation>().clip = brokenItems.lootItem[1].lootAnimation.clip;
-		// m_chestController.loot[2].GetComponent<Animation>().clip = brokenItems.lootItem[2].lootAnimation.clip;
+		// m_gameManager.loot[0].GetComponent<Animation>().clip = brokenItems.lootItem[0].lootAnimation.clip;
+		// m_gameManager.loot[1].GetComponent<Animation>().clip = brokenItems.lootItem[1].lootAnimation.clip;
+		// m_gameManager.loot[2].GetComponent<Animation>().clip = brokenItems.lootItem[2].lootAnimation.clip;
 
 		for(int i = 0; i < brokenItems.lootItem.Length; i++) {
 			brokenItems.lootItem[i].exp = brokenExp;
@@ -100,18 +101,6 @@ public class LootManager : MonoBehaviour {
 		// 	primeItems.lootItem[i].lootMat = primeMat;
 		// 	primeItems.lootItem[i].lootAnimation = primeAnimation;
 		// }
-	}
-
-	void PickLoot() {
-		randomLootIndex0 = Random.Range(0, 22);
-		randomLootIndex1 = Random.Range(0, 22);
-		randomLootIndex2 = Random.Range(0, 22);
-		for(int i = 0; i < brokenItems.lootItem.Length; i++) {
-			randomLoot[0] = randomLootIndex0;
-			randomLoot[1] = randomLootIndex1;
-			randomLoot[2] = randomLootIndex2;
-		}
-		// Debug.Log(randomLootIndex0 + "/" + randomLootIndex1 + "/" + randomLootIndex2);
 	}
 
 }
