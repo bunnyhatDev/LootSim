@@ -23,29 +23,25 @@ public class HUDController : MonoBehaviour {
 	public Slider healthBar;
 	public TextMeshProUGUI healthText;
 
-	ChestController m_chestController;
+	GameManager m_gameManager;
 
-	void Awake() {
-		m_chestController = GameObject.Find("Chest").GetComponent<ChestController>();
-
-		healthBar.value = (float)m_chestController.roundedHP;
-		healthBar.maxValue = m_chestController.maxHP;
-		healthText.text = ">> " + m_chestController.roundedHP + " / " + m_chestController.maxHP + " <<";
-
-		timerBar.value = m_chestController.currentTimer;
-		timerBar.maxValue = m_chestController.maxTimer;
-	}
+	// ChestController m_chestController;
 
 	void Update() {
-		healthBar.value = (float)m_chestController.roundedHP;
-		healthText.text = ">> " + m_chestController.roundedHP + " / " + m_chestController.maxHP + " <<";
+		// m_chestController = GameObject.FindGameObjectWithTag("Chest").GetComponent<ChestController>();
+		m_gameManager = GameObject.FindGameObjectWithTag("Managers").GetComponent<GameManager>();
+
+		healthBar.value = (float)m_gameManager.roundedHP;
+		healthBar.maxValue = m_gameManager.maxHP;
+		healthText.text = ">> " + m_gameManager.roundedHP + " / " + m_gameManager.maxHP + " <<";
 		
-		timerBar.value = m_chestController.currentTimer;
+		timerBar.value = m_gameManager.currentTimer;
+		timerBar.maxValue = m_gameManager.maxTimer;
 
 		if(menuPanel.activeSelf) {
-			m_chestController.isMenuOpen = true;
+			m_gameManager.isMenuOpen = true;
 		} else {
-			m_chestController.isMenuOpen = false;
+			m_gameManager.isMenuOpen = false;
 		}
 	}
 
