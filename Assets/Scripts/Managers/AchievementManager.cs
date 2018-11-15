@@ -20,9 +20,23 @@ public struct Achievement {
 public class AchievementManager : MonoBehaviour {
 	public Achievement[] achievements;
 
+	private int[] m_initialAchievementTargets = new int[] {
+		100,	// TAP_COUNT
+		5,		// CHEST_COUNT
+		3,		// LOOT_COUNT
+		1,		// SCENES_COUNT
+		1,		// UPGRADES_COUNT
+		1000,	// CURRENCY_COUNT
+		5,		// LEVEL
+		100,	// EXP_GAINED
+		1,		// AUTOTAP_UPGRADES
+		1,		// CHESTS_BROUGHT
+		1		// TAP_POWER
+	};
 	private int m_numAchievements = 11;
 
 	void Awake() {
+		// DeleteAllSaveData(); // INFO: Un-comment this line if u want to delete saved Achievement data bofore start of game
 		CreateAchievementsList();
 		CheckAchievements();
 	}
@@ -41,6 +55,7 @@ public class AchievementManager : MonoBehaviour {
 			LoadAchievements();
 		} else {
 			SaveInitialAchievements();
+			LoadAchievements();
 		}
 	}
 
@@ -57,9 +72,18 @@ public class AchievementManager : MonoBehaviour {
 		for (int i = 0; i < m_numAchievements; i++) {
 			PlayerPrefs.SetInt(((ACHIEVEMENT_LIST)i).ToString() + "_Level", 0);
 			PlayerPrefs.SetInt(((ACHIEVEMENT_LIST)i).ToString() + "_CurrProg", 0);
-			PlayerPrefs.SetInt(((ACHIEVEMENT_LIST)i).ToString() + "_Target", 0);
+			PlayerPrefs.SetInt(((ACHIEVEMENT_LIST)i).ToString() + "_Target", m_initialAchievementTargets[i]);
 		}
+	}
 
-		// TODO: Set the  intial target 
+	private void DeleteAllSaveData() {
+		if (PlayerPrefs.HasKey("AchievementsInited")) {
+			for (int i = 0; i < m_numAchievements; i++) {
+				PlayerPrefs.DeleteKey(((ACHIEVEMENT_LIST)i).ToString() + "_Level");
+				PlayerPrefs.DeleteKey(((ACHIEVEMENT_LIST)i).ToString() + "_CurrProg");
+				PlayerPrefs.DeleteKey(((ACHIEVEMENT_LIST)i).ToString() + "_Target");
+			}
+			PlayerPrefs.DeleteKey("AchievementsInited");
+		}
 	}
 }
