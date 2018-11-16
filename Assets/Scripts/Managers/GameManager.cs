@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum EVENT_SYSTEM {
 	LOADING_SCREEN,				//Show loading screen, load all vars and assets
-	CHEST_SPAWN,				//Chest will spawn and player can begin tapping
+	DAMAGE_PHASE,				//Chest will spawn and player can begin tapping
 	REWARD_SPAWN				//Rewards spawn and player earns it
 }
 
@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour {
 	public float earnings;
 	public int chestsOpened;
 	
-	private string formatedEarnings;
+	// private string formatedEarnings;
 
 	LootManager m_lootManager;
 	// ChestController m_chestController;
@@ -54,42 +54,41 @@ public class GameManager : MonoBehaviour {
 
 		Debug.Log("Amount of broken items: " + m_lootManager.brokenItems.lootItem.Length);
 
+		SimplePool.Preload(chestPrefab, 2);
+		SimplePool.Spawn(chestPrefab, transform.position, transform.rotation);
+
 		eventSystem = EVENT_SYSTEM.LOADING_SCREEN;
 	}
 
-	void Update() {
+	void LateUpdate() {
 		Debug.Log(isDead);
 
 		switch(eventSystem) {
 			case EVENT_SYSTEM.LOADING_SCREEN:
-				//Loading in HUD and variables that are pulled from the save file
-				m_hudController.chestTrackerText.text = ">> Chests Opened: " + chestsOpened;
-				formatedEarnings = string.Format("{0:#,###0}",earnings);
-				m_hudController.earningsText.text = ">> $ " + formatedEarnings;
-				m_hudController.levelText.text = ">> Level " + level.ToString();
-				m_hudController.expBar.value = currentXP;
-				m_hudController.expBar.maxValue = maxXP;
-
-				//Loading assets
-				SimplePool.Preload(chestPrefab, 5);
 				currentHP = maxHP;
 				currentTimer = maxTimer;
 
-				eventSystem = EVENT_SYSTEM.CHEST_SPAWN;
-				SimplePool.Spawn(chestPrefab, transform.position, transform.rotation);
+				eventSystem = EVENT_SYSTEM.DAMAGE_PHASE;
 				// StartCoroutine("SpawnChest");
 			break;
 
-			case EVENT_SYSTEM.CHEST_SPAWN:
+			case EVENT_SYSTEM.DAMAGE_PHASE:
 				for(int i = 0; i < loot.Length; i++) {
 					loot[i].SetActive(false);
 				}
 				// PickLoot();
-
 				roundedHP = System.Math.Round(currentHP, 2);
-				if(currentHP <= 0) {
+				if(roundedHP <= 0) {
 					currentHP = 0; 
 					isDead = true;
+					chestsOpened += 1;
+					earnings += 15;
+					currentXP += 25f;
+					maxHP += 25f;
+					maxTimer -= 0.135f;
+					currentHP = maxHP;
+					currentTimer = maxTimer;
+					eventSystem = EVENT_SYSTEM.REWARD_SPAWN;
 				}
 
 				if(currentTimer <= 0) { 
@@ -109,25 +108,13 @@ public class GameManager : MonoBehaviour {
 							currentHP -= tapDamage * 5;
 						}
 					}
-				} else {
-					eventSystem = EVENT_SYSTEM.REWARD_SPAWN;
-				}				
+				}
 			break;
 
 			case EVENT_SYSTEM.REWARD_SPAWN:
-				chestsOpened += 1;
-
 				// for(int i = 0; i < loot.Length; i++) {
 				// 	loot[i].SetActive(true);
 				// }
-
-				chestsOpened += 1;
-				earnings += 15;
-				currentXP += 25f;
-				maxHP += 2.5f;
-				maxTimer -= 0.135f;
-				currentHP = maxHP;
-				currentTimer = maxTimer;
 
 				if(currentXP >= maxXP) {
 					float remainderXp = currentXP - maxXP;
@@ -160,10 +147,10 @@ public class GameManager : MonoBehaviour {
 
 	IEnumerator SpawnChest() {
 		SimplePool.Despawn(chestPrefab);
-		yield return new WaitForSeconds(2);
-		SimplePool.Spawn(chestPrefab, transform.position, transform.rotation);
+		yield return new WaitForSeconds(0.15f);
+		// SimplePool.Spawn(chestPrefab, transform.position, transform.rotation);
 		isDead = false;
-		eventSystem = EVENT_SYSTEM.CHEST_SPAWN;
+		eventSystem = EVENT_SYSTEM.DAMAGE_PHASE;
 	}
 
 }
