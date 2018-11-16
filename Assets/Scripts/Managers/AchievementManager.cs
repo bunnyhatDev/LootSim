@@ -86,4 +86,27 @@ public class AchievementManager : MonoBehaviour {
 			PlayerPrefs.DeleteKey("AchievementsInited");
 		}
 	}
+
+	// Use this to add to the achievement progress
+	// TODO: MAke this static for ease of use anywhere;
+	public void AddAchievementProgress(ACHIEVEMENT_LIST achievementID, int ammount) {
+		achievements[(int)achievementID].currentAchievementProgress += ammount;
+
+		bool targetReached;
+
+		// NOTE: The so while is so if the player completes 2 level of an achievement in one go.
+		do {
+			targetReached = false;
+			if (achievements[(int)achievementID].currentAchievementProgress >= achievements[(int)achievementID].nextAchievementTarget) {
+				achievements[(int)achievementID].achievementLevel++;
+				// TODO: Figure out a proper formule for the next target...
+				achievements[(int)achievementID].nextAchievementTarget += (achievements[(int)achievementID].nextAchievementTarget * achievements[(int)achievementID].achievementLevel);
+
+				targetReached = true;
+
+				// TODO: Add one to the achevement pop up list so it reasy to pop up
+				// OR just pop up now and pause and resume code from here 
+			} 
+		} while(targetReached);
+	}
 }
