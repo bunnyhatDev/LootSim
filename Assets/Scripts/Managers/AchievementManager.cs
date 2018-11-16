@@ -18,7 +18,7 @@ public struct Achievement {
 }
 
 public class AchievementManager : MonoBehaviour {
-	public Achievement[] achievements;
+	public static Achievement[] achievements;
 
 	private int[] m_initialAchievementTargets = new int[] {
 		100,	// TAP_COUNT
@@ -76,7 +76,7 @@ public class AchievementManager : MonoBehaviour {
 		}
 	}
 
-	private void DeleteAllSaveData() {
+	public void DeleteAllSaveData() {
 		if (PlayerPrefs.HasKey("AchievementsInited")) {
 			for (int i = 0; i < m_numAchievements; i++) {
 				PlayerPrefs.DeleteKey(((ACHIEVEMENT_LIST)i).ToString() + "_Level");
@@ -88,9 +88,9 @@ public class AchievementManager : MonoBehaviour {
 	}
 
 	// Use this to add to the achievement progress
-	// TODO: MAke this static for ease of use anywhere;
-	public void AddAchievementProgress(ACHIEVEMENT_LIST achievementID, int ammount) {
+	public static void AddAchievementProgress(ACHIEVEMENT_LIST achievementID, int ammount) {
 		achievements[(int)achievementID].currentAchievementProgress += ammount;
+		PlayerPrefs.SetInt(achievementID.ToString() + "_CurrProg", achievements[(int)achievementID].currentAchievementProgress);
 
 		bool targetReached;
 
@@ -99,8 +99,11 @@ public class AchievementManager : MonoBehaviour {
 			targetReached = false;
 			if (achievements[(int)achievementID].currentAchievementProgress >= achievements[(int)achievementID].nextAchievementTarget) {
 				achievements[(int)achievementID].achievementLevel++;
+				PlayerPrefs.SetInt(achievementID.ToString() + "_Level", achievements[(int)achievementID].achievementLevel);
+
 				// TODO: Figure out a proper formule for the next target...
 				achievements[(int)achievementID].nextAchievementTarget += (achievements[(int)achievementID].nextAchievementTarget * achievements[(int)achievementID].achievementLevel);
+				PlayerPrefs.SetInt(achievementID.ToString() + "_Target", achievements[(int)achievementID].nextAchievementTarget);
 
 				targetReached = true;
 
