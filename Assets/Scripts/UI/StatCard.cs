@@ -4,10 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class AchievementCard : MonoBehaviour {
+public class StatCard : MonoBehaviour {
 	public Image image; // TODO:
 	public TextMeshProUGUI cardName;
 	public TextMeshProUGUI desc;
-	public TextMeshProUGUI reward;
-	public Button claimButton;
 }

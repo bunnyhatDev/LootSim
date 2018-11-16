@@ -26,6 +26,14 @@ public class HUDController : MonoBehaviour {
 	[Header("Achievements Properties")]
 	public AchievementCard[] availableAchievementCards;
 
+	[Header("Stats Menu Properties")]
+	public StatCard[] availableStatCards;
+	private string[] displaiedStats = new string[] {
+		"Taps", "Chests", "Loot", "Scenes", "Upgrades", "Currency",
+		"Level",
+		"Experience"
+	};
+
 	private string formatedEarnings;
 
 	GameManager m_gameManager;
@@ -86,11 +94,19 @@ public class HUDController : MonoBehaviour {
 	public void UpdateAchievementCards() {
 		Achievement[] tmpAchievements = AchievementManager.achievements;
 		for (int i = 0; i < tmpAchievements.Length; i++) {
-			availableAchievementCards[i].name.text = ((ACHIEVEMENT_LIST)i).ToString();
+			availableAchievementCards[i].cardName.text = ((ACHIEVEMENT_LIST)i).ToString();
 			availableAchievementCards[i].desc.text = "Level: " + tmpAchievements[i].achievementLevel + " (" + tmpAchievements[i].currentAchievementProgress + "/" + tmpAchievements[i].nextAchievementTarget + ")";
-			availableAchievementCards[i].reward.text = (500 + (tmpAchievements[i].achievementLevel * 500)).ToString();
+			availableAchievementCards[i].reward.text = "$ " + (500 + (tmpAchievements[i].achievementLevel * 500)).ToString();
 
 			// TODO: Set Claim Button
+		}
+	}
+
+	public void UpdateStatsCards() {
+		Achievement[] tmpAchievements = AchievementManager.achievements;
+		for (int i = 0; i < displaiedStats.Length; i++) {
+			availableStatCards[i].cardName.text = displaiedStats[i];
+			availableStatCards[i].desc.text = tmpAchievements[i].currentAchievementProgress.ToString();
 		}
 	}
 }

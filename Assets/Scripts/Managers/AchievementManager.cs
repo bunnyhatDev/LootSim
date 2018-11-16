@@ -94,7 +94,7 @@ public class AchievementManager : MonoBehaviour {
 
 		bool targetReached;
 
-		// NOTE: The so while is so if the player completes 2 level of an achievement in one go.
+		// NOTE: The do while is so if the player completes 2  or more levels of an achievement in one go.
 		do {
 			targetReached = false;
 			if (achievements[(int)achievementID].currentAchievementProgress >= achievements[(int)achievementID].nextAchievementTarget) {
