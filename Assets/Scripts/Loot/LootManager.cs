@@ -47,35 +47,51 @@ public class LootManager : MonoBehaviour {
 	#endregion
 
 	[Header("RNG Properties")]
+	// public GameObject lootPrefab;
+	// public GameObject[] loot;
 	public int randomLootIndex0;
 	public int randomLootIndex1;
 	public int randomLootIndex2;
 	[SerializeField] public int[] randomLoot;
 
 	GameManager m_gameManager;
-	// ChestController m_chestController;
+
+	// void Awake() {
+	// 	m_gameManager = GetComponent<GameManager>();
+		// SimplePool.Preload(loot[0], 1);
+		// SimplePool.Preload(loot[1], 1);
+		// SimplePool.Preload(loot[2], 1);
+	// }
+
+	// void LateUpdate() {
+	// 	if(m_gameManager.isDead) {
+	// 		StartCoroutine("PickLoot");
+	// 	}
+	// }
 	
-	void Awake() {
-		// m_chestController = GameObject.FindGameObjectWithTag("Chest").GetComponent<ChestController>();
-		m_gameManager = GameObject.FindGameObjectWithTag("Managers").GetComponent<GameManager>();
+	// IEnumerator PickLoot() {
+		// SimplePool.Spawn(loot[0], transform.position, transform.rotation);
+		// SimplePool.Spawn(loot[1], transform.position, transform.rotation);
+		// SimplePool.Spawn(loot[2], transform.position, transform.rotation);
+		// Debug.Log("loot spawned");
+
+		// randomLootIndex0 = Random.Range(0, brokenItems.lootItem.Length);
+		// randomLootIndex1 = Random.Range(0, brokenItems.lootItem.Length);
+		// randomLootIndex2 = Random.Range(0, brokenItems.lootItem.Length);
 		
-		m_gameManager.loot[0].name = brokenItems.lootItem[0].itemName;
-		m_gameManager.loot[1].name = brokenItems.lootItem[1].itemName;
-		m_gameManager.loot[2].name = brokenItems.lootItem[2].itemName;
+		// loot[0].name = brokenItems.lootItem[randomLootIndex0].itemName;
+		// loot[1].name = brokenItems.lootItem[randomLootIndex1].itemName;
+		// loot[2].name = brokenItems.lootItem[randomLootIndex2].itemName;
 
-		m_gameManager.loot[0].GetComponent<MeshRenderer>().material = brokenItems.lootItem[0].lootMat;
-		m_gameManager.loot[1].GetComponent<MeshRenderer>().material = brokenItems.lootItem[1].lootMat;
-		m_gameManager.loot[2].GetComponent<MeshRenderer>().material = brokenItems.lootItem[2].lootMat;
+		// loot[0].GetComponent<MeshRenderer>().material = brokenItems.lootItem[0].lootMat;
+		// loot[1].GetComponent<MeshRenderer>().material = brokenItems.lootItem[1].lootMat;
+		// loot[2].GetComponent<MeshRenderer>().material = brokenItems.lootItem[2].lootMat;
 
-		// m_gameManager.loot[0].GetComponent<Animation>().clip = brokenItems.lootItem[0].lootAnimation.clip;
-		// m_gameManager.loot[1].GetComponent<Animation>().clip = brokenItems.lootItem[1].lootAnimation.clip;
-		// m_gameManager.loot[2].GetComponent<Animation>().clip = brokenItems.lootItem[2].lootAnimation.clip;
-
-		for(int i = 0; i < brokenItems.lootItem.Length; i++) {
-			brokenItems.lootItem[i].exp = brokenExp;
-			brokenItems.lootItem[i].lootMat = brokenMat;
-			brokenItems.lootItem[i].lootAnimation = brokenAnimation;
-		}
+		// for(int i = 0; i < brokenItems.lootItem.Length; i++) {
+		// 	brokenItems.lootItem[i].exp = brokenExp;
+		// 	brokenItems.lootItem[i].lootMat = brokenMat;
+		// 	brokenItems.lootItem[i].lootAnimation = brokenAnimation;
+		// }
 		// for(int i = 0; i < commonItems.lootItem.Length; i++) {
 		// 	commonItems.lootItem[i].exp = commonExp;
 		// 	commonItems.lootItem[i].lootMat = commonMat;
@@ -101,6 +117,11 @@ public class LootManager : MonoBehaviour {
 		// 	primeItems.lootItem[i].lootMat = primeMat;
 		// 	primeItems.lootItem[i].lootAnimation = primeAnimation;
 		// }
-	}
+
+		// yield return new WaitForSeconds(0.15f);
+		// SimplePool.Despawn(loot[0]);
+		// SimplePool.Despawn(loot[1]);
+		// SimplePool.Despawn(loot[2]);
+	// }
 
 }

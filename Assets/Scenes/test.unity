@@ -31584,6 +31584,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1546303880}
   - component: {fileID: 1546303879}
+  - component: {fileID: 1546303881}
   - component: {fileID: 1546303883}
   - component: {fileID: 1546303882}
   m_Layer: 0
@@ -31615,10 +31616,7 @@ MonoBehaviour:
   idleDamage: 0.75
   currentTimer: 0
   maxTimer: 59
-  loot:
-  - {fileID: 1165488430595680, guid: 6a11c7673b948364c974caa361185c73, type: 2}
-  - {fileID: 1165779288733992, guid: 6a11c7673b948364c974caa361185c73, type: 2}
-  - {fileID: 1376878616020744, guid: 6a11c7673b948364c974caa361185c73, type: 2}
+  isDead: 0
   level: 1
   currentXP: 0
   maxXP: 0
@@ -31637,6 +31635,45 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1546303881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1546303878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c8375ef17e92124ea8bf9145c332540, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  brokenItems: {fileID: 11400000, guid: 55c16fa27a754104ea85c8285d6687c2, type: 2}
+  brokenExp: 5
+  brokenMat: {fileID: 2100000, guid: 73d4ebb2b859ae248befcb764814e250, type: 2}
+  brokenAnimation: {fileID: 0}
+  commonItems: {fileID: 0}
+  commonExp: 0
+  commonMat: {fileID: 0}
+  commonAnimation: {fileID: 0}
+  uncommonItems: {fileID: 0}
+  uncommonExp: 0
+  uncommonMat: {fileID: 0}
+  uncommonAnimation: {fileID: 0}
+  rareItems: {fileID: 0}
+  rareExp: 0
+  rareMat: {fileID: 0}
+  rareAnimation: {fileID: 0}
+  legendaryItems: {fileID: 0}
+  legendaryExp: 0
+  legendaryMat: {fileID: 0}
+  legendaryAnimation: {fileID: 0}
+  primeItems: {fileID: 0}
+  primeExp: 0
+  primeMat: {fileID: 0}
+  primeAnimation: {fileID: 0}
+  randomLootIndex0: 0
+  randomLootIndex1: 0
+  randomLootIndex2: 0
+  randomLoot: 000000000000000000000000
 --- !u!114 &1546303882
 MonoBehaviour:
   m_ObjectHideFlags: 0

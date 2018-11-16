@@ -37,7 +37,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4129076242859880}
-  - component: {fileID: 114329313131395870}
   m_Layer: 0
   m_Name: Envoirnment
   m_TagString: Environment
@@ -390,42 +389,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114329313131395870
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1128165928658174}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c8375ef17e92124ea8bf9145c332540, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  brokenItems: {fileID: 11400000, guid: 55c16fa27a754104ea85c8285d6687c2, type: 2}
-  brokenExp: 5
-  brokenMat: {fileID: 2100000, guid: 73d4ebb2b859ae248befcb764814e250, type: 2}
-  brokenAnimation: {fileID: 0}
-  commonItems: {fileID: 0}
-  commonExp: 0
-  commonMat: {fileID: 0}
-  commonAnimation: {fileID: 0}
-  uncommonItems: {fileID: 0}
-  uncommonExp: 0
-  uncommonMat: {fileID: 0}
-  uncommonAnimation: {fileID: 0}
-  rareItems: {fileID: 0}
-  rareExp: 0
-  rareMat: {fileID: 0}
-  rareAnimation: {fileID: 0}
-  legendaryItems: {fileID: 0}
-  legendaryExp: 0
-  legendaryMat: {fileID: 0}
-  legendaryAnimation: {fileID: 0}
-  primeItems: {fileID: 0}
-  primeExp: 0
-  primeMat: {fileID: 0}
-  primeAnimation: {fileID: 0}
-  randomLootIndex0: 0
-  randomLootIndex1: 0
-  randomLootIndex2: 0
-  randomLoot: 000000000000000000000000

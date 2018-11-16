@@ -21,8 +21,7 @@ public class GameManager : MonoBehaviour {
 	public float idleDamage;
 	public float currentTimer;
 	public float maxTimer;
-	public GameObject[] loot;
-	private bool isDead = false;
+	public bool isDead = false;
 
 	[Header("Player Attributes")]
 	public int level;
@@ -30,15 +29,11 @@ public class GameManager : MonoBehaviour {
 	public float earnings;
 	public int chestsOpened;
 	
-	// private string formatedEarnings;
-
 	LootManager m_lootManager;
-	// ChestController m_chestController;
 	HUDController m_hudController;
 
 	void Awake() {
-		m_lootManager = GameObject.FindGameObjectWithTag("Environment").GetComponent<LootManager>();
-		// m_chestController = GameObject.FindGameObjectWithTag("Chest").GetComponent<ChestController>();
+		m_lootManager = GetComponent<LootManager>();
 		m_hudController = GameObject.Find("HUD").GetComponent<HUDController>();
 
 		//FIXME: This if function will be placed in an event system which will check through
@@ -52,31 +47,25 @@ public class GameManager : MonoBehaviour {
 			idleDamage = tapDamage * 1.45f;
 		}
 
-		Debug.Log("Amount of broken items: " + m_lootManager.brokenItems.lootItem.Length);
+		// Debug.Log("Amount of broken items: " + m_lootManager.brokenItems.lootItem.Length);
 
-		SimplePool.Preload(chestPrefab, 2);
-		SimplePool.Spawn(chestPrefab, transform.position, transform.rotation);
+		SimplePool.Preload(chestPrefab, 1);
+		SimplePool.Spawn(chestPrefab, new Vector3(0,-1.5f,0), transform.rotation);
 
 		eventSystem = EVENT_SYSTEM.LOADING_SCREEN;
 	}
 
-	void LateUpdate() {
-		Debug.Log(isDead);
-
+	void Update() {
+		// Debug.Log(isDead);
 		switch(eventSystem) {
 			case EVENT_SYSTEM.LOADING_SCREEN:
 				currentHP = maxHP;
 				currentTimer = maxTimer;
 
 				eventSystem = EVENT_SYSTEM.DAMAGE_PHASE;
-				// StartCoroutine("SpawnChest");
 			break;
 
 			case EVENT_SYSTEM.DAMAGE_PHASE:
-				for(int i = 0; i < loot.Length; i++) {
-					loot[i].SetActive(false);
-				}
-				// PickLoot();
 				roundedHP = System.Math.Round(currentHP, 2);
 				if(roundedHP <= 0) {
 					currentHP = 0; 
@@ -112,10 +101,6 @@ public class GameManager : MonoBehaviour {
 			break;
 
 			case EVENT_SYSTEM.REWARD_SPAWN:
-				// for(int i = 0; i < loot.Length; i++) {
-				// 	loot[i].SetActive(true);
-				// }
-
 				if(currentXP >= maxXP) {
 					float remainderXp = currentXP - maxXP;
 					currentXP = 0;
@@ -132,23 +117,9 @@ public class GameManager : MonoBehaviour {
 
 	}
 
-	// void PickLoot() {
-	// 	m_lootManager.randomLootIndex0 = Random.Range(0, m_lootManager.brokenItems.lootItem.Length);
-	// 	m_lootManager.randomLootIndex1 = Random.Range(0, m_lootManager.brokenItems.lootItem.Length);
-	// 	m_lootManager.randomLootIndex2 = Random.Range(0, m_lootManager.brokenItems.lootItem.Length);
-		
-	// 	for(int i = 0; i < m_lootManager.brokenItems.lootItem.Length; i++) {
-	// 		m_lootManager.randomLoot[0] = m_lootManager.randomLootIndex0;
-	// 		m_lootManager.randomLoot[1] = m_lootManager.randomLootIndex1;
-	// 		m_lootManager.randomLoot[2] = m_lootManager.randomLootIndex2;
-	// 	}
-	// 	// Debug.Log(randomLootIndex0 + "/" + randomLootIndex1 + "/" + randomLootIndex2);
-	// }
-
 	IEnumerator SpawnChest() {
 		SimplePool.Despawn(chestPrefab);
 		yield return new WaitForSeconds(0.15f);
-		// SimplePool.Spawn(chestPrefab, transform.position, transform.rotation);
 		isDead = false;
 		eventSystem = EVENT_SYSTEM.DAMAGE_PHASE;
 	}
