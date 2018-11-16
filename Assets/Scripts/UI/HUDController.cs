@@ -23,13 +23,24 @@ public class HUDController : MonoBehaviour {
 	public Slider healthBar;
 	public TextMeshProUGUI healthText;
 
+	private string formatedEarnings;
+
 	GameManager m_gameManager;
 
 	// ChestController m_chestController;
 
-	void Update() {
+	void Awake() {
 		// m_chestController = GameObject.FindGameObjectWithTag("Chest").GetComponent<ChestController>();
 		m_gameManager = GameObject.FindGameObjectWithTag("Managers").GetComponent<GameManager>();
+	}
+
+	void Update() {
+		chestTrackerText.text = ">> Chests Opened: " + m_gameManager.chestsOpened;
+		formatedEarnings = string.Format("{0:#,###0}", m_gameManager.earnings);
+		earningsText.text = ">> $ " + formatedEarnings;
+		levelText.text = ">> Level " + m_gameManager.level.ToString();
+		expBar.value = m_gameManager.currentXP;
+		expBar.maxValue = m_gameManager.maxXP;
 
 		healthBar.value = (float)m_gameManager.roundedHP;
 		healthBar.maxValue = m_gameManager.maxHP;
