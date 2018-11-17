@@ -36,9 +36,19 @@ public class AchievementManager : MonoBehaviour {
 	private int m_numAchievements = 11;
 
 	void Awake() {
-		// DeleteAllSaveData(); // INFO: Un-comment this line if u want to delete saved Achievement data bofore start of game
+		DeleteAllSaveData(); // INFO: Un-comment this line if u want to delete saved Achievement data bofore start of game
 		CreateAchievementsList();
 		CheckAchievements();
+	}
+
+	// NOTE : WOrks with CheckAchievementProgress...
+	void Update() {
+	//	for(int i = 0; i < m_numAchievements; i++) {
+	//		CheckAchievementProgress(i);
+	//	
+		if(Input.GetKeyDown(KeyCode.Y)) {
+			AddAchievementProgress(ACHIEVEMENT_LIST.TAP_COUNT, 100000);
+		}
 	}
 
 	private void CreateAchievementsList() {
@@ -76,6 +86,29 @@ public class AchievementManager : MonoBehaviour {
 		}
 	}
 
+	// NOTE: Dupe code from AddAchievementProgress will use or remove after testing...
+	//private void CheckAchievementProgress(int achievementIndex) {
+	//	bool targetReached;
+
+	//	// NOTE: The do while is so if the player completes 2  or more levels of an achievement in one go.
+	//	do {
+	//		targetReached = false;
+	//		if (achievements[achievementIndex].currentAchievementProgress >= achievements[achievementIndex].nextAchievementTarget) {
+	//			achievements[achievementIndex].achievementLevel++;
+	//			PlayerPrefs.SetInt(((ACHIEVEMENT_LIST)achievementIndex).ToString() + "_Level", achievements[achievementIndex].achievementLevel);
+
+	//			// TODO: Figure out a proper formule for the next target...
+	//			achievements[achievementIndex].nextAchievementTarget += (achievements[achievementIndex].nextAchievementTarget * achievements[achievementIndex].achievementLevel);
+	//			PlayerPrefs.SetInt(((ACHIEVEMENT_LIST)achievementIndex).ToString() + "_Target", achievements[achievementIndex].nextAchievementTarget);
+
+	//			targetReached = true;
+
+	//			// TODO: Add one to the achevement pop up list so it reasy to pop up
+	//			// OR just pop up now and pause and resume code from here 
+	//		}
+	//	} while (targetReached);
+	//}
+
 	public void DeleteAllSaveData() {
 		if (PlayerPrefs.HasKey("AchievementsInited")) {
 			for (int i = 0; i < m_numAchievements; i++) {
@@ -107,9 +140,14 @@ public class AchievementManager : MonoBehaviour {
 
 				targetReached = true;
 
+				Debug.Log(achievements[(int)achievementID].achievementLevel);
+
 				// TODO: Add one to the achevement pop up list so it reasy to pop up
 				// OR just pop up now and pause and resume code from here 
-			} 
-		} while(targetReached);
+				int reward = 500 + (achievements[(int)achievementID].achievementLevel * 500);
+				string desc = "Level " + achievements[(int)achievementID].achievementLevel + " Completed.";
+				PopupHandler.AddPopup(0, achievementID.ToString(), desc, reward);
+			}
+		} while (targetReached);
 	}
 }
