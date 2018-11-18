@@ -13061,7 +13061,7 @@ GameObject:
   - component: {fileID: 588639644}
   - component: {fileID: 588639643}
   m_Layer: 5
-  m_Name: MenuNotificationIcon
+  m_Name: NotificationIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29649,12 +29649,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 928f1e4ce490a114394076358e98510b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  notificationIcons:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   menuButton: {fileID: 2086498141}
   menuPanel: {fileID: 763929146}
   menuButtonsLayout: {fileID: 1575468571}
