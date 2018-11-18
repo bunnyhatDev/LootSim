@@ -13991,6 +13991,48 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 607287514}
   m_CullTransparentMesh: 0
+--- !u!1001 &607842745
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4761039918922894, guid: d6aabc10fd8c4e64da8ceafa30ed3d7f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4761039918922894, guid: d6aabc10fd8c4e64da8ceafa30ed3d7f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4761039918922894, guid: d6aabc10fd8c4e64da8ceafa30ed3d7f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4761039918922894, guid: d6aabc10fd8c4e64da8ceafa30ed3d7f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4761039918922894, guid: d6aabc10fd8c4e64da8ceafa30ed3d7f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4761039918922894, guid: d6aabc10fd8c4e64da8ceafa30ed3d7f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4761039918922894, guid: d6aabc10fd8c4e64da8ceafa30ed3d7f, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4761039918922894, guid: d6aabc10fd8c4e64da8ceafa30ed3d7f, type: 2}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d6aabc10fd8c4e64da8ceafa30ed3d7f, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &628392124
 GameObject:
   m_ObjectHideFlags: 0
@@ -14792,6 +14834,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: -20}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &664819516 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1574631701372124, guid: d6aabc10fd8c4e64da8ceafa30ed3d7f,
+    type: 2}
+  m_PrefabInternal: {fileID: 607842745}
 --- !u!1 &669841797
 GameObject:
   m_ObjectHideFlags: 0
@@ -24335,6 +24382,11 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1061831338}
   m_CullTransparentMesh: 0
+--- !u!1 &1066238085 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1861240871812438, guid: d6aabc10fd8c4e64da8ceafa30ed3d7f,
+    type: 2}
+  m_PrefabInternal: {fileID: 607842745}
 --- !u!1 &1073034371
 GameObject:
   m_ObjectHideFlags: 0
@@ -30028,6 +30080,11 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1407788026}
   m_CullTransparentMesh: 0
+--- !u!1 &1415892296 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1449097872388284, guid: d6aabc10fd8c4e64da8ceafa30ed3d7f,
+    type: 2}
+  m_PrefabInternal: {fileID: 607842745}
 --- !u!1 &1416458040
 GameObject:
   m_ObjectHideFlags: 0
@@ -31605,7 +31662,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d65c0ddacd144254483a1789c75cf659, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventSystem: 0
+  currentState: 0
   isMenuOpen: 0
   chestPrefab: {fileID: 1450464543589494, guid: 6a11c7673b948364c974caa361185c73,
     type: 2}
@@ -31617,7 +31674,7 @@ MonoBehaviour:
   currentTimer: 0
   maxTimer: 59
   isDead: 0
-  level: 1
+  level: 0
   currentXP: 0
   maxXP: 0
   earnings: 0
@@ -31646,34 +31703,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c8375ef17e92124ea8bf9145c332540, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  brokenItems: {fileID: 11400000, guid: 55c16fa27a754104ea85c8285d6687c2, type: 2}
-  brokenExp: 5
-  brokenMat: {fileID: 2100000, guid: 73d4ebb2b859ae248befcb764814e250, type: 2}
-  brokenAnimation: {fileID: 0}
-  commonItems: {fileID: 0}
-  commonExp: 0
-  commonMat: {fileID: 0}
-  commonAnimation: {fileID: 0}
-  uncommonItems: {fileID: 0}
-  uncommonExp: 0
-  uncommonMat: {fileID: 0}
-  uncommonAnimation: {fileID: 0}
-  rareItems: {fileID: 0}
-  rareExp: 0
-  rareMat: {fileID: 0}
-  rareAnimation: {fileID: 0}
-  legendaryItems: {fileID: 0}
-  legendaryExp: 0
-  legendaryMat: {fileID: 0}
-  legendaryAnimation: {fileID: 0}
-  primeItems: {fileID: 0}
-  primeExp: 0
-  primeMat: {fileID: 0}
-  primeAnimation: {fileID: 0}
-  randomLootIndex0: 0
-  randomLootIndex1: 0
-  randomLootIndex2: 0
+  lootTypes:
+  - itemList: {fileID: 11400000, guid: 55c16fa27a754104ea85c8285d6687c2, type: 2}
+    itemExp: 10
+    itemMat: {fileID: 2100000, guid: 73d4ebb2b859ae248befcb764814e250, type: 2}
+    itemAnimation: {fileID: 0}
+  - itemList: {fileID: 0}
+    itemExp: 0
+    itemMat: {fileID: 0}
+    itemAnimation: {fileID: 0}
+  - itemList: {fileID: 0}
+    itemExp: 0
+    itemMat: {fileID: 0}
+    itemAnimation: {fileID: 0}
+  lootItemList: {fileID: 11400000, guid: 55c16fa27a754104ea85c8285d6687c2, type: 2}
+  loot:
+  - {fileID: 1415892296}
+  - {fileID: 664819516}
+  - {fileID: 1066238085}
   randomLoot: 000000000000000000000000
+  lootTimer: 0
+  resetLootTimer: 0
 --- !u!114 &1546303882
 MonoBehaviour:
   m_ObjectHideFlags: 0
