@@ -6,6 +6,7 @@ using TMPro;
 
 public class HUDController : MonoBehaviour {
 	[Header("Menu Properties")]
+	public GameObject[] notificationIcons;
 	public Button menuButton;
 	public GameObject menuPanel;
 	public GameObject menuButtonsLayout;
@@ -16,7 +17,7 @@ public class HUDController : MonoBehaviour {
 
 	[Header("Stats Properties")]
 	public TextMeshProUGUI earningsText;
-	public TextMeshProUGUI chestTrackerText;
+	public TextMeshProUGUI dpsTracker;
 	public Slider expBar;
 	public TextMeshProUGUI levelText;
 	public Slider timerBar;
@@ -48,7 +49,7 @@ public class HUDController : MonoBehaviour {
 	}
 
 	void Update() {
-		chestTrackerText.text = ">> Chests Opened: " + m_gameManager.chestsOpened;
+		dpsTracker.text = ">> DPS: " + m_gameManager.roundedDPS;
 		formatedEarnings = string.Format("{0:#,###0}", m_gameManager.earnings);
 		earningsText.text = ">> $ " + formatedEarnings;
 		levelText.text = ">> Level " + m_gameManager.level.ToString();

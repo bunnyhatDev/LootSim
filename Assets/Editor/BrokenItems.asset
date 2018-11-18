@@ -13,112 +13,113 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lootItem:
   - itemName: Boots
-    exp: 0
-    rarityMaterial: {fileID: 2100000, guid: 73d4ebb2b859ae248befcb764814e250, type: 2}
-    itemPrefab: {fileID: 0}
-    itemAnimation: {fileID: 0}
+    exp: 5
+    lootMat: {fileID: 2100000, guid: 73d4ebb2b859ae248befcb764814e250, type: 2}
+    itemPrefab: {fileID: 1842081072793016, guid: aabf7a9d92f005347b5c2723e0e4b418,
+      type: 2}
+    lootAnimation: {fileID: 0}
   - itemName: Gloves
-    exp: 0
-    rarityMaterial: {fileID: 0}
+    exp: 5
+    lootMat: {fileID: 2100000, guid: 73d4ebb2b859ae248befcb764814e250, type: 2}
     itemPrefab: {fileID: 0}
-    itemAnimation: {fileID: 0}
+    lootAnimation: {fileID: 0}
   - itemName: Helm
-    exp: 0
-    rarityMaterial: {fileID: 0}
+    exp: 5
+    lootMat: {fileID: 2100000, guid: 73d4ebb2b859ae248befcb764814e250, type: 2}
     itemPrefab: {fileID: 0}
-    itemAnimation: {fileID: 0}
+    lootAnimation: {fileID: 0}
   - itemName: Chest
-    exp: 0
-    rarityMaterial: {fileID: 0}
+    exp: 5
+    lootMat: {fileID: 2100000, guid: 73d4ebb2b859ae248befcb764814e250, type: 2}
     itemPrefab: {fileID: 0}
-    itemAnimation: {fileID: 0}
+    lootAnimation: {fileID: 0}
   - itemName: Pants
-    exp: 0
-    rarityMaterial: {fileID: 0}
+    exp: 5
+    lootMat: {fileID: 2100000, guid: 73d4ebb2b859ae248befcb764814e250, type: 2}
     itemPrefab: {fileID: 0}
-    itemAnimation: {fileID: 0}
+    lootAnimation: {fileID: 0}
   - itemName: Ring
-    exp: 0
-    rarityMaterial: {fileID: 0}
+    exp: 5
+    lootMat: {fileID: 2100000, guid: 73d4ebb2b859ae248befcb764814e250, type: 2}
     itemPrefab: {fileID: 0}
-    itemAnimation: {fileID: 0}
+    lootAnimation: {fileID: 0}
   - itemName: Amulet
-    exp: 0
-    rarityMaterial: {fileID: 0}
+    exp: 5
+    lootMat: {fileID: 2100000, guid: 73d4ebb2b859ae248befcb764814e250, type: 2}
     itemPrefab: {fileID: 0}
-    itemAnimation: {fileID: 0}
+    lootAnimation: {fileID: 0}
   - itemName: Sword
-    exp: 0
-    rarityMaterial: {fileID: 0}
+    exp: 5
+    lootMat: {fileID: 2100000, guid: 73d4ebb2b859ae248befcb764814e250, type: 2}
     itemPrefab: {fileID: 0}
-    itemAnimation: {fileID: 0}
+    lootAnimation: {fileID: 0}
   - itemName: Dagger
-    exp: 0
-    rarityMaterial: {fileID: 0}
+    exp: 5
+    lootMat: {fileID: 2100000, guid: 73d4ebb2b859ae248befcb764814e250, type: 2}
     itemPrefab: {fileID: 0}
-    itemAnimation: {fileID: 0}
+    lootAnimation: {fileID: 0}
   - itemName: Longsword
-    exp: 0
-    rarityMaterial: {fileID: 0}
+    exp: 5
+    lootMat: {fileID: 2100000, guid: 73d4ebb2b859ae248befcb764814e250, type: 2}
     itemPrefab: {fileID: 0}
-    itemAnimation: {fileID: 0}
+    lootAnimation: {fileID: 0}
   - itemName: Bow
-    exp: 0
-    rarityMaterial: {fileID: 0}
+    exp: 5
+    lootMat: {fileID: 2100000, guid: 73d4ebb2b859ae248befcb764814e250, type: 2}
     itemPrefab: {fileID: 0}
-    itemAnimation: {fileID: 0}
+    lootAnimation: {fileID: 0}
   - itemName: Quiver
-    exp: 0
-    rarityMaterial: {fileID: 0}
+    exp: 5
+    lootMat: {fileID: 2100000, guid: 73d4ebb2b859ae248befcb764814e250, type: 2}
     itemPrefab: {fileID: 0}
-    itemAnimation: {fileID: 0}
+    lootAnimation: {fileID: 0}
   - itemName: Dual Blades
-    exp: 0
-    rarityMaterial: {fileID: 0}
+    exp: 5
+    lootMat: {fileID: 2100000, guid: 73d4ebb2b859ae248befcb764814e250, type: 2}
     itemPrefab: {fileID: 0}
-    itemAnimation: {fileID: 0}
+    lootAnimation: {fileID: 0}
   - itemName: Shield
-    exp: 0
-    rarityMaterial: {fileID: 0}
+    exp: 5
+    lootMat: {fileID: 2100000, guid: 73d4ebb2b859ae248befcb764814e250, type: 2}
     itemPrefab: {fileID: 0}
-    itemAnimation: {fileID: 0}
+    lootAnimation: {fileID: 0}
   - itemName: Staff
-    exp: 0
-    rarityMaterial: {fileID: 0}
+    exp: 5
+    lootMat: {fileID: 2100000, guid: 73d4ebb2b859ae248befcb764814e250, type: 2}
     itemPrefab: {fileID: 0}
-    itemAnimation: {fileID: 0}
+    lootAnimation: {fileID: 0}
   - itemName: Wand
-    exp: 0
-    rarityMaterial: {fileID: 0}
+    exp: 5
+    lootMat: {fileID: 2100000, guid: 73d4ebb2b859ae248befcb764814e250, type: 2}
     itemPrefab: {fileID: 0}
-    itemAnimation: {fileID: 0}
+    lootAnimation: {fileID: 0}
   - itemName: Whip
-    exp: 0
-    rarityMaterial: {fileID: 0}
+    exp: 5
+    lootMat: {fileID: 2100000, guid: 73d4ebb2b859ae248befcb764814e250, type: 2}
     itemPrefab: {fileID: 0}
-    itemAnimation: {fileID: 0}
+    lootAnimation: {fileID: 0}
   - itemName: Spell Book
-    exp: 0
-    rarityMaterial: {fileID: 0}
+    exp: 5
+    lootMat: {fileID: 2100000, guid: 73d4ebb2b859ae248befcb764814e250, type: 2}
     itemPrefab: {fileID: 0}
-    itemAnimation: {fileID: 0}
+    lootAnimation: {fileID: 0}
   - itemName: Spear
-    exp: 0
-    rarityMaterial: {fileID: 0}
+    exp: 5
+    lootMat: {fileID: 2100000, guid: 73d4ebb2b859ae248befcb764814e250, type: 2}
     itemPrefab: {fileID: 0}
-    itemAnimation: {fileID: 0}
+    lootAnimation: {fileID: 0}
   - itemName: Sickle
-    exp: 0
-    rarityMaterial: {fileID: 0}
+    exp: 5
+    lootMat: {fileID: 2100000, guid: 73d4ebb2b859ae248befcb764814e250, type: 2}
     itemPrefab: {fileID: 0}
-    itemAnimation: {fileID: 0}
+    lootAnimation: {fileID: 0}
   - itemName: Scythes
-    exp: 0
-    rarityMaterial: {fileID: 0}
+    exp: 5
+    lootMat: {fileID: 2100000, guid: 73d4ebb2b859ae248befcb764814e250, type: 2}
     itemPrefab: {fileID: 0}
-    itemAnimation: {fileID: 0}
+    lootAnimation: {fileID: 0}
   - itemName: Crossbow
-    exp: 0
-    rarityMaterial: {fileID: 0}
+    exp: 5
+    lootMat: {fileID: 2100000, guid: 73d4ebb2b859ae248befcb764814e250, type: 2}
     itemPrefab: {fileID: 0}
-    itemAnimation: {fileID: 0}
+    lootAnimation: {fileID: 0}
