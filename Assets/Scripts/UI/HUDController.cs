@@ -6,6 +6,7 @@ using TMPro;
 
 public class HUDController : MonoBehaviour {
 	[Header("Menu Properties")]
+	public GameObject[] notificationIcons;
 	public Button menuButton;
 	public GameObject menuPanel;
 	public GameObject menuButtonsLayout;
