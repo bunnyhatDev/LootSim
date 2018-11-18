@@ -18,7 +18,7 @@ public struct Achievement {
 }
 
 public class AchievementManager : MonoBehaviour {
-	public static Achievement[] achievements;
+	public Achievement[] achievements;
 
 	private int[] m_initialAchievementTargets = new int[] {
 		100,	// TAP_COUNT
@@ -36,19 +36,9 @@ public class AchievementManager : MonoBehaviour {
 	private int m_numAchievements = 11;
 
 	void Awake() {
-		DeleteAllSaveData(); // INFO: Un-comment this line if u want to delete saved Achievement data bofore start of game
+		// DeleteAllSaveData(); // INFO: Un-comment this line if u want to delete saved Achievement data bofore start of game
 		CreateAchievementsList();
 		CheckAchievements();
-	}
-
-	// NOTE : WOrks with CheckAchievementProgress...
-	void Update() {
-	//	for(int i = 0; i < m_numAchievements; i++) {
-	//		CheckAchievementProgress(i);
-	//	
-		if(Input.GetKeyDown(KeyCode.Y)) {
-			AddAchievementProgress(ACHIEVEMENT_LIST.TAP_COUNT, 100000);
-		}
 	}
 
 	private void CreateAchievementsList() {
@@ -86,30 +76,7 @@ public class AchievementManager : MonoBehaviour {
 		}
 	}
 
-	// NOTE: Dupe code from AddAchievementProgress will use or remove after testing...
-	//private void CheckAchievementProgress(int achievementIndex) {
-	//	bool targetReached;
-
-	//	// NOTE: The do while is so if the player completes 2  or more levels of an achievement in one go.
-	//	do {
-	//		targetReached = false;
-	//		if (achievements[achievementIndex].currentAchievementProgress >= achievements[achievementIndex].nextAchievementTarget) {
-	//			achievements[achievementIndex].achievementLevel++;
-	//			PlayerPrefs.SetInt(((ACHIEVEMENT_LIST)achievementIndex).ToString() + "_Level", achievements[achievementIndex].achievementLevel);
-
-	//			// TODO: Figure out a proper formule for the next target...
-	//			achievements[achievementIndex].nextAchievementTarget += (achievements[achievementIndex].nextAchievementTarget * achievements[achievementIndex].achievementLevel);
-	//			PlayerPrefs.SetInt(((ACHIEVEMENT_LIST)achievementIndex).ToString() + "_Target", achievements[achievementIndex].nextAchievementTarget);
-
-	//			targetReached = true;
-
-	//			// TODO: Add one to the achevement pop up list so it reasy to pop up
-	//			// OR just pop up now and pause and resume code from here 
-	//		}
-	//	} while (targetReached);
-	//}
-
-	public void DeleteAllSaveData() {
+	private void DeleteAllSaveData() {
 		if (PlayerPrefs.HasKey("AchievementsInited")) {
 			for (int i = 0; i < m_numAchievements; i++) {
 				PlayerPrefs.DeleteKey(((ACHIEVEMENT_LIST)i).ToString() + "_Level");
@@ -121,33 +88,25 @@ public class AchievementManager : MonoBehaviour {
 	}
 
 	// Use this to add to the achievement progress
-	public static void AddAchievementProgress(ACHIEVEMENT_LIST achievementID, int ammount) {
+	// TODO: MAke this static for ease of use anywhere;
+	public void AddAchievementProgress(ACHIEVEMENT_LIST achievementID, int ammount) {
 		achievements[(int)achievementID].currentAchievementProgress += ammount;
-		PlayerPrefs.SetInt(achievementID.ToString() + "_CurrProg", achievements[(int)achievementID].currentAchievementProgress);
 
 		bool targetReached;
 
-		// NOTE: The do while is so if the player completes 2  or more levels of an achievement in one go.
+		// NOTE: The so while is so if the player completes 2 level of an achievement in one go.
 		do {
 			targetReached = false;
 			if (achievements[(int)achievementID].currentAchievementProgress >= achievements[(int)achievementID].nextAchievementTarget) {
 				achievements[(int)achievementID].achievementLevel++;
-				PlayerPrefs.SetInt(achievementID.ToString() + "_Level", achievements[(int)achievementID].achievementLevel);
-
 				// TODO: Figure out a proper formule for the next target...
 				achievements[(int)achievementID].nextAchievementTarget += (achievements[(int)achievementID].nextAchievementTarget * achievements[(int)achievementID].achievementLevel);
-				PlayerPrefs.SetInt(achievementID.ToString() + "_Target", achievements[(int)achievementID].nextAchievementTarget);
 
 				targetReached = true;
 
-				Debug.Log(achievements[(int)achievementID].achievementLevel);
-
 				// TODO: Add one to the achevement pop up list so it reasy to pop up
 				// OR just pop up now and pause and resume code from here 
-				int reward = 500 + (achievements[(int)achievementID].achievementLevel * 500);
-				string desc = "Level " + achievements[(int)achievementID].achievementLevel + " Completed.";
-				PopupHandler.AddPopup(0, achievementID.ToString(), desc, reward);
-			}
-		} while (targetReached);
+			} 
+		} while(targetReached);
 	}
 }
