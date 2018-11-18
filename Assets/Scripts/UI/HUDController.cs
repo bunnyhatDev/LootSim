@@ -24,15 +24,28 @@ public class HUDController : MonoBehaviour {
 	public Slider healthBar;
 	public TextMeshProUGUI healthText;
 
+	[Header("Achievements Properties")]
+	public AchievementCard[] availableAchievementCards;
+
+	[Header("Stats Menu Properties")]
+	public StatCard[] availableStatCards;
+	private string[] displaiedStats = new string[] {
+		"Taps", "Chests", "Loot", "Scenes", "Upgrades", "Currency",
+		"Level",
+		"Experience"
+	};
+
 	private string formatedEarnings;
 
 	GameManager m_gameManager;
+	AchievementManager m_achievementManager;
 
 	// ChestController m_chestController;
 
 	void Awake() {
 		// m_chestController = GameObject.FindGameObjectWithTag("Chest").GetComponent<ChestController>();
 		m_gameManager = GameObject.FindGameObjectWithTag("Managers").GetComponent<GameManager>();
+		m_achievementManager = GameObject.FindGameObjectWithTag("Managers").GetComponent<AchievementManager>();
 	}
 
 	void Update() {
@@ -79,4 +92,22 @@ public class HUDController : MonoBehaviour {
 		}
 	}
 	
+	public void UpdateAchievementCards() {
+		Achievement[] tmpAchievements = AchievementManager.achievements;
+		for (int i = 0; i < tmpAchievements.Length; i++) {
+			availableAchievementCards[i].cardName.text = ((ACHIEVEMENT_LIST)i).ToString();
+			availableAchievementCards[i].desc.text = "Level: " + tmpAchievements[i].achievementLevel + " (" + tmpAchievements[i].currentAchievementProgress + "/" + tmpAchievements[i].nextAchievementTarget + ")";
+			availableAchievementCards[i].reward.text = "$ " + (500 + (tmpAchievements[i].achievementLevel * 500)).ToString();
+
+			// TODO: Set Claim Button
+		}
+	}
+
+	public void UpdateStatsCards() {
+		Achievement[] tmpAchievements = AchievementManager.achievements;
+		for (int i = 0; i < displaiedStats.Length; i++) {
+			availableStatCards[i].cardName.text = displaiedStats[i];
+			availableStatCards[i].desc.text = tmpAchievements[i].currentAchievementProgress.ToString();
+		}
+	}
 }
