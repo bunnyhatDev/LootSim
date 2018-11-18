@@ -7171,12 +7171,12 @@ RectTransform:
   - {fileID: 783141119}
   - {fileID: 852189972}
   m_Father: {fileID: 1385857499}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -515}
-  m_SizeDelta: {x: 750, y: 42}
+  m_AnchoredPosition: {x: 0, y: -575}
+  m_SizeDelta: {x: 720, y: 42}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &303992696
 MonoBehaviour:
@@ -8521,7 +8521,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1956654216}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -8547,7 +8547,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: Level 0
+  m_text: '>> Level 0'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d726cdfedaf03304ab552e710ee11c92, type: 2}
   m_sharedMaterial: {fileID: 21112272716066004, guid: d726cdfedaf03304ab552e710ee11c92,
@@ -8616,10 +8616,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 381571868}
-    characterCount: 7
+    characterCount: 10
     spriteCount: 0
-    spaceCount: 1
-    wordCount: 2
+    spaceCount: 2
+    wordCount: 3
     linkCount: 0
     lineCount: 1
     pageCount: 1
@@ -13130,7 +13130,7 @@ GameObject:
   - component: {fileID: 595489385}
   - component: {fileID: 595489384}
   m_Layer: 5
-  m_Name: ChestTrackerText
+  m_Name: DPSText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13147,7 +13147,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1956654216}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -13173,7 +13173,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: 'Chests Opened: 0'
+  m_text: '>> DPS: 0'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d726cdfedaf03304ab552e710ee11c92, type: 2}
   m_sharedMaterial: {fileID: 21112272716066004, guid: d726cdfedaf03304ab552e710ee11c92,
@@ -13242,7 +13242,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 595489384}
-    characterCount: 16
+    characterCount: 9
     spriteCount: 0
     spaceCount: 2
     wordCount: 3
@@ -16646,52 +16646,6 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 701046685}
   m_CullTransparentMesh: 0
---- !u!1001 &701817808
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4129076242859880, guid: 006b07966133d31479cac50e435fb594, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4129076242859880, guid: 006b07966133d31479cac50e435fb594, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4129076242859880, guid: 006b07966133d31479cac50e435fb594, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4129076242859880, guid: 006b07966133d31479cac50e435fb594, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4129076242859880, guid: 006b07966133d31479cac50e435fb594, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4129076242859880, guid: 006b07966133d31479cac50e435fb594, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4129076242859880, guid: 006b07966133d31479cac50e435fb594, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4129076242859880, guid: 006b07966133d31479cac50e435fb594, type: 2}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1128165928658174, guid: 006b07966133d31479cac50e435fb594, type: 2}
-      propertyPath: m_Name
-      value: Environment
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 006b07966133d31479cac50e435fb594, type: 2}
-  m_IsPrefabAsset: 0
 --- !u!1 &739380334
 GameObject:
   m_ObjectHideFlags: 0
@@ -17064,7 +17018,7 @@ RectTransform:
   - {fileID: 1235921210}
   - {fileID: 1023320810}
   m_Father: {fileID: 1385857499}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -22307,7 +22261,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.6816569, b: 0.11792451, a: 0.37254903}
+  m_Color: {r: 1, g: 0.6816569, b: 0.11792451, a: 0.6431373}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -23582,7 +23536,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: $ 0
+  m_text: '>> $ 0'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d726cdfedaf03304ab552e710ee11c92, type: 2}
   m_sharedMaterial: {fileID: 21112272716066004, guid: d726cdfedaf03304ab552e710ee11c92,
@@ -23651,9 +23605,9 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1037292563}
-    characterCount: 3
+    characterCount: 6
     spriteCount: 0
-    spaceCount: 1
+    spaceCount: 2
     wordCount: 2
     linkCount: 0
     lineCount: 1
@@ -25622,6 +25576,48 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1143484952}
   m_CullTransparentMesh: 0
+--- !u!1001 &1149500431
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4154090820993364, guid: b24e7dbcc22fbe143b3b8e2233a17ed7, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4154090820993364, guid: b24e7dbcc22fbe143b3b8e2233a17ed7, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -2.7574
+      objectReference: {fileID: 0}
+    - target: {fileID: 4154090820993364, guid: b24e7dbcc22fbe143b3b8e2233a17ed7, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 13.69
+      objectReference: {fileID: 0}
+    - target: {fileID: 4154090820993364, guid: b24e7dbcc22fbe143b3b8e2233a17ed7, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4154090820993364, guid: b24e7dbcc22fbe143b3b8e2233a17ed7, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4154090820993364, guid: b24e7dbcc22fbe143b3b8e2233a17ed7, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4154090820993364, guid: b24e7dbcc22fbe143b3b8e2233a17ed7, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4154090820993364, guid: b24e7dbcc22fbe143b3b8e2233a17ed7, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b24e7dbcc22fbe143b3b8e2233a17ed7, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &1163360781
 GameObject:
   m_ObjectHideFlags: 0
@@ -28510,7 +28506,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.8039216, b: 0.2509804, a: 0.6}
+  m_Color: {r: 1, g: 0.8039216, b: 0.2509804, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -29630,7 +29626,6 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1956654216}
-  - {fileID: 1646535650}
   - {fileID: 303992695}
   - {fileID: 1420055833}
   - {fileID: 2086498140}
@@ -29662,7 +29657,7 @@ MonoBehaviour:
   musicToggle: {fileID: 2048180757}
   achievementsButton: {fileID: 77299432}
   earningsText: {fileID: 1037292563}
-  chestTrackerText: {fileID: 595489384}
+  dpsTracker: {fileID: 595489384}
   expBar: {fileID: 1646535651}
   levelText: {fileID: 381571868}
   timerBar: {fileID: 303992696}
@@ -29704,7 +29699,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: 0 / 0
+  m_text: '>> 0 / 0 <<'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d726cdfedaf03304ab552e710ee11c92, type: 2}
   m_sharedMaterial: {fileID: 21112272716066004, guid: d726cdfedaf03304ab552e710ee11c92,
@@ -29773,10 +29768,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1397669022}
-    characterCount: 5
+    characterCount: 11
     spriteCount: 0
-    spaceCount: 2
-    wordCount: 2
+    spaceCount: 4
+    wordCount: 3
     linkCount: 0
     lineCount: 1
     pageCount: 1
@@ -30283,12 +30278,12 @@ RectTransform:
   - {fileID: 604522870}
   - {fileID: 1397669024}
   m_Father: {fileID: 1385857499}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -530}
-  m_SizeDelta: {x: 750, y: 50.8}
+  m_AnchoredPosition: {x: 0, y: -590}
+  m_SizeDelta: {x: 720, y: 50.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1420055834
 MonoBehaviour:
@@ -31690,6 +31685,8 @@ MonoBehaviour:
   currentXP: 0
   maxXP: 0
   earnings: 0
+  currentDPS: 0
+  roundedDPS: 0
   chestsOpened: 0
 --- !u!4 &1546303880
 Transform:
@@ -33470,13 +33467,13 @@ RectTransform:
   m_Children:
   - {fileID: 980166195}
   - {fileID: 1320777917}
-  m_Father: {fileID: 1385857499}
+  m_Father: {fileID: 1956654216}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 192.96, y: 498.57007}
-  m_SizeDelta: {x: 385, y: 12.7}
+  m_AnchoredPosition: {x: 9, y: -19}
+  m_SizeDelta: {x: 365, y: 18}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1646535651
 MonoBehaviour:
@@ -40646,6 +40643,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1037292562}
+  - {fileID: 1646535650}
   - {fileID: 381571867}
   - {fileID: 595489383}
   m_Father: {fileID: 1385857499}
@@ -43518,7 +43516,7 @@ RectTransform:
   - {fileID: 74883236}
   - {fileID: 588639642}
   m_Father: {fileID: 1385857499}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}

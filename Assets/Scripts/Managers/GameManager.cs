@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour {
 	public int level;
 	public float currentXP, maxXP;
 	public float earnings;
+	public float currentDPS;
+	public double roundedDPS;
 	public int chestsOpened;
 	
 	LootManager m_lootManager;
@@ -75,9 +77,11 @@ public class GameManager : MonoBehaviour {
 			SimplePool.Preload(chestPrefab, 1);
 			SetState(State.SPAWN_CHEST);
 		} else if(currentState == State.SPAWN_CHEST) {
-			SimplePool.Spawn(chestPrefab, new Vector3(0,-1.5f,0), transform.rotation);
+			SimplePool.Spawn(chestPrefab, new Vector3(0,-9,8), transform.rotation);
 			SetState(State.DAMAGE_PHASE);
 		} else if(currentState == State.DAMAGE_PHASE) {
+			roundedDPS = System.Math.Round(currentDPS, 3);
+
 			roundedHP = System.Math.Round(currentHP, 2);
 			if(currentHP <= 0) {
 				currentHP = 0; 
@@ -91,14 +95,25 @@ public class GameManager : MonoBehaviour {
 			}
 
 			if(!isDead) {
+				float pauseDPSCounter = 3f;
+				currentDPS = idleDamage / 60f;
 				currentHP -= idleDamage * Time.deltaTime;
 				currentTimer -= Time.deltaTime;
 				if(currentTimer != 0) {
 					if(Input.GetMouseButtonDown(0) && !isMenuOpen) {
 						currentHP -= tapDamage;
+						pauseDPSCounter = 3;
 					}
 					if(Input.GetKeyDown(KeyCode.Space)) {
 						currentHP -= tapDamage * 5;
+						pauseDPSCounter = 3;
+					}
+				}
+				if(Input.GetMouseButton(0)) {
+					currentDPS = (idleDamage + tapDamage) / 60f;
+					pauseDPSCounter -= Time.deltaTime;
+					if(pauseDPSCounter <= 0) {
+						currentDPS = idleDamage / 60f;
 					}
 				}
 			} else {
