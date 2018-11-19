@@ -14,6 +14,13 @@ public class HUDController : MonoBehaviour {
 	public Toggle musicToggle;
 	public Button achievementsButton;
 
+	[Header("Notification Properties")]
+	public Image[] notifications;
+
+	[Header("Floating Text Properties")]
+	public GameObject damageText;
+	public GameObject expText;
+
 	[Header("Stats Properties")]
 	public TextMeshProUGUI earningsText;
 	public TextMeshProUGUI dpsTracker;
@@ -39,17 +46,14 @@ public class HUDController : MonoBehaviour {
 	GameManager m_gameManager;
 	AchievementManager m_achievementManager;
 
-	// ChestController m_chestController;
-
 	void Awake() {
-		// m_chestController = GameObject.FindGameObjectWithTag("Chest").GetComponent<ChestController>();
 		m_gameManager = GameObject.FindGameObjectWithTag("Managers").GetComponent<GameManager>();
 		m_achievementManager = GameObject.FindGameObjectWithTag("Managers").GetComponent<AchievementManager>();
 	}
 
 	void Update() {
 		dpsTracker.text = ">> DPS: " + m_gameManager.roundedDPS;
-		formatedEarnings = string.Format("{0:#,###0}", m_gameManager.earnings);
+		formatedEarnings = string.Format("{0:#,###0}", m_gameManager.totalEarnings);
 		earningsText.text = ">> $ " + formatedEarnings;
 		levelText.text = ">> Level " + m_gameManager.level.ToString();
 		expBar.value = m_gameManager.currentXP;
@@ -67,8 +71,8 @@ public class HUDController : MonoBehaviour {
 		} else {
 			m_gameManager.isMenuOpen = false;
 		}
-	}
 
+	}
 	public void ToggleAudio() {
 		if(sfxToggle.isOn) {
 
@@ -110,5 +114,20 @@ public class HUDController : MonoBehaviour {
 		}
 	}
 
+	public void DisplayDamageOutput() {
+		Vector3 chestPos = new Vector3(0, -3, 0);
+		GameObject dmgClone = Instantiate(damageText, chestPos, Quaternion.identity);
+		dmgClone.GetComponent<TextMesh>().text = m_gameManager.tapDamage.ToString();
+	}
+
+	public void DisplayExpOutput(float earnedXP) {
+		Vector3 expPos = new Vector3(0, -3, 0);
+		GameObject xpClone = Instantiate(expText, expPos, Quaternion.identity);
+		xpClone.GetComponent<TextMesh>().text = earnedXP.ToString() + "xp";
+	}
+
+	public void AnimateEarnings() {
+		earningsText.GetComponent<Animator>().Play("EarningsTextAnimation", 0);
+	}
 
 }

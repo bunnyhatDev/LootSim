@@ -15,16 +15,18 @@ public class GameManager : MonoBehaviour {
 	public float currentHP;
 	public double roundedHP;
 	public float maxHP;
+	// public GameObject damageText;
 	public float tapDamage;
 	public float idleDamage;
 	public float currentTimer;
 	public float maxTimer;
 	public bool isDead = false;
+	float remainderXp;
 
 	[Header("Player Attributes")]
 	public int level;
-	public float currentXP, maxXP;
-	public float earnings;
+	public float earnedXP, currentXP, maxXP;
+	public float currency, totalEarnings;
 	public float currentDPS;
 	public double roundedDPS;
 	public int chestsOpened;
@@ -67,7 +69,7 @@ public class GameManager : MonoBehaviour {
 			// the save file to see what the player's EXP is.
 			if(currentXP == 0) {
 				chestsOpened = 0;
-				earnings = 0;
+				totalEarnings = 0;
 				level = 0;
 				maxXP = 25f;
 				tapDamage = 0.75f;
@@ -101,6 +103,9 @@ public class GameManager : MonoBehaviour {
 				currentTimer -= Time.deltaTime;
 				if(currentTimer != 0) {
 					if(Input.GetMouseButtonDown(0) && !isMenuOpen) {
+						if(m_hudController.damageText) {
+							m_hudController.DisplayDamageOutput();
+						}
 						currentHP -= tapDamage;
 						pauseDPSCounter = 3;
 					}
@@ -117,6 +122,7 @@ public class GameManager : MonoBehaviour {
 					}
 				}
 			} else {
+				m_hudController.AnimateEarnings();
 				SetState(State.DESPAWN_CHEST);
 			}
 		} else if(currentState == State.DESPAWN_CHEST) {
@@ -130,23 +136,30 @@ public class GameManager : MonoBehaviour {
 			}
 			SetState(State.REWARD_SPAWN);
 		} else if(currentState == State.REWARD_SPAWN) {
-			earnings += 15;
-			currentXP += 25f;
+			currency = 15;
+			totalEarnings += currency;
+			earnedXP = remainderXp + 10f;
+			currentXP += earnedXP;
+			
 			chestsOpened += 1;
 			if(currentXP >= maxXP) {
-				float remainderXp = currentXP - maxXP;
-				currentXP = 0;
-				currentXP += remainderXp;
+				// Debug.Log("remainder: " + remainderXp);
+				remainderXp = maxXP - earnedXP;
+				currentXP = remainderXp;
 				maxXP += 5.5f;
 				level += 1;
-				earnings += 20;
+				currency = 20;
+				totalEarnings += currency;
 				tapDamage += 0.15f;
 				idleDamage = tapDamage * 1.45f;
+				m_hudController.DisplayExpOutput(remainderXp + earnedXP);
+			} else {
+				m_hudController.DisplayExpOutput(earnedXP);
+				remainderXp = 0;
 			}
 			isDead = false;
 			SetState(State.SPAWN_CHEST);
 		}
-
 	}
 
 }
