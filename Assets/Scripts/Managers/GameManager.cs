@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour {
 
 	public State currentState;
 	public bool isMenuOpen = false;
+	
+	float pauseDPSCounter = 0.6f;
 
 	[Header("Loot Box Properties")]
 	public GameObject chestPrefab;
@@ -21,8 +23,7 @@ public class GameManager : MonoBehaviour {
 	public float currentTimer;
 	public float maxTimer;
 	public bool isDead = false;
-	float remainderXp;
-
+	
 	[Header("Player Attributes")]
 	public int level;
 	public float earnedXP, currentXP, maxXP;
@@ -30,6 +31,8 @@ public class GameManager : MonoBehaviour {
 	public float currentDPS;
 	public double roundedDPS;
 	public int chestsOpened;
+
+	float remainderXp;
 	
 	LootManager m_lootManager;
 	HUDController m_hudController;
@@ -63,10 +66,9 @@ public class GameManager : MonoBehaviour {
 	}
 
 	void Update() {
+		
 		//TODO:Check and load in assets here to switch to next state for now it happens through key press
 		if(currentState == State.LOADING_SCREEN && Input.GetKeyDown(KeyCode.X)) {
-			//FIXME: This if function will be placed in an event system which will check through
-			// the save file to see what the player's EXP is.
 			if(currentXP == 0) {
 				chestsOpened = 0;
 				totalEarnings = 0;
@@ -76,14 +78,13 @@ public class GameManager : MonoBehaviour {
 				idleDamage = tapDamage * 1.45f;
 			}
 			// Debug.Log("Amount of broken items: " + m_lootManager.brokenItems.lootItem.Length);
-			SimplePool.Preload(chestPrefab, 1);
+			SimplePool.Preload(chestPrefab, 2);
 			SetState(State.SPAWN_CHEST);
 		} else if(currentState == State.SPAWN_CHEST) {
-			SimplePool.Spawn(chestPrefab, new Vector3(0,-9,8), transform.rotation);
+			SimplePool.Spawn(chestPrefab, new Vector3(0,-8.75f,6f), Quaternion.identity);
 			SetState(State.DAMAGE_PHASE);
 		} else if(currentState == State.DAMAGE_PHASE) {
 			roundedDPS = System.Math.Round(currentDPS, 3);
-
 			roundedHP = System.Math.Round(currentHP, 2);
 			if(currentHP <= 0) {
 				currentHP = 0; 
@@ -97,21 +98,21 @@ public class GameManager : MonoBehaviour {
 			}
 
 			if(!isDead) {
-				float pauseDPSCounter = 3f;
 				currentDPS = idleDamage / 60f;
 				currentHP -= idleDamage * Time.deltaTime;
 				currentTimer -= Time.deltaTime;
+
 				if(currentTimer != 0) {
 					if(Input.GetMouseButtonDown(0) && !isMenuOpen) {
+						// chestPrefab.GetComponent<Animator>().SetFloat("Blend", blend);
 						if(m_hudController.damageText) {
 							m_hudController.DisplayDamageOutput();
 						}
 						currentHP -= tapDamage;
-						pauseDPSCounter = 3;
+						pauseDPSCounter = 0.6f;
 					}
 					if(Input.GetKeyDown(KeyCode.Space)) {
 						currentHP -= tapDamage * 5;
-						pauseDPSCounter = 3;
 					}
 				}
 				if(Input.GetMouseButton(0)) {

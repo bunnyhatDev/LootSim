@@ -35493,7 +35493,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: 0
   isMenuOpen: 0
-  chestPrefab: {fileID: 1450464543589494, guid: 6a11c7673b948364c974caa361185c73,
+  chestPrefab: {fileID: 1764167982103182, guid: b210851bece9a564b8062af5a9731b82,
     type: 2}
   currentHP: 0
   roundedHP: 0
@@ -35504,6 +35504,7 @@ MonoBehaviour:
   maxTimer: 59
   isDead: 0
   level: 0
+  earnedXP: 0
   currentXP: 0
   maxXP: 0
   currency: 0
