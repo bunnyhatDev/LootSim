@@ -17,13 +17,38 @@ public class PopupHandler : MonoBehaviour {
 	public static List<PopupInfo> pendingPopups = new List<PopupInfo>();
 
 	private bool m_showingPopup = false;
+	private bool m_popupFullScaled = false;
+	private bool m_popUpClosed = true;
+
 	private bool m_initedPopups = false;
 	private int m_currentReward;
+
+	GameManager m_gameManager;
+
+	void Awake() {
+		m_gameManager = GameObject.FindGameObjectWithTag("Managers").GetComponent<GameManager>();
+		popupParent.SetActive(false);	
+	}
 
 	void LateUpdate() {
 		if (pendingPopups.Count > 0 && !m_initedPopups) {
 			m_initedPopups = true;
 			StartCoroutine(ShowPopups());
+		}
+
+		// For simple Animaiton
+		if (m_showingPopup && !m_popupFullScaled) {
+			popupParent.transform.localEulerAngles = Vector3.MoveTowards(popupParent.transform.localEulerAngles, Vector3.zero, 500f * Time.deltaTime);
+			if(popupParent.transform.localEulerAngles == Vector3.zero) {
+				m_popupFullScaled = true;
+			}
+		} else if(!m_showingPopup && !m_popUpClosed){
+			popupParent.transform.localEulerAngles = Vector3.MoveTowards(popupParent.transform.localEulerAngles, new Vector3(0f, 180f, 0f), 500f * Time.deltaTime);
+			if (popupParent.transform.localEulerAngles == new Vector3(0f, 180f, 0f)) {
+				m_popUpClosed = true;
+				achievementPopup.gameObject.SetActive(false);
+				popupParent.SetActive(false);
+			}
 		}
 	}
 
@@ -38,10 +63,13 @@ public class PopupHandler : MonoBehaviour {
 	}
 
 	public void ClosePopup() {
-		// TODO: Add the reward money to total money
-		achievementPopup.gameObject.SetActive(false);
-		popupParent.SetActive(false);
-		m_showingPopup = false;
+		if (m_popupFullScaled) {
+			// TODO: Add the reward money to total money
+			m_gameManager.totalEarnings += m_currentReward;
+			m_showingPopup = false;
+			m_popupFullScaled = false;
+			popupParent.transform.localEulerAngles = new Vector3(0f, 355f, 0f);
+		}
 	}
 
 	private IEnumerator ShowPopups() {
@@ -57,6 +85,9 @@ public class PopupHandler : MonoBehaviour {
 					achievementPopup.gameObject.SetActive(true);
 
 					m_currentReward = pendingPopups[i].rewardAmmount;
+
+					// For simple Animaiton
+					popupParent.transform.localEulerAngles = new Vector3(0f, 180f, 0f);
 					break;
 
 				default:
@@ -64,9 +95,11 @@ public class PopupHandler : MonoBehaviour {
 					break;
 			}
 
+			m_popUpClosed = false;
+			m_popupFullScaled = false;
 			m_showingPopup = true;
 
-			while (m_showingPopup) {
+			while (m_showingPopup || !m_popUpClosed) {
 				yield return null;
 			}
 		}
