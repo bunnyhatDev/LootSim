@@ -18,7 +18,9 @@ public class ChestController : MonoBehaviour {
 
 	void Update() {
 		m_animator.SetFloat("Blend", blend);
-		if(m_gameManager.currentHP <= 75f && m_gameManager.currentHP >= 51f) {
+		if(m_gameManager.currentHP >= 76) {
+			blend = 0;
+		} else if(m_gameManager.currentHP <= 75f && m_gameManager.currentHP >= 51f) {
 			blend = 0.5f;
 		} else if(m_gameManager.currentHP <= 50f && m_gameManager.currentHP >= 25f) {
 			blend = 1f;

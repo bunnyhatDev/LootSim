@@ -148,6 +148,7 @@ public class GameManager : MonoBehaviour {
 				currentXP = remainderXp;
 				maxXP += 5.5f;
 				level += 1;
+				m_hudController.AnimateLevelUpPopup(level);
 				currency = 20;
 				totalEarnings += currency;
 				tapDamage += 0.15f;

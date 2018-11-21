@@ -21,6 +21,9 @@ public class HUDController : MonoBehaviour {
 
 	[Header("Notification Properties")]
 	public Image[] notifications;
+	public GameObject levelupNotification;
+	public TextMeshProUGUI levelUpText;
+	[SerializeField] float levelUpTimer = 2f;
 
 	[Header("Floating Text Properties")]
 	public GameObject damageText;
@@ -54,6 +57,8 @@ public class HUDController : MonoBehaviour {
 	void Awake() {
 		m_gameManager = GameObject.FindGameObjectWithTag("Managers").GetComponent<GameManager>();
 		m_achievementManager = GameObject.FindGameObjectWithTag("Managers").GetComponent<AchievementManager>();
+
+		levelupNotification.SetActive(false);
 	}
 
 	void Update() {
@@ -63,6 +68,15 @@ public class HUDController : MonoBehaviour {
 		levelText.text = ">> Level " + m_gameManager.level.ToString();
 		expBar.value = m_gameManager.currentXP;
 		expBar.maxValue = m_gameManager.maxXP;
+
+		if(levelupNotification.activeSelf) {
+			levelUpTimer -= Time.deltaTime;
+			if(levelUpTimer <= 0) {
+				levelupNotification.SetActive(false);
+				levelUpTimer = 2f;
+			}
+		}
+		
 
 		healthBar.value = (float)m_gameManager.roundedHP;
 		healthBar.maxValue = m_gameManager.maxHP;
@@ -133,6 +147,13 @@ public class HUDController : MonoBehaviour {
 
 	public void AnimateEarnings() {
 		earningsText.GetComponent<Animator>().Play("EarningsTextAnimation", 0);
+	}
+
+	public void AnimateLevelUpPopup(int level) {
+		levelupNotification.SetActive(true);
+		if(levelupNotification.activeSelf) {
+			levelUpText.text = "You Reached Level " + level.ToString() + "!";
+		}
 	}
 
 }
