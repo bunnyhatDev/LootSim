@@ -5,6 +5,11 @@ using UnityEngine.UI;
 using TMPro;
 
 public class HUDController : MonoBehaviour {
+	[Header("Loading Screen Properties")]
+	public GameObject loadingScreen;
+	public Image gameLogo;
+	public TextMeshProUGUI loadingText;
+
 	[Header("Menu Properties")]
 	public Button menuButton;
 	public GameObject menuPanel;
@@ -35,7 +40,7 @@ public class HUDController : MonoBehaviour {
 
 	[Header("Stats Menu Properties")]
 	public StatCard[] availableStatCards;
-	private string[] displaiedStats = new string[] {
+	private string[] displayedStats = new string[] {
 		"Taps", "Chests", "Loot", "Scenes", "Upgrades", "Currency",
 		"Level",
 		"Experience"
@@ -108,8 +113,8 @@ public class HUDController : MonoBehaviour {
 
 	public void UpdateStatsCards() {
 		Achievement[] tmpAchievements = AchievementManager.achievements;
-		for (int i = 0; i < displaiedStats.Length; i++) {
-			availableStatCards[i].cardName.text = displaiedStats[i];
+		for (int i = 0; i < displayedStats.Length; i++) {
+			availableStatCards[i].cardName.text = displayedStats[i];
 			availableStatCards[i].desc.text = tmpAchievements[i].currentAchievementProgress.ToString();
 		}
 	}

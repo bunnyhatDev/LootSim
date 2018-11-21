@@ -66,7 +66,6 @@ public class GameManager : MonoBehaviour {
 	}
 
 	void Update() {
-		
 		//TODO:Check and load in assets here to switch to next state for now it happens through key press
 		if(currentState == State.LOADING_SCREEN && Input.GetKeyDown(KeyCode.X)) {
 			if(currentXP == 0) {
