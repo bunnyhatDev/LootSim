@@ -36,12 +36,12 @@ public class StatCard : MonoBehaviour {
 			case Stat.TimePlayed:				
 				this.gameObject.name = "Time Played";
 				statProperty.statName.text = this.gameObject.name;
-				statProperty.statValue.text = m_hudController.m_statsTracker.timePlayed;
+				statProperty.statValue.text = m_gameManager.timePlayed;
 				break;
 			case Stat.TapCount:
 				this.gameObject.name = "Tap Count";
 				statProperty.statName.text = this.gameObject.name;
-				statProperty.statValue.text = m_hudController.m_statsTracker.tapCount.ToString();
+				statProperty.statValue.text = m_gameManager.tapCount.ToString();
 				break;
 			case Stat.CurrencyCount:
 				this.gameObject.name = "Currency Count";

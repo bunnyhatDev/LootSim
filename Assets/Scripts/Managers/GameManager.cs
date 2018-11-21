@@ -25,13 +25,15 @@ public class GameManager : MonoBehaviour {
 	public bool isDead = false;
 	
 	[Header("Player Attributes")]
+	public string timePlayed;
 	public int level;
 	public float earnedXP, currentXP, maxXP, totalXP;
 	public float currency, totalEarnings;
 	public float currentDPS;
 	public double roundedDPS;
-	public int chestsOpened, lootCollected;
+	public int tapCount, chestsOpened, lootCollected, scenesUnlocked, upgradesUnlocked, autoTapUpgradesUnlocked, achievementsUnlocked;
 
+	float startTime;
 	float remainderXp;
 	
 	LootManager m_lootManager;
@@ -41,6 +43,7 @@ public class GameManager : MonoBehaviour {
 		m_lootManager = GetComponent<LootManager>();
 		m_hudController = GameObject.Find("HUD").GetComponent<HUDController>();
 
+		startTime = Time.time;
 		currentState = State.LOADING_SCREEN;
 	}
 
@@ -66,6 +69,11 @@ public class GameManager : MonoBehaviour {
 	}
 
 	void Update() {
+		float t = Time.time - startTime;
+		string minutes = ((int) t / 60).ToString();
+		string seconds = (t % 60).ToString("f0");
+		timePlayed = minutes + "m " + seconds + "s";	
+
 		//TODO:Check and load in assets here to switch to next state for now it happens through key press
 		if(currentState == State.LOADING_SCREEN && Input.GetKeyDown(KeyCode.X)) {
 			if(currentXP == 0) {
@@ -104,7 +112,7 @@ public class GameManager : MonoBehaviour {
 
 				if(currentTimer != 0) {
 					if(Input.GetMouseButtonDown(0) && !isMenuOpen) {
-						m_hudController.m_statsTracker.tapCount += 1;
+						tapCount += 1;
 						if(m_hudController.damageText) {
 							m_hudController.DisplayDamageOutput();
 						}

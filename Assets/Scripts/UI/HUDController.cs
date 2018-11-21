@@ -48,8 +48,6 @@ public class HUDController : MonoBehaviour {
 	public Slider healthBar;
 	public TextMeshProUGUI healthText;
 
-	float startTime;
-
 	[Header("Achievements Properties")]
 	public AchievementCard[] availableAchievementCards;
 
@@ -69,16 +67,11 @@ public class HUDController : MonoBehaviour {
 	void Awake() {
 		m_gameManager = GameObject.FindGameObjectWithTag("Managers").GetComponent<GameManager>();
 		m_achievementManager = GameObject.FindGameObjectWithTag("Managers").GetComponent<AchievementManager>();
-		startTime = Time.time;
+		
 		levelupNotification.SetActive(false);
 	}
 
 	void Update() {
-		float t = Time.time - startTime;
-		string minutes = ((int) t / 60).ToString();
-		string seconds = (t % 60).ToString("f0");
-		m_statsTracker.timePlayed = minutes + "m " + seconds + "s";
-
 		NotificationHandler();
 
 		dpsTracker.text = ">> DPS: " + m_gameManager.roundedDPS;
