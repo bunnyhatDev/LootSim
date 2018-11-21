@@ -4,6 +4,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+[System.Serializable]
+public class StatsTracker {
+	public string timePlayed;
+	public int tapCount, chestCount, lootCount, scenesCount, autoTapUpgrades, upgradeCount, currencyCount, achievementsCount;
+	public float totalExpGained;
+	public float autoTapPower, tapPower;
+
+}
+
 public class HUDController : MonoBehaviour {
 	[Header("Loading Screen Properties")]
 	public GameObject loadingScreen;
@@ -20,7 +29,7 @@ public class HUDController : MonoBehaviour {
 	public Button achievementsButton;
 
 	[Header("Notification Properties")]
-	public Image[] notifications;
+	public GameObject[] notificationIcons;
 	public GameObject levelupNotification;
 	public TextMeshProUGUI levelUpText;
 	[SerializeField] float levelUpTimer = 2f;
@@ -30,6 +39,7 @@ public class HUDController : MonoBehaviour {
 	public GameObject expText;
 
 	[Header("Stats Properties")]
+	[SerializeField] public StatsTracker m_statsTracker;
 	public TextMeshProUGUI earningsText;
 	public TextMeshProUGUI dpsTracker;
 	public Slider expBar;
@@ -38,16 +48,18 @@ public class HUDController : MonoBehaviour {
 	public Slider healthBar;
 	public TextMeshProUGUI healthText;
 
+	float startTime;
+
 	[Header("Achievements Properties")]
 	public AchievementCard[] availableAchievementCards;
 
-	[Header("Stats Menu Properties")]
-	public StatCard[] availableStatCards;
-	private string[] displayedStats = new string[] {
-		"Taps", "Chests", "Loot", "Scenes", "Upgrades", "Currency",
-		"Level",
-		"Experience"
-	};
+	// [Header("Stats Menu Properties")]
+	// public StatCard[] availableStatCards;
+	// private string[] displayedStats = new string[] {
+	// 	"Taps", "Chests", "Loot", "Scenes", "Upgrades", "Currency",
+	// 	"Level",
+	// 	"Experience"
+	// };
 
 	private string formatedEarnings;
 
@@ -57,11 +69,18 @@ public class HUDController : MonoBehaviour {
 	void Awake() {
 		m_gameManager = GameObject.FindGameObjectWithTag("Managers").GetComponent<GameManager>();
 		m_achievementManager = GameObject.FindGameObjectWithTag("Managers").GetComponent<AchievementManager>();
-
+		startTime = Time.time;
 		levelupNotification.SetActive(false);
 	}
 
 	void Update() {
+		float t = Time.time - startTime;
+		string minutes = ((int) t / 60).ToString();
+		string seconds = (t % 60).ToString("f0");
+		m_statsTracker.timePlayed = minutes + "m " + seconds + "s";
+
+		NotificationHandler();
+
 		dpsTracker.text = ">> DPS: " + m_gameManager.roundedDPS;
 		formatedEarnings = string.Format("{0:#,###0}", m_gameManager.totalEarnings);
 		earningsText.text = ">> $ " + formatedEarnings;
@@ -76,7 +95,6 @@ public class HUDController : MonoBehaviour {
 				levelUpTimer = 2f;
 			}
 		}
-		
 
 		healthBar.value = (float)m_gameManager.roundedHP;
 		healthBar.maxValue = m_gameManager.maxHP;
@@ -90,8 +108,8 @@ public class HUDController : MonoBehaviour {
 		} else {
 			m_gameManager.isMenuOpen = false;
 		}
-
 	}
+
 	public void ToggleAudio() {
 		if(sfxToggle.isOn) {
 
@@ -125,13 +143,13 @@ public class HUDController : MonoBehaviour {
 		}
 	}
 
-	public void UpdateStatsCards() {
-		Achievement[] tmpAchievements = AchievementManager.achievements;
-		for (int i = 0; i < displayedStats.Length; i++) {
-			availableStatCards[i].cardName.text = displayedStats[i];
-			availableStatCards[i].desc.text = tmpAchievements[i].currentAchievementProgress.ToString();
-		}
-	}
+	// public void UpdateStatsCards() {
+	// 	Achievement[] tmpAchievements = AchievementManager.achievements;
+	// 	for (int i = 0; i < displayedStats.Length; i++) {
+	// 		availableStatCards[i].cardName.text = displayedStats[i];
+	// 		availableStatCards[i].desc.text = tmpAchievements[i].currentAchievementProgress.ToString();
+	// 	}
+	// }
 
 	public void DisplayDamageOutput() {
 		Vector3 chestPos = new Vector3(0, -3, 0);
@@ -153,6 +171,15 @@ public class HUDController : MonoBehaviour {
 		levelupNotification.SetActive(true);
 		if(levelupNotification.activeSelf) {
 			levelUpText.text = "You Reached Level " + level.ToString() + "!";
+		}
+	}
+
+	void NotificationHandler() {
+		//TODO: check to see if you got enough money for items to buy in shop/upgrades/scenes/auto-tap
+		if(m_gameManager.totalEarnings < 50) {
+			notificationIcons[0].SetActive(false);
+		} else {
+			notificationIcons[0].SetActive(true);
 		}
 	}
 

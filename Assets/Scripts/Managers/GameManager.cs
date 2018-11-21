@@ -26,11 +26,11 @@ public class GameManager : MonoBehaviour {
 	
 	[Header("Player Attributes")]
 	public int level;
-	public float earnedXP, currentXP, maxXP;
+	public float earnedXP, currentXP, maxXP, totalXP;
 	public float currency, totalEarnings;
 	public float currentDPS;
 	public double roundedDPS;
-	public int chestsOpened;
+	public int chestsOpened, lootCollected;
 
 	float remainderXp;
 	
@@ -70,6 +70,7 @@ public class GameManager : MonoBehaviour {
 		if(currentState == State.LOADING_SCREEN && Input.GetKeyDown(KeyCode.X)) {
 			if(currentXP == 0) {
 				chestsOpened = 0;
+				lootCollected = 0;
 				totalEarnings = 0;
 				level = 0;
 				maxXP = 25f;
@@ -103,7 +104,7 @@ public class GameManager : MonoBehaviour {
 
 				if(currentTimer != 0) {
 					if(Input.GetMouseButtonDown(0) && !isMenuOpen) {
-						// chestPrefab.GetComponent<Animator>().SetFloat("Blend", blend);
+						m_hudController.m_statsTracker.tapCount += 1;
 						if(m_hudController.damageText) {
 							m_hudController.DisplayDamageOutput();
 						}
@@ -140,8 +141,10 @@ public class GameManager : MonoBehaviour {
 			totalEarnings += currency;
 			earnedXP = remainderXp + 10f;
 			currentXP += earnedXP;
+			totalXP += earnedXP + currentXP;
 			
 			chestsOpened += 1;
+			lootCollected += 3;
 			if(currentXP >= maxXP) {
 				// Debug.Log("remainder: " + remainderXp);
 				remainderXp = maxXP - earnedXP;
