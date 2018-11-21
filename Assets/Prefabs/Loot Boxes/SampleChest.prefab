@@ -69,6 +69,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4383409917001388}
   - component: {fileID: 95610657233214870}
+  - component: {fileID: 114897706085825880}
   m_Layer: 0
   m_Name: SampleChest
   m_TagString: Untagged
@@ -237,3 +238,14 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114897706085825880
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1764167982103182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bd527452bc8f5844b2409ed335e9c20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
