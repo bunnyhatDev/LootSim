@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public State currentState;
+	public float loadingTimer, resetLoadingTimer;
 	public bool isMenuOpen = false;
 	
 	float pauseDPSCounter = 0.6f;
@@ -17,7 +18,6 @@ public class GameManager : MonoBehaviour {
 	public float currentHP;
 	public double roundedHP;
 	public float maxHP;
-	// public GameObject damageText;
 	public float tapDamage;
 	public float idleDamage;
 	public float currentTimer;
@@ -28,7 +28,8 @@ public class GameManager : MonoBehaviour {
 	public string timePlayed;
 	public int level;
 	public float earnedXP, currentXP, maxXP, totalXP;
-	public float currency, totalEarnings;
+	public float earnedCurrency, totalCurrency;
+	public int pledges, totalPledges;
 	public float currentDPS;
 	public double roundedDPS;
 	public int tapCount, chestsOpened, lootCollected, scenesUnlocked, upgradesUnlocked, autoTapUpgradesUnlocked, achievementsUnlocked;
@@ -75,19 +76,26 @@ public class GameManager : MonoBehaviour {
 		timePlayed = minutes + "m " + seconds + "s";	
 
 		//TODO:Check and load in assets here to switch to next state for now it happens through key press
-		if(currentState == State.LOADING_SCREEN && Input.GetKeyDown(KeyCode.X)) {
-			if(currentXP == 0) {
-				chestsOpened = 0;
-				lootCollected = 0;
-				totalEarnings = 0;
-				level = 0;
-				maxXP = 25f;
-				tapDamage = 0.75f;
-				idleDamage = tapDamage * 1.45f;
+		if(currentState == State.LOADING_SCREEN) {
+			m_hudController.loadingScreen.SetActive(true);
+			loadingTimer -= Time.deltaTime;
+			if(loadingTimer <= 0) {
+				if(currentXP == 0) {
+					chestsOpened = 0;
+					lootCollected = 0;
+					totalPledges = 0;
+					totalCurrency = 0;
+					level = 0;
+					maxXP = 25f;
+					tapDamage = 0.75f;
+					idleDamage = tapDamage * 1.45f;
+				}
+				// Debug.Log("Amount of broken items: " + m_lootManager.brokenItems.lootItem.Length);
+				SimplePool.Preload(chestPrefab, 2);
+				SetState(State.SPAWN_CHEST);
+				loadingTimer = resetLoadingTimer;
+				m_hudController.loadingScreen.SetActive(false);
 			}
-			// Debug.Log("Amount of broken items: " + m_lootManager.brokenItems.lootItem.Length);
-			SimplePool.Preload(chestPrefab, 2);
-			SetState(State.SPAWN_CHEST);
 		} else if(currentState == State.SPAWN_CHEST) {
 			SimplePool.Spawn(chestPrefab, new Vector3(0,-8.75f,6f), Quaternion.identity);
 			SetState(State.DAMAGE_PHASE);
@@ -131,7 +139,7 @@ public class GameManager : MonoBehaviour {
 					}
 				}
 			} else {
-				m_hudController.AnimateEarnings();
+				m_hudController.AnimateEarnings("Earnings");
 				SetState(State.DESPAWN_CHEST);
 			}
 		} else if(currentState == State.DESPAWN_CHEST) {
@@ -145,8 +153,8 @@ public class GameManager : MonoBehaviour {
 			}
 			SetState(State.REWARD_SPAWN);
 		} else if(currentState == State.REWARD_SPAWN) {
-			currency = 15;
-			totalEarnings += currency;
+			earnedCurrency = 15;
+			totalCurrency += earnedCurrency;
 			earnedXP = remainderXp + 10f;
 			currentXP += earnedXP;
 			totalXP += earnedXP + currentXP;
@@ -160,8 +168,11 @@ public class GameManager : MonoBehaviour {
 				maxXP += 5.5f;
 				level += 1;
 				m_hudController.AnimateLevelUpPopup(level);
-				currency = 20;
-				totalEarnings += currency;
+				pledges = 1;
+				totalPledges += pledges;
+				m_hudController.AnimateEarnings("Pledges");
+				earnedCurrency = 20;
+				totalCurrency += earnedCurrency;
 				tapDamage += 0.15f;
 				idleDamage = tapDamage * 1.45f;
 				m_hudController.DisplayExpOutput(remainderXp + earnedXP);
@@ -172,6 +183,18 @@ public class GameManager : MonoBehaviour {
 			isDead = false;
 			SetState(State.SPAWN_CHEST);
 		}
+	}
+
+	void AddXP(float xp) {
+
+	}
+
+	void AddCurrency(float earnedCurrency) {
+
+	}
+
+	void AddLevel() {
+
 	}
 
 }

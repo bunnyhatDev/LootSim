@@ -23,7 +23,7 @@ public class StoreManager : MonoBehaviour {
 	}
 
 	public void Store(int cost, Button buyButton) {
-		if(m_gameManager.totalEarnings >= cost) {
+		if(m_gameManager.totalCurrency >= cost) {
 			//TODO:You can buy this item because the Buy button is interactable
 			buyButton.interactable = true;
 		} else {

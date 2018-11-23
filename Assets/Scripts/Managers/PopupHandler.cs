@@ -65,7 +65,7 @@ public class PopupHandler : MonoBehaviour {
 	public void ClosePopup() {
 		if (m_popupFullScaled) {
 			// TODO: Add the reward money to total money
-			m_gameManager.totalEarnings += m_currentReward;
+			m_gameManager.totalCurrency += m_currentReward;
 			m_showingPopup = false;
 			m_popupFullScaled = false;
 			popupParent.transform.localEulerAngles = new Vector3(0f, 355f, 0f);

@@ -14,7 +14,7 @@ public class StatProperty {
 [System.Serializable]
 public enum Stat {
 		TimePlayed,
-		TapCount, CurrencyCount, ChestCount, LootCount, SceneCount, AutoTapUpgrades, UpgradeCount, AchievementCount,
+		TapCount, CurrencyCount, PledgesCount, ChestCount, LootCount, SceneCount, AutoTapUpgrades, UpgradeCount, AchievementCount,
 		TotalExpGained, AutoTapPower, TapPower
 }
 
@@ -46,8 +46,12 @@ public class StatCard : MonoBehaviour {
 			case Stat.CurrencyCount:
 				this.gameObject.name = "Currency Count";
 				statProperty.statName.text = this.gameObject.name;
-				statProperty.statValue.text = "$" + m_gameManager.totalEarnings.ToString();
-
+				statProperty.statValue.text = "$" + m_gameManager.totalCurrency.ToString();
+				break;
+			case Stat.PledgesCount:
+				this.gameObject.name = "Pledges Count";
+				statProperty.statName.text = this.gameObject.name;
+				statProperty.statValue.text = "$" + m_gameManager.totalPledges.ToString();
 				break;
 			case Stat.ChestCount:
 				this.gameObject.name = "Chest Opened";

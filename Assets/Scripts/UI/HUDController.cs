@@ -40,7 +40,7 @@ public class HUDController : MonoBehaviour {
 
 	[Header("Stats Properties")]
 	[SerializeField] public StatsTracker m_statsTracker;
-	public TextMeshProUGUI earningsText;
+	public TextMeshProUGUI earningsText, pledgesText;
 	public TextMeshProUGUI dpsTracker;
 	public Slider expBar;
 	public TextMeshProUGUI levelText;
@@ -75,8 +75,9 @@ public class HUDController : MonoBehaviour {
 		NotificationHandler();
 
 		dpsTracker.text = ">> DPS: " + m_gameManager.roundedDPS;
-		formatedEarnings = string.Format("{0:#,###0}", m_gameManager.totalEarnings);
+		formatedEarnings = string.Format("{0:#,###0}", m_gameManager.totalCurrency);
 		earningsText.text = ">> $ " + formatedEarnings;
+		pledgesText.text = "// " + m_gameManager.totalPledges.ToString();
 		levelText.text = ">> Level " + m_gameManager.level.ToString();
 		expBar.value = m_gameManager.currentXP;
 		expBar.maxValue = m_gameManager.maxXP;
@@ -156,8 +157,12 @@ public class HUDController : MonoBehaviour {
 		xpClone.GetComponent<TextMesh>().text = earnedXP.ToString() + "xp";
 	}
 
-	public void AnimateEarnings() {
-		earningsText.GetComponent<Animator>().Play("EarningsTextAnimation", 0);
+	public void AnimateEarnings(string currency) {
+		if(currency == "Earnings") {
+			earningsText.GetComponent<Animator>().Play("EarningsTextAnimation", 0);
+		} else if(currency == "Pledges") {
+			pledgesText.GetComponent<Animator>().Play("EarningsTextAnimation", 0);
+		}
 	}
 
 	public void AnimateLevelUpPopup(int level) {
@@ -169,7 +174,7 @@ public class HUDController : MonoBehaviour {
 
 	void NotificationHandler() {
 		//TODO: check to see if you got enough money for items to buy in shop/upgrades/scenes/auto-tap
-		if(m_gameManager.totalEarnings < 50) {
+		if(m_gameManager.totalCurrency < 50) {
 			notificationIcons[0].SetActive(false);
 		} else {
 			notificationIcons[0].SetActive(true);
