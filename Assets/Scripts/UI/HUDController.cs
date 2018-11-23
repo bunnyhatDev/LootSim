@@ -26,7 +26,6 @@ public class HUDController : MonoBehaviour {
 	public Button closeButton;
 	public Toggle sfxToggle;
 	public Toggle musicToggle;
-	public Button achievementsButton;
 
 	[Header("Notification Properties")]
 	public GameObject[] notificationIcons;
@@ -69,6 +68,7 @@ public class HUDController : MonoBehaviour {
 		m_achievementManager = GameObject.FindGameObjectWithTag("Managers").GetComponent<AchievementManager>();
 		
 		levelupNotification.SetActive(false);
+		notificationIcons[4].SetActive(true);
 	}
 
 	void Update() {
@@ -176,8 +176,26 @@ public class HUDController : MonoBehaviour {
 		//TODO: check to see if you got enough money for items to buy in shop/upgrades/scenes/auto-tap
 		if(m_gameManager.totalCurrency < 50) {
 			notificationIcons[0].SetActive(false);
+			notificationIcons[1].SetActive(false);
+			notificationIcons[2].SetActive(false);
 		} else {
 			notificationIcons[0].SetActive(true);
+			notificationIcons[1].SetActive(true);
+			notificationIcons[2].SetActive(true);
+		}
+
+		if(m_gameManager.totalPledges < 5) {
+			notificationIcons[0].SetActive(false);
+			notificationIcons[3].SetActive(false);
+		} else {
+			notificationIcons[0].SetActive(true);
+			notificationIcons[3].SetActive(true);
+		}
+
+		if(notificationIcons[4].activeSelf) {
+			notificationIcons[0].SetActive(true);
+		} else {
+			notificationIcons[0].SetActive(false);
 		}
 	}
 

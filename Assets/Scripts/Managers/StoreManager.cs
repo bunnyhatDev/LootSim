@@ -4,11 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public enum UPGRADES {
-
+	TAP_UPGRADE, AUTOTAP_UPGRADE, CURRENCY_MULTIPLIER
 }
 
 public enum ITEMS {
-
+	
 }
 
 public class StoreManager : MonoBehaviour {

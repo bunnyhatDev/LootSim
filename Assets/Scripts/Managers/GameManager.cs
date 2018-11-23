@@ -168,7 +168,7 @@ public class GameManager : MonoBehaviour {
 				maxXP += 5.5f;
 				level += 1;
 				m_hudController.AnimateLevelUpPopup(level);
-				pledges = 1;
+				pledges = 2;
 				totalPledges += pledges;
 				m_hudController.AnimateEarnings("Pledges");
 				earnedCurrency = 20;
