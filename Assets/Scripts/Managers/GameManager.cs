@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour {
 	public bool isDead = false;
 	
 	[Header("Player Attributes")]
+	public SaveLoadData m_saveData;
 	public string timePlayed;
 	public int level;
 	public float earnedXP, currentXP, maxXP, totalXP;
@@ -195,6 +196,10 @@ public class GameManager : MonoBehaviour {
 
 	void AddLevel() {
 
+	}
+
+	public void EraseData() {
+		
 	}
 
 }
