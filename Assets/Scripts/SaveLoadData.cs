@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "SaveData", menuName = "Save File", order = 1)]
-public class SaveLoadData : ScriptableObject {
+[System.Serializable]
+public class SaveLoadData {
+	public string timePlayed;
 	public float earnedXP, currentXP;
 	public float tapDamage, autoDamage;
 	public float health, timer;
@@ -11,8 +12,31 @@ public class SaveLoadData : ScriptableObject {
 
 	[Header("Stats")]
 	public int level;
-	public float currency, pledges;
-	public float timePlayed, totalExpGained, autoTapPower, tapPower;
-	public int tapCount, currencyCount, pledgesCount, chestCount, lootCount, sceneCount, autoTapUpgrades, upgradeCount, achievementCount;
+	public float totalCurrency, overallCurrency;
+	public int totalPledges, overallPledges;
+	public float totalExpGained;
+	public int tapCount, chestCount, lootCount, sceneCount, autoTapUpgrades, upgradeCount, achievementCount;
+
+	public SaveLoadData(GameManager gm) {
+		timePlayed = gm.timePlayed;
+		earnedXP = gm.earnedXP;
+		currentXP = gm.currentXP;
+		tapDamage = gm.tapDamage;
+		autoDamage = gm.autoDamage;
+		health = gm.currentHP;
+		timer = gm.currentTimer;
+
+		level = gm.level;
+		totalCurrency = gm.totalCurrency;
+		overallCurrency = gm.totalCurrency;
+		totalPledges = gm.totalPledges;
+		overallPledges = gm.totalPledges;
+		totalExpGained = gm.totalXP;
+		
+		tapCount = gm.tapCount;
+		chestCount = gm.chestsOpened;
+		lootCount = gm.lootCollected;
+		sceneCount = gm.scenesUnlocked;
+	}
 
 }

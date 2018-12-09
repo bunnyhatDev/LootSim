@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[SerializeField]
 public class GameManager : MonoBehaviour {
 	public enum State {
 		LOADING_SCREEN,	SPAWN_CHEST, DAMAGE_PHASE, DESPAWN_CHEST, REWARD_SPAWN
@@ -19,7 +20,7 @@ public class GameManager : MonoBehaviour {
 	public double roundedHP;
 	public float maxHP;
 	public float tapDamage;
-	public float idleDamage;
+	public float autoDamage;
 	public float currentTimer;
 	public float maxTimer;
 	public bool isDead = false;
@@ -81,7 +82,9 @@ public class GameManager : MonoBehaviour {
 			m_hudController.loadingScreen.SetActive(true);
 			loadingTimer -= Time.deltaTime;
 			if(loadingTimer <= 0) {
-				if(currentXP == 0) {
+				if(totalXP == 0) {
+					SaveSystem.SaveData(this);
+
 					chestsOpened = 0;
 					lootCollected = 0;
 					totalPledges = 0;
@@ -89,7 +92,7 @@ public class GameManager : MonoBehaviour {
 					level = 0;
 					maxXP = 25f;
 					tapDamage = 0.75f;
-					idleDamage = tapDamage * 1.45f;
+					autoDamage = tapDamage * 1.45f;
 				}
 				// Debug.Log("Amount of broken items: " + m_lootManager.brokenItems.lootItem.Length);
 				SimplePool.Preload(chestPrefab, 2);
@@ -115,8 +118,8 @@ public class GameManager : MonoBehaviour {
 			}
 
 			if(!isDead) {
-				currentDPS = idleDamage / 60f;
-				currentHP -= idleDamage * Time.deltaTime;
+				currentDPS = autoDamage / 60f;
+				currentHP -= autoDamage * Time.deltaTime;
 				currentTimer -= Time.deltaTime;
 
 				if(currentTimer != 0) {
@@ -133,10 +136,10 @@ public class GameManager : MonoBehaviour {
 					}
 				}
 				if(Input.GetMouseButton(0)) {
-					currentDPS = (idleDamage + tapDamage) / 60f;
+					currentDPS = (autoDamage + tapDamage) / 60f;
 					pauseDPSCounter -= Time.deltaTime;
 					if(pauseDPSCounter <= 0) {
-						currentDPS = idleDamage / 60f;
+						currentDPS = autoDamage / 60f;
 					}
 				}
 			} else {
@@ -175,7 +178,7 @@ public class GameManager : MonoBehaviour {
 				earnedCurrency = 20;
 				totalCurrency += earnedCurrency;
 				tapDamage += 0.15f;
-				idleDamage = tapDamage * 1.45f;
+				autoDamage = tapDamage * 1.45f;
 				m_hudController.DisplayExpOutput(remainderXp + earnedXP);
 			} else {
 				m_hudController.DisplayExpOutput(earnedXP);

@@ -37718,11 +37718,32 @@ MonoBehaviour:
   roundedHP: 0
   maxHP: 100
   tapDamage: 0
-  idleDamage: 0.75
+  autoDamage: 0
   currentTimer: 0
   maxTimer: 59
   isDead: 0
-  m_saveData: {fileID: 0}
+  m_saveData:
+    timePlayed: 
+    earnedXP: 0
+    currentXP: 0
+    tapDamage: 0
+    autoDamage: 0
+    health: 0
+    timer: 0
+    currentScene: {fileID: 0}
+    level: 0
+    totalCurrency: 0
+    overallCurrency: 0
+    totalPledges: 0
+    overallPledges: 0
+    totalExpGained: 0
+    tapCount: 0
+    chestCount: 0
+    lootCount: 0
+    sceneCount: 0
+    autoTapUpgrades: 0
+    upgradeCount: 0
+    achievementCount: 0
   timePlayed: 
   level: 0
   earnedXP: 0
@@ -49784,10 +49805,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 2035386864}
-    characterCount: 8
+    characterCount: 25
     spriteCount: 0
-    spaceCount: 0
-    wordCount: 1
+    spaceCount: 3
+    wordCount: 4
     linkCount: 0
     lineCount: 1
     pageCount: 1
