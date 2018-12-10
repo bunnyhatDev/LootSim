@@ -37690,6 +37690,7 @@ GameObject:
   - component: {fileID: 1546303881}
   - component: {fileID: 1546303883}
   - component: {fileID: 1546303882}
+  - component: {fileID: 1546303884}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Managers
@@ -37722,28 +37723,7 @@ MonoBehaviour:
   currentTimer: 0
   maxTimer: 59
   isDead: 0
-  m_saveData:
-    timePlayed: 
-    earnedXP: 0
-    currentXP: 0
-    tapDamage: 0
-    autoDamage: 0
-    health: 0
-    timer: 0
-    currentScene: {fileID: 0}
-    level: 0
-    totalCurrency: 0
-    overallCurrency: 0
-    totalPledges: 0
-    overallPledges: 0
-    totalExpGained: 0
-    tapCount: 0
-    chestCount: 0
-    lootCount: 0
-    sceneCount: 0
-    autoTapUpgrades: 0
-    upgradeCount: 0
-    achievementCount: 0
+  m_saveManager: {fileID: 0}
   timePlayed: 
   level: 0
   earnedXP: 0
@@ -37819,6 +37799,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0cc4532a8687124a8f48650b560a806, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemsfordebug: []
+  m_storeListingPrefab: {fileID: 0}
+  m_storeListingsParent: {fileID: 0}
+  m_storeListings: []
 --- !u!114 &1546303883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37828,6 +37812,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e1f47e2996dd3dd45911c5a9c773dc94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1546303884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1546303878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a568a5c0077bf894c80226f1dc04bed3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1554523378

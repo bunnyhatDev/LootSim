@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour {
 	public bool isDead = false;
 	
 	[Header("Player Attributes")]
-	public SaveLoadData m_saveData;
+	public SaveManager m_saveManager;
 	public string timePlayed;
 	public int level;
 	public float earnedXP, currentXP, maxXP, totalXP;
@@ -83,8 +83,6 @@ public class GameManager : MonoBehaviour {
 			loadingTimer -= Time.deltaTime;
 			if(loadingTimer <= 0) {
 				if(totalXP == 0) {
-					SaveSystem.SaveData(this);
-
 					chestsOpened = 0;
 					lootCollected = 0;
 					totalPledges = 0;

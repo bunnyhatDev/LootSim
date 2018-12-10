@@ -22,13 +22,13 @@ public class StatCard : MonoBehaviour {
 	[SerializeField] Stat stat;
 	[SerializeField] StatProperty statProperty;
 
-	// GameManager m_gameManager;
-	SaveLoadData m_saveData;
+	GameManager m_gameManager;
+	SaveManager m_saveManager;
 	HUDController m_hudController;
 
 	void Awake() {
-		// m_gameManager = GameObject.FindGameObjectWithTag("Managers").GetComponent<GameManager>();
-		m_saveData = GameObject.FindGameObjectWithTag("Managers").GetComponent<GameManager>().m_saveData;
+		m_gameManager = GameObject.FindGameObjectWithTag("Managers").GetComponent<GameManager>();
+		m_saveManager = GameObject.FindGameObjectWithTag("Managers").GetComponent<GameManager>().m_saveManager;
 		m_hudController = GameObject.Find("HUD").GetComponent<HUDController>();
 		
 	}
@@ -38,32 +38,32 @@ public class StatCard : MonoBehaviour {
 			case Stat.TimePlayed:				
 				this.gameObject.name = "Time Played";
 				statProperty.statName.text = this.gameObject.name;
-				statProperty.statValue.text = m_saveData.timePlayed.ToString();
+				statProperty.statValue.text = m_gameManager.timePlayed.ToString();
 				break;
 			case Stat.TapCount:
 				this.gameObject.name = "Tap Count";
 				statProperty.statName.text = this.gameObject.name;
-				statProperty.statValue.text = m_saveData.tapCount.ToString();
+				statProperty.statValue.text = m_gameManager.tapCount.ToString();
 				break;
 			case Stat.CurrencyCount:
 				this.gameObject.name = "Currency Count";
 				statProperty.statName.text = this.gameObject.name;
-				statProperty.statValue.text = "$" + m_saveData.totalCurrency.ToString();
+				statProperty.statValue.text = "$" + m_gameManager.totalCurrency.ToString();
 				break;
 			case Stat.PledgesCount:
 				this.gameObject.name = "Pledges Count";
 				statProperty.statName.text = this.gameObject.name;
-				statProperty.statValue.text = "$" + m_saveData.totalPledges.ToString();
+				statProperty.statValue.text = "$" + m_gameManager.totalPledges.ToString();
 				break;
 			case Stat.ChestCount:
 				this.gameObject.name = "Chest Opened";
 				statProperty.statName.text = this.gameObject.name;
-				statProperty.statValue.text = m_saveData.chestCount.ToString();
+				statProperty.statValue.text = m_gameManager.chestsOpened.ToString();
 				break;
 			case Stat.LootCount:
 				this.gameObject.name = "Loot Collected";
 				statProperty.statName.text = this.gameObject.name;
-				statProperty.statValue.text = m_saveData.lootCount.ToString();
+				statProperty.statValue.text = m_gameManager.lootCollected.ToString();
 				break;
 			case Stat.SceneCount:
 				this.gameObject.name = "Scenes Unlocked";
@@ -88,17 +88,17 @@ public class StatCard : MonoBehaviour {
 			case Stat.TotalExpGained:
 				this.gameObject.name = "Total XP Gained";
 				statProperty.statName.text = this.gameObject.name;
-				statProperty.statValue.text = m_saveData.earnedXP.ToString() + "xp";
+				statProperty.statValue.text = m_gameManager.earnedXP.ToString() + "xp";
 				break;
 			case Stat.AutoTapPower:
 				this.gameObject.name = "Auto Tap Power";
 				statProperty.statName.text = this.gameObject.name;
-				statProperty.statValue.text = "x" + m_saveData.autoDamage.ToString();
+				statProperty.statValue.text = "x" + m_gameManager.autoDamage.ToString();
 				break;	
 			case Stat.TapPower:
 				this.gameObject.name = "Tap Power";
 				statProperty.statName.text = this.gameObject.name;
-				statProperty.statValue.text = "x" + m_saveData.tapDamage.ToString();
+				statProperty.statValue.text = "x" + m_gameManager.tapDamage.ToString();
 				break;			
 		}	
 	}
