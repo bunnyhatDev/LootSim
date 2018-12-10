@@ -141,10 +141,10 @@ public class StoreManager : MonoBehaviour {
 
 	private void PopulateStoreListings() {
 		// TODO: Double check after th ui is made
-		for (int i = 0; i < storeCatalouge.Count; i++) {
-			StoreItemCard spwanedItemsCard = GameObject.Instantiate(m_storeListingPrefab, Vector3.zero, Quaternion.identity, m_storeListingsParent).GetComponent<StoreItemCard>();
-			spwanedItemsCard.SetInfo(i, storeCatalouge[i].name, storeCatalouge[i].desc, storeCatalouge[i].cost);
-			m_storeListings.Add(spwanedItemsCard);
-		}
+		//for (int i = 0; i < storeCatalouge.Count; i++) {
+		//	StoreItemCard spwanedItemsCard = GameObject.Instantiate(m_storeListingPrefab, Vector3.zero, Quaternion.identity, m_storeListingsParent).GetComponent<StoreItemCard>();
+		//	spwanedItemsCard.SetInfo(i, storeCatalouge[i].name, storeCatalouge[i].desc, storeCatalouge[i].cost);
+		//	m_storeListings.Add(spwanedItemsCard);
+		//}
 	}
 }
