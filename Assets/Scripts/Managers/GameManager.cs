@@ -74,15 +74,22 @@ public class GameManager : MonoBehaviour {
 	}
 
 	void Update() {
-		float t = Time.time - startTime;
-		string minutes = ((int) t / 60).ToString();
-		string seconds = (t % 60).ToString("f0");
-		timePlayed = minutes + "m " + seconds + "s";	
+		if(currentState != State.LOADING_SCREEN) {
+			float t = Time.time - startTime;
+			string minutes = ((int) t / 60).ToString();
+			string seconds = (t % 60).ToString("f0");
+			timePlayed = minutes + "m " + seconds + "s";
+		}
 
 		//TODO:Check and load in assets here to switch to next state for now it happens through key press
 		if(currentState == State.LOADING_SCREEN) {
+			if(Input.GetKeyDown(KeyCode.X)) {
+				m_saveManager.DeleteData();
+			}
+			
 			m_hudController.loadingScreen.SetActive(true);
-			loadingTimer -= Time.deltaTime;
+			if(m_hudController.loadingScreen.activeSelf) { loadingTimer -= Time.deltaTime; }
+
 			if(loadingTimer <= 0) {
 				timePlayed = SaveManager.dataItems.timePlayed;
 				totalXP = SaveManager.dataItems.totalXP;
@@ -107,6 +114,7 @@ public class GameManager : MonoBehaviour {
 					xpNeededToLevel = 50f;
 					tapDamage = 0.75f;
 					autoDamage = tapDamage * 1.45f;
+					maxHP = 100f;
 				}
 
 				m_hudController.UpdateHUD();
@@ -114,6 +122,7 @@ public class GameManager : MonoBehaviour {
 				// Debug.Log("Amount of broken items: " + m_lootManager.brokenItems.lootItem.Length);
 				SimplePool.Preload(chestPrefab, 2);
 				SetState(State.SPAWN_CHEST);
+
 				loadingTimer = resetLoadingTimer;
 				m_hudController.loadingScreen.SetActive(false);
 			}
@@ -123,10 +132,9 @@ public class GameManager : MonoBehaviour {
 				maxHP += 45.5f;
 				currentHP = maxHP;
 			} else {
-				maxHP += 25.5f;
+				maxHP += 15.5f;
 				currentHP = maxHP;
 			}
-
 			SetState(State.DAMAGE_PHASE);
 		} else if(currentState == State.DAMAGE_PHASE) {
 			roundedDPS = System.Math.Round(currentDPS, 3);
@@ -185,7 +193,6 @@ public class GameManager : MonoBehaviour {
 			totalXP += 50;
 			if(totalXP >= xpNeededToLevel) {
 				LevelUp();
-				maxHP += 45.5f;
 			} else {
 				m_hudController.DisplayExpOutput(totalXP);
 				remainderXp = 0;
@@ -219,10 +226,6 @@ public class GameManager : MonoBehaviour {
 		pledges = 2;
 		totalPledges += pledges;
 		m_hudController.AnimateEarnings("Pledges");
-	}
-
-	public void EraseData() {
-		
 	}
 
 }

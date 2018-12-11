@@ -24,6 +24,7 @@ public class ChestController : MonoBehaviour {
 			blend = 0.5f;
 		} else if(m_gameManager.currentHP <= 50f && m_gameManager.currentHP >= 25f) {
 			blend = 1f;
-		}
+		}		
 	}
+
 }

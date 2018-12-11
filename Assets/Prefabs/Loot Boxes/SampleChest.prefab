@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4381261283399366}
   - component: {fileID: 33203092293770932}
   - component: {fileID: 23436371954669424}
+  - component: {fileID: 114744426537653444}
   m_Layer: 0
   m_Name: polySurface4
   m_TagString: Untagged
@@ -53,6 +54,7 @@ GameObject:
   - component: {fileID: 4758593594307834}
   - component: {fileID: 33079621358512032}
   - component: {fileID: 23770588972895050}
+  - component: {fileID: 114462990876533002}
   m_Layer: 0
   m_Name: polySurface3
   m_TagString: Untagged
@@ -238,6 +240,40 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114462990876533002
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1676249943092726}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8139763ef916fa44b29d5ed4ebea95a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_renderer:
+  - {fileID: 23770588972895050}
+  normalMat:
+  - {fileID: 2100002, guid: ad6f384b90728114fb933c5448564c34, type: 3}
+  - {fileID: 2100006, guid: ad6f384b90728114fb933c5448564c34, type: 3}
+  - {fileID: 2100000, guid: ad6f384b90728114fb933c5448564c34, type: 3}
+  - {fileID: 2100004, guid: ad6f384b90728114fb933c5448564c34, type: 3}
+--- !u!114 &114744426537653444
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1506608379179652}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8139763ef916fa44b29d5ed4ebea95a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_renderer:
+  - {fileID: 23436371954669424}
+  normalMat:
+  - {fileID: 2100002, guid: ad6f384b90728114fb933c5448564c34, type: 3}
+  - {fileID: 2100000, guid: ad6f384b90728114fb933c5448564c34, type: 3}
 --- !u!114 &114897706085825880
 MonoBehaviour:
   m_ObjectHideFlags: 1

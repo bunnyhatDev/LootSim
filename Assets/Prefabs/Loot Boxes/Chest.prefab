@@ -22,6 +22,8 @@ GameObject:
   - component: {fileID: 33922040834929028}
   - component: {fileID: 23901472547264274}
   - component: {fileID: 65039364793456278}
+  - component: {fileID: 114584576103509398}
+  - component: {fileID: 114236401890099184}
   m_Layer: 0
   m_Name: Chest
   m_TagString: Chest
@@ -36,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1450464543589494}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -9, z: 8}
+  m_LocalPosition: {x: 0, y: -8.6, z: 7.88}
   m_LocalScale: {x: 4, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
@@ -96,3 +98,29 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114236401890099184
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1450464543589494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8139763ef916fa44b29d5ed4ebea95a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_renderer:
+  - {fileID: 23901472547264274}
+  normalMat:
+  - {fileID: 2100000, guid: 0d66f3f9849cd6343afc4895ff8577d1, type: 2}
+--- !u!114 &114584576103509398
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1450464543589494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bd527452bc8f5844b2409ed335e9c20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
