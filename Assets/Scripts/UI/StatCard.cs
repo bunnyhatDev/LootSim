@@ -28,7 +28,7 @@ public class StatCard : MonoBehaviour {
 
 	void Awake() {
 		m_gameManager = GameObject.FindGameObjectWithTag("Managers").GetComponent<GameManager>();
-		m_saveManager = GameObject.FindGameObjectWithTag("Managers").GetComponent<GameManager>().m_saveManager;
+		m_saveManager = GameObject.FindGameObjectWithTag("Managers").GetComponent<SaveManager>();
 		m_hudController = GameObject.Find("HUD").GetComponent<HUDController>();
 		
 	}
@@ -88,7 +88,7 @@ public class StatCard : MonoBehaviour {
 			case Stat.TotalExpGained:
 				this.gameObject.name = "Total XP Gained";
 				statProperty.statName.text = this.gameObject.name;
-				statProperty.statValue.text = m_gameManager.earnedXP.ToString() + "xp";
+				statProperty.statValue.text = m_gameManager.totalXP.ToString() + "xp";
 				break;
 			case Stat.AutoTapPower:
 				this.gameObject.name = "Auto Tap Power";

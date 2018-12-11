@@ -72,15 +72,8 @@ public class HUDController : MonoBehaviour {
 	}
 
 	void Update() {
+		UpdateHUD();
 		NotificationHandler();
-
-		dpsTracker.text = ">> DPS: " + m_gameManager.roundedDPS;
-		formatedEarnings = string.Format("{0:#,###0}", m_gameManager.totalCurrency);
-		earningsText.text = ">> $ " + formatedEarnings;
-		pledgesText.text = "// " + m_gameManager.totalPledges.ToString();
-		levelText.text = ">> Level " + m_gameManager.level.ToString();
-		expBar.value = m_gameManager.currentXP;
-		expBar.maxValue = m_gameManager.maxXP;
 
 		if(levelupNotification.activeSelf) {
 			levelUpTimer -= Time.deltaTime;
@@ -90,18 +83,30 @@ public class HUDController : MonoBehaviour {
 			}
 		}
 
+		if(menuPanel.activeSelf) {
+			m_gameManager.isMenuOpen = true;
+		} else {
+			m_gameManager.isMenuOpen = false;
+		}
+	}
+
+	public void UpdateHUD() {
+		dpsTracker.text = ">> DPS: " + m_gameManager.roundedDPS;
+		
+		formatedEarnings = string.Format("{0:#,###0}", m_gameManager.totalCurrency);
+		earningsText.text = ">> $ " + formatedEarnings;
+		pledgesText.text = "// " + m_gameManager.totalPledges.ToString();
+		
+		levelText.text = ">> Level " + m_gameManager.level.ToString();
+		expBar.value = m_gameManager.totalXP;
+		expBar.maxValue = m_gameManager.xpNeededToLevel;
+
 		healthBar.value = (float)m_gameManager.roundedHP;
 		healthBar.maxValue = m_gameManager.maxHP;
 		healthText.text = ">> " + m_gameManager.roundedHP + " / " + m_gameManager.maxHP + " <<";
 		
 		timerBar.value = m_gameManager.currentTimer;
 		timerBar.maxValue = m_gameManager.maxTimer;
-
-		if(menuPanel.activeSelf) {
-			m_gameManager.isMenuOpen = true;
-		} else {
-			m_gameManager.isMenuOpen = false;
-		}
 	}
 
 	public void ToggleAudio() {

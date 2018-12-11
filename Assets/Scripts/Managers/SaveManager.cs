@@ -7,7 +7,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 [System.Serializable]
 public class Data {
 	public string timePlayed;
-	public float earnedXP, currentXP;
+	public float totalXP, xpNeededToLevel;
 	public float tapDamage, autoDamage;
 	public float health, timer;
 	// public GameObject currentScene; // <-- FIXES: a gameobject can't be serialized to be saved, caused error
@@ -16,7 +16,6 @@ public class Data {
 	public int level;
 	public float totalCurrency, overallCurrency;
 	public int totalPledges, overallPledges;
-	public float totalExpGained;
 	public int tapCount, chestCount, lootCount, sceneCount, autoTapUpgrades, upgradeCount, achievementCount;
 }
 
@@ -53,8 +52,8 @@ public class SaveManager : MonoBehaviour {
 		// FIXES: ADDED TEMP NUMBERS FOR TESTING, remove them after testing
 		Debug.Log("CREATE");
 		dataItems.timePlayed = m_gameManager.timePlayed;
-		dataItems.earnedXP = m_gameManager.earnedXP;
-		dataItems.currentXP = m_gameManager.currentXP;
+		dataItems.totalXP = m_gameManager.totalXP;
+		dataItems.xpNeededToLevel = m_gameManager.xpNeededToLevel;
 		dataItems.tapDamage = m_gameManager.tapDamage;
 		dataItems.autoDamage = m_gameManager.autoDamage;
 		dataItems.health = m_gameManager.currentHP;
@@ -65,7 +64,6 @@ public class SaveManager : MonoBehaviour {
 		dataItems.overallCurrency = m_gameManager.totalCurrency;
 		dataItems.totalPledges = m_gameManager.totalPledges;
 		dataItems.overallPledges = m_gameManager.totalPledges;
-		dataItems.totalExpGained = m_gameManager.totalXP;
 		
 		dataItems.tapCount = m_gameManager.tapCount;
 		dataItems.chestCount = m_gameManager.chestsOpened;

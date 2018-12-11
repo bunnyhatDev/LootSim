@@ -26,11 +26,11 @@ public class GameManager : MonoBehaviour {
 	public bool isDead = false;
 	
 	[Header("Player Attributes")]
-	public SaveManager m_saveManager;
 	public string timePlayed;
 	public int level;
-	public float earnedXP, currentXP, maxXP, totalXP;
-	public float earnedCurrency, totalCurrency;
+	public float xpNeededToLevel, totalXP;
+	// public float earnedXP, currentXP, maxXP;
+	public float totalCurrency;
 	public int pledges, totalPledges;
 	public float currentDPS;
 	public double roundedDPS;
@@ -39,10 +39,12 @@ public class GameManager : MonoBehaviour {
 	float startTime;
 	float remainderXp;
 	
+	SaveManager m_saveManager;
 	LootManager m_lootManager;
 	HUDController m_hudController;
 
 	void Awake() {
+		m_saveManager = GetComponent<SaveManager>();
 		m_lootManager = GetComponent<LootManager>();
 		m_hudController = GameObject.Find("HUD").GetComponent<HUDController>();
 
@@ -82,16 +84,33 @@ public class GameManager : MonoBehaviour {
 			m_hudController.loadingScreen.SetActive(true);
 			loadingTimer -= Time.deltaTime;
 			if(loadingTimer <= 0) {
-				// if(totalXP == 0) {
-				// 	chestsOpened = 0;
-				// 	lootCollected = 0;
-				// 	totalPledges = 0;
-				// 	totalCurrency = 0;
-				// 	level = 0;
-					maxXP = 25f;
+				timePlayed = SaveManager.dataItems.timePlayed;
+				totalXP = SaveManager.dataItems.totalXP;
+				xpNeededToLevel = SaveManager.dataItems.xpNeededToLevel;
+				tapDamage = SaveManager.dataItems.tapDamage;
+				autoDamage = SaveManager.dataItems.autoDamage;
+				currentHP = SaveManager.dataItems.health;
+				currentTimer = SaveManager.dataItems.timer;
+
+				level = SaveManager.dataItems.level;
+				totalCurrency = SaveManager.dataItems.totalCurrency;
+				totalCurrency = SaveManager.dataItems.overallCurrency;
+				totalPledges = SaveManager.dataItems.totalPledges;
+				totalPledges = SaveManager.dataItems.overallPledges;
+				
+				tapCount = SaveManager.dataItems.tapCount;
+				chestsOpened = SaveManager.dataItems.chestCount;
+				lootCollected = SaveManager.dataItems.lootCount;
+				scenesUnlocked = SaveManager.dataItems.sceneCount;
+
+				if(tapCount == 0) {
+					xpNeededToLevel = 50f;
 					tapDamage = 0.75f;
 					autoDamage = tapDamage * 1.45f;
-				// }
+				}
+
+				m_hudController.UpdateHUD();
+
 				// Debug.Log("Amount of broken items: " + m_lootManager.brokenItems.lootItem.Length);
 				SimplePool.Preload(chestPrefab, 2);
 				SetState(State.SPAWN_CHEST);
@@ -100,6 +119,14 @@ public class GameManager : MonoBehaviour {
 			}
 		} else if(currentState == State.SPAWN_CHEST) {
 			SimplePool.Spawn(chestPrefab, new Vector3(0,-8.75f,6f), Quaternion.identity);
+			if(totalXP >= xpNeededToLevel) {
+				maxHP += 45.5f;
+				currentHP = maxHP;
+			} else {
+				maxHP += 25.5f;
+				currentHP = maxHP;
+			}
+
 			SetState(State.DAMAGE_PHASE);
 		} else if(currentState == State.DAMAGE_PHASE) {
 			roundedDPS = System.Math.Round(currentDPS, 3);
@@ -145,7 +172,6 @@ public class GameManager : MonoBehaviour {
 				SetState(State.DESPAWN_CHEST);
 			}
 		} else if(currentState == State.DESPAWN_CHEST) {
-			maxHP += 25f;
 			maxTimer -= 0.135f;
 			currentHP = maxHP;
 			currentTimer = maxTimer;
@@ -155,48 +181,44 @@ public class GameManager : MonoBehaviour {
 			}
 			SetState(State.REWARD_SPAWN);
 		} else if(currentState == State.REWARD_SPAWN) {
-			earnedCurrency = 15;
-			totalCurrency += earnedCurrency;
-			earnedXP = remainderXp + 10f;
-			currentXP += earnedXP;
-			totalXP += earnedXP + currentXP;
-			
-			chestsOpened += 1;
-			lootCollected += 3;
-			if(currentXP >= maxXP) {
-				// Debug.Log("remainder: " + remainderXp);
-				remainderXp = maxXP - earnedXP;
-				currentXP = remainderXp;
-				maxXP += 5.5f;
-				level += 1;
-				m_hudController.AnimateLevelUpPopup(level);
-				pledges = 2;
-				totalPledges += pledges;
-				m_hudController.AnimateEarnings("Pledges");
-				earnedCurrency = 20;
-				totalCurrency += earnedCurrency;
-				tapDamage += 0.15f;
-				autoDamage = tapDamage * 1.45f;
-				m_hudController.DisplayExpOutput(remainderXp + earnedXP);
+			AddCurrency(level * tapCount + 3);		//FIXME: get rid of magic numbers
+			totalXP += 50;
+			if(totalXP >= xpNeededToLevel) {
+				LevelUp();
+				maxHP += 45.5f;
 			} else {
-				m_hudController.DisplayExpOutput(earnedXP);
+				m_hudController.DisplayExpOutput(totalXP);
 				remainderXp = 0;
 			}
+
+			chestsOpened += 1;
+			lootCollected += 3;
+
 			isDead = false;
 			SetState(State.SPAWN_CHEST);
 		}
 	}
 
-	void AddXP(float xp) {
+	void LevelUp() {
+		remainderXp = xpNeededToLevel - totalXP;
+		totalXP = Mathf.Abs(remainderXp);
+		m_hudController.DisplayExpOutput(remainderXp + totalXP);
 
+		level += 1;
+		m_hudController.AnimateLevelUpPopup(level);
+		xpNeededToLevel += 200.5f;
+
+		tapDamage += 0.15f;
+		autoDamage = tapDamage * 1.45f;
 	}
 
-	void AddCurrency(float earnedCurrency) {
+	void AddCurrency(float money) {
+		totalCurrency += money;
+		m_hudController.AnimateEarnings("Currency");
 
-	}
-
-	void AddLevel() {
-
+		pledges = 2;
+		totalPledges += pledges;
+		m_hudController.AnimateEarnings("Pledges");
 	}
 
 	public void EraseData() {
