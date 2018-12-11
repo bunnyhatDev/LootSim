@@ -37723,14 +37723,10 @@ MonoBehaviour:
   currentTimer: 0
   maxTimer: 59
   isDead: 0
-  m_saveManager: {fileID: 0}
   timePlayed: 
   level: 0
-  earnedXP: 0
-  currentXP: 0
-  maxXP: 0
+  xpNeededToLevel: 0
   totalXP: 0
-  earnedCurrency: 0
   totalCurrency: 0
   pledges: 0
   totalPledges: 0
@@ -37827,8 +37823,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tempForDebug:
     timePlayed: 
-    earnedXP: 0
-    currentXP: 0
+    totalXP: 0
+    xpNeededToLevel: 0
     tapDamage: 0
     autoDamage: 0
     health: 0
@@ -37838,7 +37834,6 @@ MonoBehaviour:
     overallCurrency: 0
     totalPledges: 0
     overallPledges: 0
-    totalExpGained: 0
     tapCount: 0
     chestCount: 0
     lootCount: 0
