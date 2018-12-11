@@ -37825,6 +37825,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a568a5c0077bf894c80226f1dc04bed3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tempForDebug:
+    timePlayed: 
+    earnedXP: 0
+    currentXP: 0
+    tapDamage: 0
+    autoDamage: 0
+    health: 0
+    timer: 0
+    level: 0
+    totalCurrency: 0
+    overallCurrency: 0
+    totalPledges: 0
+    overallPledges: 0
+    totalExpGained: 0
+    tapCount: 0
+    chestCount: 0
+    lootCount: 0
+    sceneCount: 0
+    autoTapUpgrades: 0
+    upgradeCount: 0
+    achievementCount: 0
+  timeToSave: 2
+  resetTime: 0
 --- !u!1 &1554523378
 GameObject:
   m_ObjectHideFlags: 0

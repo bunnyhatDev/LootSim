@@ -82,16 +82,16 @@ public class GameManager : MonoBehaviour {
 			m_hudController.loadingScreen.SetActive(true);
 			loadingTimer -= Time.deltaTime;
 			if(loadingTimer <= 0) {
-				if(totalXP == 0) {
-					chestsOpened = 0;
-					lootCollected = 0;
-					totalPledges = 0;
-					totalCurrency = 0;
-					level = 0;
+				// if(totalXP == 0) {
+				// 	chestsOpened = 0;
+				// 	lootCollected = 0;
+				// 	totalPledges = 0;
+				// 	totalCurrency = 0;
+				// 	level = 0;
 					maxXP = 25f;
 					tapDamage = 0.75f;
 					autoDamage = tapDamage * 1.45f;
-				}
+				// }
 				// Debug.Log("Amount of broken items: " + m_lootManager.brokenItems.lootItem.Length);
 				SimplePool.Preload(chestPrefab, 2);
 				SetState(State.SPAWN_CHEST);

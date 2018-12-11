@@ -27,6 +27,8 @@ public class SaveManager : MonoBehaviour {
 
 	public Data tempForDebug; // <-- FIXES: to see the current values
 
+	[SerializeField] float timeToSave, resetTime;
+
 	GameManager m_gameManager;
 
 	void Awake() {
@@ -35,36 +37,40 @@ public class SaveManager : MonoBehaviour {
 		InitStats();
 
 		tempForDebug = dataItems; // <-- FIXES: to see the current values
+		resetTime = timeToSave;
 	}
 
 	void LateUpdate() {
-		// SaveData(m_gameManager);
+		timeToSave -= Time.deltaTime;
+		if(timeToSave <= 0) {
+			WriteData();
+			tempForDebug = dataItems;
+			timeToSave = resetTime;
+		}
 	}
 
 	public void WriteData() {
-
 		// FIXES: ADDED TEMP NUMBERS FOR TESTING, remove them after testing
-
 		Debug.Log("CREATE");
-		dataItems.timePlayed = m_gameManager.timePlayed = "iii";
-		dataItems.earnedXP = m_gameManager.earnedXP = 0.5f;
-		dataItems.currentXP = m_gameManager.currentXP = 0.552f;
-		dataItems.tapDamage = m_gameManager.tapDamage = 5.552f;
-		dataItems.autoDamage = m_gameManager.autoDamage = 1000.552f;
-		dataItems.health = m_gameManager.currentHP = 2f;
-		dataItems.timer = m_gameManager.currentTimer = 1520f;
+		dataItems.timePlayed = m_gameManager.timePlayed;
+		dataItems.earnedXP = m_gameManager.earnedXP;
+		dataItems.currentXP = m_gameManager.currentXP;
+		dataItems.tapDamage = m_gameManager.tapDamage;
+		dataItems.autoDamage = m_gameManager.autoDamage;
+		dataItems.health = m_gameManager.currentHP;
+		dataItems.timer = m_gameManager.currentTimer;
 
-		dataItems.level = m_gameManager.level = 5;
-		dataItems.totalCurrency = m_gameManager.totalCurrency = 50.552f;
-		dataItems.overallCurrency = m_gameManager.totalCurrency = 20.552f;
-		dataItems.totalPledges = m_gameManager.totalPledges= 10;
-		dataItems.overallPledges = m_gameManager.totalPledges= 9;
-		dataItems.totalExpGained = m_gameManager.totalXP = 10.5f;
+		dataItems.level = m_gameManager.level;
+		dataItems.totalCurrency = m_gameManager.totalCurrency;
+		dataItems.overallCurrency = m_gameManager.totalCurrency;
+		dataItems.totalPledges = m_gameManager.totalPledges;
+		dataItems.overallPledges = m_gameManager.totalPledges;
+		dataItems.totalExpGained = m_gameManager.totalXP;
 		
-		dataItems.tapCount = m_gameManager.tapCount = 1000000;
-		dataItems.chestCount = m_gameManager.chestsOpened = 10000;
-		dataItems.lootCount = m_gameManager.lootCollected = 1000;
-		dataItems.sceneCount = m_gameManager.scenesUnlocked = 100;
+		dataItems.tapCount = m_gameManager.tapCount;
+		dataItems.chestCount = m_gameManager.chestsOpened;
+		dataItems.lootCount = m_gameManager.lootCollected;
+		dataItems.sceneCount = m_gameManager.scenesUnlocked;
 
 		SaveData();
 	}
