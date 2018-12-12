@@ -4,28 +4,30 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-[System.Serializable]
-public class StatsTracker {
-	public string timePlayed;
-	public int tapCount, chestCount, lootCount, scenesCount, autoTapUpgrades, upgradeCount, currencyCount, achievementsCount;
-	public float totalExpGained;
-	public float autoTapPower, tapPower;
+// [System.Serializable]
+// public class StatsTracker {
+// 	public string timePlayed;
+// 	public int tapCount, chestCount, lootCount, scenesCount, autoTapUpgrades, upgradeCount, currencyCount, achievementsCount;
+// 	public float totalExpGained;
+// 	public float autoTapPower, tapPower;
 
-}
+// }
 
 public class HUDController : MonoBehaviour {
 	[Header("Loading Screen Properties")]
 	public GameObject loadingScreen;
-	public Image gameLogo;
 	public TextMeshProUGUI loadingText;
+
+	[Header("Tutorial Properties")]
+	public int tutorialIndex;
+	public GameObject tutorialPopups;
+	public GameObject[] dialogueBoxes;
+	public GameObject upgradesMenu;
 
 	[Header("Menu Properties")]
 	public Button menuButton;
 	public GameObject menuPanel;
 	public GameObject menuButtonsLayout;
-	public Button closeButton;
-	public Toggle sfxToggle;
-	public Toggle musicToggle;
 
 	[Header("Notification Properties")]
 	public GameObject[] notificationIcons;
@@ -38,8 +40,9 @@ public class HUDController : MonoBehaviour {
 	public GameObject expText;
 
 	[Header("Stats Properties")]
-	[SerializeField] public StatsTracker m_statsTracker;
-	public TextMeshProUGUI earningsText, pledgesText;
+	// [SerializeField] public StatsTracker m_statsTracker;
+	public TextMeshProUGUI earningsText;
+	public TextMeshProUGUI pledgesText;
 	public TextMeshProUGUI dpsTracker;
 	public Slider expBar;
 	public TextMeshProUGUI levelText;
@@ -58,7 +61,7 @@ public class HUDController : MonoBehaviour {
 	// 	"Experience"
 	// };
 
-	private string formatedEarnings;
+	string formatedEarnings;
 
 	GameManager m_gameManager;
 	AchievementManager m_achievementManager;
@@ -85,6 +88,7 @@ public class HUDController : MonoBehaviour {
 
 		if(menuPanel.activeSelf) {
 			m_gameManager.isMenuOpen = true;
+			if(levelupNotification.activeSelf) { levelupNotification.SetActive(false); }
 		} else {
 			m_gameManager.isMenuOpen = false;
 		}
@@ -107,19 +111,6 @@ public class HUDController : MonoBehaviour {
 		
 		timerBar.value = m_gameManager.currentTimer;
 		timerBar.maxValue = m_gameManager.maxTimer;
-	}
-
-	public void ToggleAudio() {
-		if(sfxToggle.isOn) {
-
-		} else {
-
-		}
-		if(musicToggle.isOn) {
-
-		} else {
-
-		}
 	}
 
 	public void CloseMenu() {
@@ -149,6 +140,53 @@ public class HUDController : MonoBehaviour {
 	// 		availableStatCards[i].desc.text = tmpAchievements[i].currentAchievementProgress.ToString();
 	// 	}
 	// }
+
+	public void ShowTutorialUI() {
+		switch(tutorialIndex) {
+			case 0:		// Dialogue Box: TAP THE LOOT BOX  TO DAMAGE IT 
+				Debug.Log("tutorial index: " + tutorialIndex);
+				tutorialPopups.SetActive(true);
+				dialogueBoxes[tutorialIndex].SetActive(true);
+				if(m_gameManager.tapCount == 5) {
+					dialogueBoxes[tutorialIndex].SetActive(false);
+					tutorialIndex = 1;		
+				}
+			break;
+			case 1:		// Dialogue Box: DEAL ENOUGH DAMAGE BEFORE TIME RUNS OUT TO OPEN IT
+				Debug.Log("tutorial index: " + tutorialIndex);
+				dialogueBoxes[tutorialIndex].SetActive(true);
+				float seconds = 5f;
+				if(seconds <= 0) {
+					dialogueBoxes[tutorialIndex].SetActive(false);
+					seconds = 5f;					
+				}
+			break;
+			case 2:		// Dialogue Box: USE THE REWARDS FROM LOOT BOXES AND REWARDS TO BUY UPGRADES AND BETTER LOOT BOXES
+				Debug.Log("tutorial index: " + tutorialIndex);
+				dialogueBoxes[tutorialIndex].SetActive(true);
+				if(menuPanel.activeSelf) {					
+					dialogueBoxes[tutorialIndex].SetActive(false);
+				}
+			break;
+			case 3:		// Dialogue Box: HEAD TO THE UPGRADES MENU TO BUY YOUR FIRST UPGRADE!
+				Debug.Log("tutorial index: " + tutorialIndex);
+				dialogueBoxes[tutorialIndex].SetActive(true);
+				if(StoreManager.storeCatalouge[0].isBought) {
+					dialogueBoxes[tutorialIndex].SetActive(false);				
+				}
+			break;
+			case 4:		// Dialogue Box: CLOSE THE MENU TO COMPLETE THE TUTORIAL
+				Debug.Log("tutorial index: " + tutorialIndex);
+				if(!menuPanel.activeSelf) {
+					dialogueBoxes[tutorialIndex].SetActive(false);
+					m_gameManager.isTutorialComplete = true;				
+				}
+			break;
+			case 5:
+				tutorialPopups.SetActive(false);
+			break;
+		}
+	}
 
 	public void DisplayDamageOutput() {
 		Vector3 chestPos = new Vector3(0, -3, 0);

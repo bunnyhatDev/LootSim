@@ -3,28 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class FlashObject : MonoBehaviour {
-
-	public MeshRenderer[] m_renderer;
-	public Material[] normalMat;
-
+	public Color flashColor, hiddenColor;
+	
+	Renderer m_renderer;
 	GameManager m_gameManager;
 
 	void Awake() {
+		m_renderer = GetComponent<Renderer>();
+		m_renderer.material.shader = Shader.Find("Outlined/Silhouetted Diffuse");
 		m_gameManager = GameObject.FindGameObjectWithTag("Managers").GetComponent<GameManager>();
 	}
 
 	void Update () {
 		if(Input.GetMouseButtonDown(0) && !m_gameManager.isMenuOpen) {
+			// Debug.Log("damage color changing");
 			StartCoroutine("Damage");
 		}		
 	}
 
 	IEnumerator Damage() {
-		for(int i = 0; i < m_renderer.Length; i++) {
-			m_renderer[i].material.color = Color.red;
-			yield return new WaitForSeconds(0.5f);
-			m_renderer[i].material.color = normalMat[i].color;
-		}
+		m_renderer.material.color = flashColor;
+		m_renderer.material.SetFloat("_OutlineColor", flashColor.a);
+		yield return new WaitForSeconds(0.5f);
+		m_renderer.material.color = hiddenColor;
+		m_renderer.material.SetFloat("_OutlineColor", hiddenColor.a);
+
 	}
 
 }

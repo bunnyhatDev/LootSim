@@ -5,14 +5,13 @@ using UnityEngine;
 [SerializeField]
 public class GameManager : MonoBehaviour {
 	public enum State {
-		LOADING_SCREEN,	SPAWN_CHEST, DAMAGE_PHASE, DESPAWN_CHEST, REWARD_SPAWN
+		LOADING_SCREEN, SPAWN_CHEST, DAMAGE_PHASE, DESPAWN_CHEST, REWARD_SPAWN
 	}
 
 	public State currentState;
 	public float loadingTimer, resetLoadingTimer;
 	public bool isMenuOpen = false;
-	
-	float pauseDPSCounter = 0.6f;
+	public bool isTutorialComplete = false;
 
 	[Header("Loot Box Properties")]
 	public GameObject chestPrefab;
@@ -36,6 +35,7 @@ public class GameManager : MonoBehaviour {
 	public double roundedDPS;
 	public int tapCount, chestsOpened, lootCollected, scenesUnlocked, upgradesUnlocked, autoTapUpgradesUnlocked, achievementsUnlocked;
 
+	float pauseDPSCounter = 0.6f;
 	float startTime;
 	float remainderXp;
 	
@@ -91,6 +91,7 @@ public class GameManager : MonoBehaviour {
 			if(m_hudController.loadingScreen.activeSelf) { loadingTimer -= Time.deltaTime; }
 
 			if(loadingTimer <= 0) {
+				isTutorialComplete = SaveManager.dataItems.tutorialCompleted;
 				timePlayed = SaveManager.dataItems.timePlayed;
 				totalXP = SaveManager.dataItems.totalXP;
 				xpNeededToLevel = SaveManager.dataItems.xpNeededToLevel;
@@ -110,24 +111,35 @@ public class GameManager : MonoBehaviour {
 				lootCollected = SaveManager.dataItems.lootCount;
 				scenesUnlocked = SaveManager.dataItems.sceneCount;
 
-				if(tapCount == 0) {
+				if(!isTutorialComplete) {
 					xpNeededToLevel = 50f;
 					tapDamage = 0.75f;
 					autoDamage = tapDamage * 1.45f;
 					maxHP = 100f;
+					SetState(State.SPAWN_CHEST);
+				} else {
+					SetState(State.SPAWN_CHEST);
 				}
 
 				m_hudController.UpdateHUD();
 
-				// Debug.Log("Amount of broken items: " + m_lootManager.brokenItems.lootItem.Length);
-				SimplePool.Preload(chestPrefab, 2);
-				SetState(State.SPAWN_CHEST);
-
 				loadingTimer = resetLoadingTimer;
 				m_hudController.loadingScreen.SetActive(false);
+				SimplePool.Preload(chestPrefab, 2);
 			}
 		} else if(currentState == State.SPAWN_CHEST) {
 			SimplePool.Spawn(chestPrefab, new Vector3(0,-8.75f,6f), Quaternion.identity);
+
+			if(!isTutorialComplete) {
+				m_hudController.ShowTutorialUI();
+				xpNeededToLevel = 50f;
+				tapDamage = 0.75f;
+				autoDamage = tapDamage * 1.45f;
+				maxHP = 100f;
+			} else {
+				//TODO: Give "Completed Tutorial" if not given 
+			}
+
 			if(totalXP >= xpNeededToLevel) {
 				maxHP += 45.5f;
 				currentHP = maxHP;
@@ -135,6 +147,7 @@ public class GameManager : MonoBehaviour {
 				maxHP += 15.5f;
 				currentHP = maxHP;
 			}
+
 			SetState(State.DAMAGE_PHASE);
 		} else if(currentState == State.DAMAGE_PHASE) {
 			roundedDPS = System.Math.Round(currentDPS, 3);
@@ -166,6 +179,10 @@ public class GameManager : MonoBehaviour {
 					}
 					if(Input.GetKeyDown(KeyCode.Space)) {
 						currentHP -= tapDamage * 5;
+					}
+					if(tapCount == 5) {
+						Debug.Log("tutorial index = 1");
+						m_hudController.tutorialIndex = 1;
 					}
 				}
 				if(Input.GetMouseButton(0)) {

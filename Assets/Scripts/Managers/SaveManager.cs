@@ -6,6 +6,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 [System.Serializable]
 public class Data {
+	public bool tutorialCompleted;
 	public string timePlayed;
 	public float totalXP, xpNeededToLevel;
 	public float tapDamage, autoDamage;
@@ -51,6 +52,7 @@ public class SaveManager : MonoBehaviour {
 	public void WriteData() {
 		// FIXES: ADDED TEMP NUMBERS FOR TESTING, remove them after testing
 		Debug.Log("CREATE");
+		dataItems.tutorialCompleted = m_gameManager.isTutorialComplete;
 		dataItems.timePlayed = m_gameManager.timePlayed;
 		dataItems.totalXP = m_gameManager.totalXP;
 		dataItems.xpNeededToLevel = m_gameManager.xpNeededToLevel;
@@ -100,25 +102,26 @@ public class SaveManager : MonoBehaviour {
 	public void DeleteData() {
 		Debug.Log("DELETE");
 		File.Delete(Application.persistentDataPath + "/stats.json");
-		if(!File.Exists(Application.persistentDataPath + "/stats.json")) {			
-		dataItems.timePlayed = m_gameManager.timePlayed = "0m 0s";
-		dataItems.totalXP = m_gameManager.totalXP = 0;
-		dataItems.xpNeededToLevel = m_gameManager.xpNeededToLevel = 50f;
-		dataItems.tapDamage = m_gameManager.tapDamage = 0.75f;
-		dataItems.autoDamage = m_gameManager.autoDamage = m_gameManager.tapDamage * 1.45f;
-		dataItems.health = m_gameManager.currentHP = 0;
-		dataItems.timer = m_gameManager.currentTimer = 0;
+		if(!File.Exists(Application.persistentDataPath + "/stats.json")) {
+			dataItems.tutorialCompleted = m_gameManager.isTutorialComplete = false;
+			dataItems.timePlayed = m_gameManager.timePlayed = "0m 0s";
+			dataItems.totalXP = m_gameManager.totalXP = 0;
+			dataItems.xpNeededToLevel = m_gameManager.xpNeededToLevel = 50f;
+			dataItems.tapDamage = m_gameManager.tapDamage = 0.75f;
+			dataItems.autoDamage = m_gameManager.autoDamage = m_gameManager.tapDamage * 1.45f;
+			dataItems.health = m_gameManager.currentHP = 0;
+			dataItems.timer = m_gameManager.currentTimer = 0;
 
-		dataItems.level = m_gameManager.level = 0;
-		dataItems.totalCurrency = m_gameManager.totalCurrency = 0;
-		dataItems.overallCurrency = m_gameManager.totalCurrency = 0;
-		dataItems.totalPledges = m_gameManager.totalPledges = 0;
-		dataItems.overallPledges = m_gameManager.totalPledges = 0;
-		
-		dataItems.tapCount = m_gameManager.tapCount = 0;
-		dataItems.chestCount = m_gameManager.chestsOpened = 0;
-		dataItems.lootCount = m_gameManager.lootCollected = 0;
-		dataItems.sceneCount = m_gameManager.scenesUnlocked = 0;
+			dataItems.level = m_gameManager.level = 0;
+			dataItems.totalCurrency = m_gameManager.totalCurrency = 0;
+			dataItems.overallCurrency = m_gameManager.totalCurrency = 0;
+			dataItems.totalPledges = m_gameManager.totalPledges = 0;
+			dataItems.overallPledges = m_gameManager.totalPledges = 0;
+			
+			dataItems.tapCount = m_gameManager.tapCount = 0;
+			dataItems.chestCount = m_gameManager.chestsOpened = 0;
+			dataItems.lootCount = m_gameManager.lootCollected = 0;
+			dataItems.sceneCount = m_gameManager.scenesUnlocked = 0;
 		}
 		m_gameManager.currentState = GameManager.State.LOADING_SCREEN;
 	}
