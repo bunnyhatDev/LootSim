@@ -36,6 +36,9 @@ public class GameManager : MonoBehaviour {
 
 	float pauseDPSCounter = 0.6f;
 	float startTime;
+	float t;
+	string minutes;
+	string seconds;
 	float remainderXp;
 	
 	TutorialManager m_tutorialManager;
@@ -49,8 +52,9 @@ public class GameManager : MonoBehaviour {
 		m_lootManager = GetComponent<LootManager>();
 		m_hudController = GameObject.Find("HUD").GetComponent<HUDController>();
 
-		startTime = Time.time;
 		currentState = State.LOADING_SCREEN;
+		if(timePlayed == "0m 0s") { startTime = Time.time; }
+		
 	}
 
 	public void SetState(State newState) {
@@ -75,18 +79,20 @@ public class GameManager : MonoBehaviour {
 	}
 
 	void Update() {
-		if(currentState != State.LOADING_SCREEN) {
-			float t = Time.time - startTime;
-			string minutes = ((int) t / 60).ToString();
-			string seconds = (t % 60).ToString("f0");
-			timePlayed = minutes + "m " + seconds + "s";
-		}
+		StateMachine();
 
-		//TODO:Check and load in assets here to switch to next state for now it happens through key press
+		t = Time.time - startTime;
+
+		minutes = ((int) t / 60).ToString();
+		seconds = (t % 60).ToString("f0");
+		timePlayed = minutes + "m " + seconds + "s";
+
+
+	}
+
+	void StateMachine() {
 		if(currentState == State.LOADING_SCREEN) {
-			if(Input.GetKeyDown(KeyCode.X)) {
-				m_saveManager.DeleteData();
-			}
+			if(Input.GetKeyDown(KeyCode.X)) { m_saveManager.DeleteData(); }
 			
 			m_hudController.loadingScreen.SetActive(true);
 			if(m_hudController.loadingScreen.activeSelf) { loadingTimer -= Time.deltaTime; }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 using TMPro;
 
@@ -24,6 +25,7 @@ public class HUDController : MonoBehaviour {
 	public GameObject menuButtonsLayout;
 
 	[Header("Notification Properties")]
+	public UnityEvent OnNotify;
 	public GameObject[] notificationIcons;
 	public GameObject levelupNotification;
 	public TextMeshProUGUI levelUpText;
@@ -70,7 +72,6 @@ public class HUDController : MonoBehaviour {
 
 	void Update() {
 		UpdateHUD();
-		NotificationHandler();
 
 		if(levelupNotification.activeSelf) {
 			levelUpTimer -= Time.deltaTime;
@@ -159,33 +160,6 @@ public class HUDController : MonoBehaviour {
 		levelupNotification.SetActive(true);
 		if(levelupNotification.activeSelf) {
 			levelUpText.text = "You Reached Level " + level.ToString() + "!";
-		}
-	}
-
-	void NotificationHandler() {
-		//TODO: check to see if you got enough money for items to buy in shop/upgrades/scenes/auto-tap
-		if(m_gameManager.totalCurrency < 50) {
-			notificationIcons[0].SetActive(false);
-			notificationIcons[1].SetActive(false);
-			notificationIcons[2].SetActive(false);
-		} else {
-			notificationIcons[0].SetActive(true);
-			notificationIcons[1].SetActive(true);
-			notificationIcons[2].SetActive(true);
-		}
-
-		if(m_gameManager.totalPledges < 5) {
-			notificationIcons[0].SetActive(false);
-			notificationIcons[3].SetActive(false);
-		} else {
-			notificationIcons[0].SetActive(true);
-			notificationIcons[3].SetActive(true);
-		}
-
-		if(notificationIcons[4].activeSelf) {
-			notificationIcons[0].SetActive(true);
-		} else {
-			notificationIcons[0].SetActive(false);
 		}
 	}
 
