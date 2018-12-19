@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour {
 	public State currentState;
 	public float loadingTimer, resetLoadingTimer;
 	public bool isMenuOpen = false;
+	public bool isTutorialComplete = false;
 
 	[Header("Loot Box Properties")]
 	public GameObject chestPrefab;
@@ -41,13 +42,11 @@ public class GameManager : MonoBehaviour {
 	string seconds;
 	float remainderXp;
 	
-	TutorialManager m_tutorialManager;
 	SaveManager m_saveManager;
 	LootManager m_lootManager;
 	HUDController m_hudController;
 
 	void Awake() {
-		m_tutorialManager = GetComponent<TutorialManager>();
 		m_saveManager = GetComponent<SaveManager>();
 		m_lootManager = GetComponent<LootManager>();
 		m_hudController = GameObject.Find("HUD").GetComponent<HUDController>();
@@ -98,7 +97,7 @@ public class GameManager : MonoBehaviour {
 			if(m_hudController.loadingScreen.activeSelf) { loadingTimer -= Time.deltaTime; }
 
 			if(loadingTimer <= 0) {
-				m_tutorialManager.isTutorialComplete = SaveManager.dataItems.tutorialCompleted;
+				isTutorialComplete = SaveManager.dataItems.tutorialCompleted;
 				timePlayed = SaveManager.dataItems.timePlayed;
 				totalXP = SaveManager.dataItems.totalXP;
 				xpNeededToLevel = SaveManager.dataItems.xpNeededToLevel;
@@ -118,7 +117,7 @@ public class GameManager : MonoBehaviour {
 				lootCollected = SaveManager.dataItems.lootCount;
 				scenesUnlocked = SaveManager.dataItems.sceneCount;
 
-				if(!m_tutorialManager.isTutorialComplete) {
+				if(!isTutorialComplete) {
 					xpNeededToLevel = 50f;
 					tapDamage = 0.75f;
 					autoDamage = tapDamage * 1.45f;
@@ -135,7 +134,18 @@ public class GameManager : MonoBehaviour {
 				SimplePool.Preload(chestPrefab, 2);
 			}
 		} else if(currentState == State.SPAWN_CHEST) {
-			SimplePool.Spawn(chestPrefab, new Vector3(0,-8.75f,6f), Quaternion.identity); //FIXME: Get rid of magic numbers
+			SimplePool.Spawn(chestPrefab, new Vector3(0,-8.75f,6f), Quaternion.identity);
+
+			if(!isTutorialComplete) {
+				m_hudController.ShowTutorialUI();
+				xpNeededToLevel = 50f;
+				tapDamage = 0.75f;
+				autoDamage = tapDamage * 1.45f;
+				maxHP = 100f;
+			} else {
+				//TODO: Give "Completed Tutorial" if not given 
+			}
+
 			if(totalXP >= xpNeededToLevel) {
 				maxHP += 45.5f;
 				currentHP = maxHP;
@@ -143,6 +153,7 @@ public class GameManager : MonoBehaviour {
 				maxHP += 15.5f;
 				currentHP = maxHP;
 			}
+
 			SetState(State.DAMAGE_PHASE);
 		} else if(currentState == State.DAMAGE_PHASE) {
 			roundedDPS = System.Math.Round(currentDPS, 3);
@@ -174,6 +185,10 @@ public class GameManager : MonoBehaviour {
 					}
 					if(Input.GetKeyDown(KeyCode.Space)) {
 						currentHP -= tapDamage * 5;
+					}
+					if(tapCount == 5) {
+						Debug.Log("tutorial index = 1");
+						m_hudController.tutorialIndex = 1;
 					}
 				}
 				if(Input.GetMouseButton(0)) {

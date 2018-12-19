@@ -30,11 +30,9 @@ public class SaveManager : MonoBehaviour {
 	[SerializeField] float timeToSave, resetTime;
 
 	GameManager m_gameManager;
-	TutorialManager m_tutorialManager;
 
 	void Awake() {
 		m_gameManager = GetComponent<GameManager>();
-		m_tutorialManager = GetComponent<TutorialManager>();
 
 		InitStats();
 
@@ -54,7 +52,7 @@ public class SaveManager : MonoBehaviour {
 	public void WriteData() {
 		// FIXES: ADDED TEMP NUMBERS FOR TESTING, remove them after testing
 		Debug.Log("CREATE");
-		dataItems.tutorialCompleted = m_tutorialManager.isTutorialComplete;
+		dataItems.tutorialCompleted = m_gameManager.isTutorialComplete;
 		dataItems.timePlayed = m_gameManager.timePlayed;
 		dataItems.totalXP = m_gameManager.totalXP;
 		dataItems.xpNeededToLevel = m_gameManager.xpNeededToLevel;
@@ -105,7 +103,7 @@ public class SaveManager : MonoBehaviour {
 		Debug.Log("DELETE");
 		File.Delete(Application.persistentDataPath + "/stats.json");
 		if(!File.Exists(Application.persistentDataPath + "/stats.json")) {
-			dataItems.tutorialCompleted = m_tutorialManager.isTutorialComplete = false;
+			dataItems.tutorialCompleted = m_gameManager.isTutorialComplete = false;
 			dataItems.timePlayed = m_gameManager.timePlayed = "0m 0s";
 			dataItems.totalXP = m_gameManager.totalXP = 0;
 			dataItems.xpNeededToLevel = m_gameManager.xpNeededToLevel = 50f;
