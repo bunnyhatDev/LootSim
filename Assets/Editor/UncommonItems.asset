@@ -15,112 +15,22 @@ MonoBehaviour:
   lootItem:
   - itemName: Boots
     exp: 5
-    lootMat: {fileID: 2100000, guid: 73d4ebb2b859ae248befcb764814e250, type: 2}
+    lootMat: {fileID: 2100000, guid: bd82635928d4e4141a2338eb5fce019a, type: 2}
     itemPrefab: {fileID: 1842081072793016, guid: aabf7a9d92f005347b5c2723e0e4b418,
       type: 2}
     lootAnimation: {fileID: 0}
   - itemName: Gloves
     exp: 5
-    lootMat: {fileID: 2100000, guid: 73d4ebb2b859ae248befcb764814e250, type: 2}
+    lootMat: {fileID: 2100000, guid: bd82635928d4e4141a2338eb5fce019a, type: 2}
     itemPrefab: {fileID: 0}
     lootAnimation: {fileID: 0}
   - itemName: Helm
     exp: 5
-    lootMat: {fileID: 2100000, guid: 73d4ebb2b859ae248befcb764814e250, type: 2}
+    lootMat: {fileID: 2100000, guid: bd82635928d4e4141a2338eb5fce019a, type: 2}
     itemPrefab: {fileID: 0}
     lootAnimation: {fileID: 0}
   - itemName: Chest
     exp: 5
-    lootMat: {fileID: 2100000, guid: 73d4ebb2b859ae248befcb764814e250, type: 2}
-    itemPrefab: {fileID: 0}
-    lootAnimation: {fileID: 0}
-  - itemName: Pants
-    exp: 5
-    lootMat: {fileID: 2100000, guid: 73d4ebb2b859ae248befcb764814e250, type: 2}
-    itemPrefab: {fileID: 0}
-    lootAnimation: {fileID: 0}
-  - itemName: Ring
-    exp: 5
-    lootMat: {fileID: 2100000, guid: 73d4ebb2b859ae248befcb764814e250, type: 2}
-    itemPrefab: {fileID: 0}
-    lootAnimation: {fileID: 0}
-  - itemName: Amulet
-    exp: 5
-    lootMat: {fileID: 2100000, guid: 73d4ebb2b859ae248befcb764814e250, type: 2}
-    itemPrefab: {fileID: 0}
-    lootAnimation: {fileID: 0}
-  - itemName: Sword
-    exp: 5
-    lootMat: {fileID: 2100000, guid: 73d4ebb2b859ae248befcb764814e250, type: 2}
-    itemPrefab: {fileID: 0}
-    lootAnimation: {fileID: 0}
-  - itemName: Dagger
-    exp: 5
-    lootMat: {fileID: 2100000, guid: 73d4ebb2b859ae248befcb764814e250, type: 2}
-    itemPrefab: {fileID: 0}
-    lootAnimation: {fileID: 0}
-  - itemName: Longsword
-    exp: 5
-    lootMat: {fileID: 2100000, guid: 73d4ebb2b859ae248befcb764814e250, type: 2}
-    itemPrefab: {fileID: 0}
-    lootAnimation: {fileID: 0}
-  - itemName: Bow
-    exp: 5
-    lootMat: {fileID: 2100000, guid: 73d4ebb2b859ae248befcb764814e250, type: 2}
-    itemPrefab: {fileID: 0}
-    lootAnimation: {fileID: 0}
-  - itemName: Quiver
-    exp: 5
-    lootMat: {fileID: 2100000, guid: 73d4ebb2b859ae248befcb764814e250, type: 2}
-    itemPrefab: {fileID: 0}
-    lootAnimation: {fileID: 0}
-  - itemName: Dual Blades
-    exp: 5
-    lootMat: {fileID: 2100000, guid: 73d4ebb2b859ae248befcb764814e250, type: 2}
-    itemPrefab: {fileID: 0}
-    lootAnimation: {fileID: 0}
-  - itemName: Shield
-    exp: 5
-    lootMat: {fileID: 2100000, guid: 73d4ebb2b859ae248befcb764814e250, type: 2}
-    itemPrefab: {fileID: 0}
-    lootAnimation: {fileID: 0}
-  - itemName: Staff
-    exp: 5
-    lootMat: {fileID: 2100000, guid: 73d4ebb2b859ae248befcb764814e250, type: 2}
-    itemPrefab: {fileID: 0}
-    lootAnimation: {fileID: 0}
-  - itemName: Wand
-    exp: 5
-    lootMat: {fileID: 2100000, guid: 73d4ebb2b859ae248befcb764814e250, type: 2}
-    itemPrefab: {fileID: 0}
-    lootAnimation: {fileID: 0}
-  - itemName: Whip
-    exp: 5
-    lootMat: {fileID: 2100000, guid: 73d4ebb2b859ae248befcb764814e250, type: 2}
-    itemPrefab: {fileID: 0}
-    lootAnimation: {fileID: 0}
-  - itemName: Spell Book
-    exp: 5
-    lootMat: {fileID: 2100000, guid: 73d4ebb2b859ae248befcb764814e250, type: 2}
-    itemPrefab: {fileID: 0}
-    lootAnimation: {fileID: 0}
-  - itemName: Spear
-    exp: 5
-    lootMat: {fileID: 2100000, guid: 73d4ebb2b859ae248befcb764814e250, type: 2}
-    itemPrefab: {fileID: 0}
-    lootAnimation: {fileID: 0}
-  - itemName: Sickle
-    exp: 5
-    lootMat: {fileID: 2100000, guid: 73d4ebb2b859ae248befcb764814e250, type: 2}
-    itemPrefab: {fileID: 0}
-    lootAnimation: {fileID: 0}
-  - itemName: Scythes
-    exp: 5
-    lootMat: {fileID: 2100000, guid: 73d4ebb2b859ae248befcb764814e250, type: 2}
-    itemPrefab: {fileID: 0}
-    lootAnimation: {fileID: 0}
-  - itemName: Crossbow
-    exp: 5
-    lootMat: {fileID: 2100000, guid: 73d4ebb2b859ae248befcb764814e250, type: 2}
+    lootMat: {fileID: 2100000, guid: bd82635928d4e4141a2338eb5fce019a, type: 2}
     itemPrefab: {fileID: 0}
     lootAnimation: {fileID: 0}

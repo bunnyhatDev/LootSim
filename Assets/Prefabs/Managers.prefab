@@ -1,0 +1,176 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5064897221505350281
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5064897221505350279}
+  - component: {fileID: 5064897221505350280}
+  - component: {fileID: 5064897221505350278}
+  - component: {fileID: 5064897221505350276}
+  - component: {fileID: 5064897221505350277}
+  - component: {fileID: 5064897221505350275}
+  m_Layer: 0
+  m_Name: Managers
+  m_TagString: Managers
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5064897221505350279
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5064897221505350281}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5064897221505350280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5064897221505350281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d65c0ddacd144254483a1789c75cf659, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: 0
+  loadingTimer: 2
+  resetLoadingTimer: 2
+  isMenuOpen: 0
+  isTutorialComplete: 0
+  chestPrefab: {fileID: 1247477340559882, guid: b210851bece9a564b8062af5a9731b82,
+    type: 3}
+  currentHP: 0
+  roundedHP: 0
+  maxHP: 100
+  tapDamage: 0
+  autoDamage: 0
+  currentTimer: 0
+  maxTimer: 59
+  isDead: 0
+  timePlayed: 
+  level: 0
+  xpNeededToLevel: 0
+  totalXP: 0
+  totalCurrency: 0
+  pledges: 0
+  totalPledges: 0
+  currentDPS: 0
+  roundedDPS: 0
+  tapCount: 0
+  chestsOpened: 0
+  lootCollected: 0
+  scenesUnlocked: 0
+  upgradesUnlocked: 0
+  autoTapUpgradesUnlocked: 0
+  achievementsUnlocked: 0
+--- !u!114 &5064897221505350278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5064897221505350281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c8375ef17e92124ea8bf9145c332540, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lootTypes:
+  - itemList: {fileID: 11400000, guid: 55c16fa27a754104ea85c8285d6687c2, type: 2}
+    itemExp: 10
+    itemMat: {fileID: 2100000, guid: bd82635928d4e4141a2338eb5fce019a, type: 2}
+    itemAnimation: {fileID: 0}
+  - itemList: {fileID: 0}
+    itemExp: 0
+    itemMat: {fileID: 0}
+    itemAnimation: {fileID: 0}
+  - itemList: {fileID: 0}
+    itemExp: 0
+    itemMat: {fileID: 0}
+    itemAnimation: {fileID: 0}
+  lootItemList: {fileID: 11400000, guid: 55c16fa27a754104ea85c8285d6687c2, type: 2}
+  loot:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  randomLoot: 000000000000000000000000
+  lootTimer: 0
+  resetLootTimer: 0
+--- !u!114 &5064897221505350276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5064897221505350281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1f47e2996dd3dd45911c5a9c773dc94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5064897221505350277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5064897221505350281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0cc4532a8687124a8f48650b560a806, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemsfordebug: []
+  m_storeListingPrefab: {fileID: 0}
+  m_storeListingsParent: {fileID: 0}
+  m_storeListings: []
+--- !u!114 &5064897221505350275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5064897221505350281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a568a5c0077bf894c80226f1dc04bed3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tempForDebug:
+    tutorialCompleted: 0
+    timePlayed: 
+    totalXP: 0
+    xpNeededToLevel: 0
+    tapDamage: 0
+    autoDamage: 0
+    health: 0
+    timer: 0
+    level: 0
+    totalCurrency: 0
+    overallCurrency: 0
+    totalPledges: 0
+    overallPledges: 0
+    tapCount: 0
+    chestCount: 0
+    lootCount: 0
+    sceneCount: 0
+    autoTapUpgrades: 0
+    upgradeCount: 0
+    achievementCount: 0
+  timeToSave: 1
+  resetTime: 0
