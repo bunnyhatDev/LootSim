@@ -328,6 +328,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 607842745}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1406929334 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8544643922814217928, guid: cf3b53cee4c965a4398496ae01655644,
+    type: 3}
+  m_PrefabInstance: {fileID: 8544643921418299262}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1415892296 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1449097872388284, guid: d6aabc10fd8c4e64da8ceafa30ed3d7f,
@@ -346,6 +352,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a568a5c0077bf894c80226f1dc04bed3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1725165256 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8544643922998413750, guid: cf3b53cee4c965a4398496ae01655644,
+    type: 3}
+  m_PrefabInstance: {fileID: 8544643921418299262}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1962320804
 GameObject:
   m_ObjectHideFlags: 0
@@ -510,6 +522,24 @@ PrefabInstance:
       propertyPath: loot.Array.data[2]
       value: 
       objectReference: {fileID: 1066238085}
+    - target: {fileID: 2354181535165334357, guid: a7601ab778da330449e29a67dcbe43e9,
+        type: 3}
+      propertyPath: dialogueBoxes.Array.data[0]
+      value: 
+      objectReference: {fileID: 1725165256}
+    - target: {fileID: 2354181535165334357, guid: a7601ab778da330449e29a67dcbe43e9,
+        type: 3}
+      propertyPath: dialogueBoxes.Array.data[1]
+      value: 
+      objectReference: {fileID: 1406929334}
+    - target: {fileID: 1546303879, guid: a7601ab778da330449e29a67dcbe43e9, type: 3}
+      propertyPath: dialogueBoxes.Array.data[0]
+      value: 
+      objectReference: {fileID: 1725165256}
+    - target: {fileID: 1546303879, guid: a7601ab778da330449e29a67dcbe43e9, type: 3}
+      propertyPath: dialogueBoxes.Array.data[1]
+      value: 
+      objectReference: {fileID: 1406929334}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a7601ab778da330449e29a67dcbe43e9, type: 3}
 --- !u!1001 &7455508284517155829
@@ -754,6 +784,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8544643923446143905, guid: cf3b53cee4c965a4398496ae01655644,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 8544643923090828953, guid: cf3b53cee4c965a4398496ae01655644,
         type: 3}

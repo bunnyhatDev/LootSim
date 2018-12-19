@@ -10,10 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 5064897221505350279}
   - component: {fileID: 5064897221505350280}
+  - component: {fileID: 2354181535165334357}
   - component: {fileID: 5064897221505350278}
   - component: {fileID: 5064897221505350276}
   - component: {fileID: 5064897221505350277}
   - component: {fileID: 5064897221505350275}
+  - component: {fileID: 1546303879}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Managers
@@ -51,7 +53,6 @@ MonoBehaviour:
   loadingTimer: 2
   resetLoadingTimer: 2
   isMenuOpen: 0
-  isTutorialComplete: 0
   chestPrefab: {fileID: 1247477340559882, guid: b210851bece9a564b8062af5a9731b82,
     type: 3}
   currentHP: 0
@@ -78,6 +79,23 @@ MonoBehaviour:
   upgradesUnlocked: 0
   autoTapUpgradesUnlocked: 0
   achievementsUnlocked: 0
+--- !u!114 &2354181535165334357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5064897221505350281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de342ae78c5556a40a0cc4dbc76c4cf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueBoxes:
+  - {fileID: 0}
+  - {fileID: 0}
+  tutorialIndex: 0
+  isTutorialComplete: 0
 --- !u!114 &5064897221505350278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,3 +192,23 @@ MonoBehaviour:
     achievementCount: 0
   timeToSave: 1
   resetTime: 0
+--- !u!114 &1546303879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5064897221505350281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de342ae78c5556a40a0cc4dbc76c4cf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueBoxes:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  tutorialIndex: 0
+  isTutorialComplete: 0
