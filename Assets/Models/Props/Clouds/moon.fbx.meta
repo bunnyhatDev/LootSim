@@ -1,24 +1,26 @@
 fileFormatVersion: 2
-guid: d2b0bcfdc38e6d64cb34d7ab2b9d879a
+guid: 286f8f3cd92f813428f89e2d09951376
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
-    100002: pPlane1
-    100004: pPlane2
     400000: //RootNode
-    400002: pPlane1
-    400004: pPlane2
-    2100000: stone
-    2100002: grass
-    2100004: ice
-    2300000: pPlane1
-    2300002: pPlane2
-    3300000: pPlane1
-    3300002: pPlane2
-    4300000: pPlane1
-    4300002: pPlane2
-  externalObjects: {}
+    2100000: lambert1
+    2100002: file1Material
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: pCylinder1
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: file1Material
+    second: {fileID: 2100000, guid: c49441e61b1f8bb4caa22fe2576390ba, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert1
+    second: {fileID: 2100000, guid: 4ec82ad7544eacd40a322b536bb85568, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -49,7 +51,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 2
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -69,7 +71,7 @@ ModelImporter:
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
-    useFileScale: 1
+    useFileScale: 0
     previousCalculatedGlobalScale: 1
     hasPreviousCalculatedGlobalScale: 0
   tangentSpace:
