@@ -1,26 +1,38 @@
 fileFormatVersion: 2
-guid: 286f8f3cd92f813428f89e2d09951376
+guid: 20f24ba66ac47504f8b4c46d7fb80bb5
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2100000: lambert1
-    2100002: file1Material
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: pCylinder1
+    100000: group
+    100002: group1
+    100004: pasted__group
+    100006: pasted__pasted__pCube1
+    100008: pasted__pCube1
+    100010: pCube1
+    100012: //RootNode
+    400000: group
+    400002: group1
+    400004: pasted__group
+    400006: pasted__pasted__pCube1
+    400008: pasted__pCube1
+    400010: pCube1
+    400012: //RootNode
+    2100000: file1Material
+    2300000: pasted__pasted__pCube1
+    2300002: pasted__pCube1
+    2300004: pCube1
+    3300000: pasted__pasted__pCube1
+    3300002: pasted__pCube1
+    3300004: pCube1
+    4300000: pCube1
+    4300002: pasted__pCube1
+    4300004: pasted__pasted__pCube1
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: file1Material
-    second: {fileID: 2100000, guid: c49441e61b1f8bb4caa22fe2576390ba, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: lambert1
-    second: {fileID: 2100000, guid: 4ec82ad7544eacd40a322b536bb85568, type: 2}
+    second: {fileID: 2100000, guid: 00bec752b2295f04daaf264b69234dff, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -51,7 +63,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 2
+    globalScale: 0.75
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
