@@ -1,46 +1,16 @@
 fileFormatVersion: 2
-guid: a70ecd47c49287546ba0713e8f9a6ad4
+guid: 154212768aba9a84a846134266d61b91
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
-    100002: group
-    100004: group1
-    100006: group2
-    100008: group3
-    100010: group4
-    100012: group5
-    100014: group6
-    100016: pasted__group
-    100018: pasted__group1
-    100020: pasted__group2
-    100022: pasted__group5
-    100024: pasted__pasted__group1
-    100026: pCube1
     400000: //RootNode
-    400002: group
-    400004: group1
-    400006: group2
-    400008: group3
-    400010: group4
-    400012: group5
-    400014: group6
-    400016: pasted__group
-    400018: pasted__group1
-    400020: pasted__group2
-    400022: pasted__group5
-    400024: pasted__pasted__group1
-    400026: pCube1
-    2100000: file1Material
-    2300000: pCube1
-    3300000: pCube1
+    2100000: soil
+    2100002: grass
+    2300000: //RootNode
+    3300000: //RootNode
     4300000: pCube1
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: file1Material
-    second: {fileID: 2100000, guid: f8d3179da9f5f7b4f9fa6adaf3a49cc1, type: 2}
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
@@ -71,14 +41,14 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 0.5
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
-    importLights: 0
+    importLights: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1

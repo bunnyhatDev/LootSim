@@ -1,38 +1,77 @@
 fileFormatVersion: 2
-guid: 20f24ba66ac47504f8b4c46d7fb80bb5
+guid: 8987ee8e333686a45a1451bf4a250e8a
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: group
     100002: group1
-    100004: pasted__group
-    100006: pasted__pasted__pCube1
-    100008: pasted__pCube1
-    100010: pCube1
-    100012: //RootNode
+    100004: group2
+    100006: group3
+    100008: group4
+    100010: group5
+    100012: group6
+    100014: pasted__group
+    100016: pasted__group1
+    100018: pasted__group2
+    100020: pasted__group5
+    100022: pasted__pasted__group1
+    100024: pCube1
+    100026: //RootNode
     400000: group
     400002: group1
-    400004: pasted__group
-    400006: pasted__pasted__pCube1
-    400008: pasted__pCube1
-    400010: pCube1
-    400012: //RootNode
-    2100000: file1Material
-    2300000: pasted__pasted__pCube1
-    2300002: pasted__pCube1
-    2300004: pCube1
-    3300000: pasted__pasted__pCube1
-    3300002: pasted__pCube1
-    3300004: pCube1
+    400004: group2
+    400006: group3
+    400008: group4
+    400010: group5
+    400012: group6
+    400014: pasted__group
+    400016: pasted__group1
+    400018: pasted__group2
+    400020: pasted__group5
+    400022: pasted__pasted__group1
+    400024: pCube1
+    400026: //RootNode
+    2100000: tree1
+    2100002: lambert1
+    2100004: trunk1
+    2100006: tree2
+    2100008: trunk2
+    2100010: tree3
+    2100012: tree4
+    2300000: pCube1
+    3300000: pCube1
     4300000: pCube1
-    4300002: pasted__pCube1
-    4300004: pasted__pasted__pCube1
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: file1Material
-    second: {fileID: 2100000, guid: 00bec752b2295f04daaf264b69234dff, type: 2}
+      name: tree1
+    second: {fileID: 2100000, guid: a0c31dd1dd06abe429d19188078eefcd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tree2
+    second: {fileID: 2100000, guid: a7b2c4c61e9220e4e82234a70fc51028, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tree3
+    second: {fileID: 2100000, guid: 9616ff25c748f1a48bba1a722a35ca1e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tree4
+    second: {fileID: 2100000, guid: bc493acf11b097040bbd34b040cc79b1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: trunk1
+    second: {fileID: 2100000, guid: dba41b4bc02834046affd00201f01e3e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: trunk2
+    second: {fileID: 2100000, guid: bc55f5e362cbe3b49b510154f5693bdb, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -63,7 +102,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 0.75
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -72,7 +111,7 @@ ModelImporter:
     importCameras: 1
     importLights: 1
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0

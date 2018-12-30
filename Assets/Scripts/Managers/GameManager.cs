@@ -86,8 +86,6 @@ public class GameManager : MonoBehaviour {
 		minutes = ((int) t / 60).ToString();
 		seconds = (t % 60).ToString("f0");
 		timePlayed = minutes + "m " + seconds + "s";
-
-
 	}
 
 	void StateMachine() {
